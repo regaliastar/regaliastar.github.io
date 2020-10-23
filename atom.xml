@@ -6,7 +6,7 @@
   <link href="http://hahuillu.cn/atom.xml" rel="self"/>
   
   <link href="http://hahuillu.cn/"/>
-  <updated>2020-10-22T06:48:47.254Z</updated>
+  <updated>2020-10-23T03:19:49.923Z</updated>
   <id>http://hahuillu.cn/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>从零开始量子计算（1）：体系结构</title>
+    <title>梳理|量子计算（1）：体系结构</title>
     <link href="http://hahuillu.cn/2020/10/21/qc-1/"/>
     <id>http://hahuillu.cn/2020/10/21/qc-1/</id>
     <published>2020-10-21T13:52:37.000Z</published>
-    <updated>2020-10-22T06:48:47.254Z</updated>
+    <updated>2020-10-23T03:19:49.923Z</updated>
     
     
       
@@ -37,11 +37,9 @@
     <category term="量子计算" scheme="http://hahuillu.cn/categories/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/"/>
     
     
-    <category term="从零开始量子计算" scheme="http://hahuillu.cn/tags/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/"/>
+    <category term="量子计算" scheme="http://hahuillu.cn/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/"/>
     
-    <category term="科普" scheme="http://hahuillu.cn/tags/%E7%A7%91%E6%99%AE/"/>
-    
-    <category term="体系结构" scheme="http://hahuillu.cn/tags/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/"/>
+    <category term="梳理" scheme="http://hahuillu.cn/tags/%E6%A2%B3%E7%90%86/"/>
     
   </entry>
   
