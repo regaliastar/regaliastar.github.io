@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>梳理|量子计算（2）：量子力学基础</title>
+      <link href="2020/10/23/qc-2/"/>
+      <url>2020/10/23/qc-2/</url>
+      
+        <content type="html"><![CDATA[<h2 id="0x01-量子力学公理"><a href="#0x01-量子力学公理" class="headerlink" title="0x01 量子力学公理"></a>0x01 量子力学公理</h2><ol><li>每个物理系统都与希尔伯特空间有关。希尔伯特空间是一个向量空间(可以相加和乘标量的对象的集合)加上一个内积<code>&lt;a|b&gt;</code>，其满足: </li></ol><ul><li>复共轭关系: <code>&lt;a|b&gt; = &lt;b|a&gt;*</code></li><li>线性关系：<code>&lt;x*a1 + y*a2|b&gt; = x&lt;a1|b&gt; + y&lt;a2|b&gt;</code></li><li>正定性：<code>&lt;a|a&gt; ≥ 0</code></li></ul><ol start="2"><li>希尔伯特空间中的每一个raw都与系统的一个状态有关。我们有时称这些raw为<code>kets</code>，并给它们贴上标签，如 <code>|φ&gt;</code>。其对偶向量由<code>bras</code>表示，并标记为<code>&lt;φ|</code>。在矩阵表示中，<code>kets</code>是列向量，而<code>bras</code>是<code>kets</code>的共轭转置，是行向量</li><li>每个测量都对应于埃尔米特算子<code>A = A† = AT*</code></li><li>测量的结果可能是<code>A</code>的特征值</li><li>观测到某一特定值的概率为<br>$$Prob(a=a_n) = \frac{&lt;\varphi|P_{a_n}|\varphi&gt;}{&lt;\varphi|\varphi&gt;}$$</li></ol><p>在这里，<code>Pan</code>是对应于给定测量值的状态集(这也被称为A的特征空间)上的投影。这个表达式中的分母是处理状态向量时没有正确归一化的情况</p><h2 id="0x02-状态"><a href="#0x02-状态" class="headerlink" title="0x02 状态"></a>0x02 状态</h2><p>假设我们有一个三维希尔伯特空间由正交基向量组成，<code>|0&gt;,|1&gt;,|2&gt;</code>，因为它们正交，其内积是<code>&lt;0|1&gt;=&lt;0|2&gt;=&lt;1|2&gt;=0，&lt;0|0&gt;=&lt;1|1&gt;=&lt;2|2&gt;=1</code>，取一个希尔伯特空间的特殊状态：<br>$$|\varphi&gt;=\frac{1}{\sqrt{3}}|0&gt;+\frac{1}{\sqrt{3}}|1&gt;+\frac{i}{\sqrt{3}}|2&gt;=<br>\left(<br>\begin{array}{c}<br>\frac{1}{\sqrt{3}}\<br>\frac{1}{\sqrt{3}}\<br>\frac{i}{\sqrt{3}}\<br>\end{array}<br>\right)^T$$<br>这种状态是量子叠加的一个例子，其中系统的状态是基状态的和。我们已经使用了<code>bra-ket</code>符号来表示状态，同时也使用了列向量表示状态，其中列向量中的元素对应于bra-ket符号中基向量前面的系数。基向量前面的系数称为振幅，在任何给定的基状态下找到系统的概率由这个基向量振幅的模的平方得到。在上式中，振幅都是1/3  </p><p>注意，使用上面的公理也可以确定这些概率。例如，求找到系统在<code>|0&gt;</code>状态的概率是多少?  </p><p>根据公理5，概率是以投影的形式给出的(我们将忽略分母，因为在标准化的状态下:<code>&lt;φ|φ&gt;=1</code>)，而投影到<code>|0&gt;</code>状态的是算子为：<br>$$P_0=|0&gt;&lt;0|=<br>\left(<br>\begin{array}{c}<br>1\<br>0\<br>0\<br>\end{array}<br>\right)^T<br>\left(<br>\begin{array}{c}<br>1\<br>0\<br>0\<br>\end{array}<br>\right)$$<br>同时，<br>$$&lt;\varphi|=|\varphi&gt;^+=\frac{1}{\sqrt{3}}&lt;0|+\frac{1}{\sqrt{3}}&lt;1|+\frac{i}{\sqrt{3}}&lt;2|=<br>\left(<br>\begin{array}{c}<br>\frac{1}{\sqrt{3}}\<br>\frac{1}{\sqrt{3}}\<br>\frac{-i}{\sqrt{3}}\<br>\end{array}<br>\right)$$<br>因此我们可以计算出内积<br>$$Prob(0)=&lt;\varphi|P_0|\varphi&gt;=&lt;\varphi|0&gt;&lt;0|\varphi&gt;=|&lt;0|\varphi&gt;|^2=\frac{1}{3}$$<br>通过测量算子，便求出了状态塌缩到<code>|0&gt;</code>的概率</p><h2 id="0x03-组合量子系统"><a href="#0x03-组合量子系统" class="headerlink" title="0x03 组合量子系统"></a>0x03 组合量子系统</h2><p>很显然不可能只研究一个量子比特的系统，为了进行计算，往往需要研究多量子系统的希尔伯特空间。</p><p>考虑两个1量子位的希尔伯特空间的集合，那么他们组合的情况一共有4种，分别是<code>{|00&gt;,|01&gt;,|10&gt;,|11&gt;}</code>，每增加一个量子位，可表示的维度便翻一倍。这种组合称为kronecker积（或者张量积）：<br>$$|00&gt;=|0&gt;\otimes|0&gt;=<br>\left(<br>\begin{array}{c}<br>1\<br>0\<br>\end{array}<br>\right)^T<br>\otimes<br>\left(<br>\begin{array}{c}<br>1\<br>0\<br>\end{array}<br>\right)^T<br>=<br>\left(<br>\begin{array}{c}<br>1\<br>0\<br>0\<br>0\<br>\end{array}<br>\right)^T$$<br>模拟经典力学是一个难易程度只像粒子数目的多项式一样增加的问题，而模拟量子力学是一个难易程度随粒子数目呈指数级增加的问题</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 量子计算 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 量子计算 </tag>
+            
+            <tag> 梳理 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>梳理|量子计算（1）：体系结构</title>
       <link href="2020/10/21/qc-1/"/>
       <url>2020/10/21/qc-1/</url>
