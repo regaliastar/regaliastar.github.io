@@ -6,7 +6,7 @@
   <link href="http://hahuillu.cn/atom.xml" rel="self"/>
   
   <link href="http://hahuillu.cn/"/>
-  <updated>2020-10-23T09:05:24.186Z</updated>
+  <updated>2020-10-24T04:34:30.095Z</updated>
   <id>http://hahuillu.cn/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>梳理|量子计算（3）：线性代数基础</title>
+    <link href="http://hahuillu.cn/2020/10/24/qc-3/"/>
+    <id>http://hahuillu.cn/2020/10/24/qc-3/</id>
+    <published>2020-10-24T13:38:00.000Z</published>
+    <updated>2020-10-24T04:34:30.095Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;0x00-前言&quot;&gt;&lt;a href=&quot;#0x00-前言&quot; class=&quot;headerlink&quot; title=&quot;0x00 前言&quot;&gt;&lt;/a&gt;0x00 前言&lt;/h2&gt;&lt;p&gt;传统计算机使用比特 0 和 1 以及它们之间的逻辑操作 and，or，not，xor</summary>
+        
+      
+    
+    
+    
+    <category term="量子计算" scheme="http://hahuillu.cn/categories/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/"/>
+    
+    
+    <category term="量子计算" scheme="http://hahuillu.cn/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/"/>
+    
+    <category term="梳理" scheme="http://hahuillu.cn/tags/%E6%A2%B3%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
     <title>梳理|量子计算（2）：量子力学基础</title>
     <link href="http://hahuillu.cn/2020/10/23/qc-2/"/>
     <id>http://hahuillu.cn/2020/10/23/qc-2/</id>
     <published>2020-10-23T06:26:30.000Z</published>
-    <updated>2020-10-23T09:05:24.186Z</updated>
+    <updated>2020-10-24T03:17:02.699Z</updated>
     
     
       
