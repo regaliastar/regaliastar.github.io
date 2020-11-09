@@ -6,7 +6,7 @@
   <link href="http://hahuillu.cn/atom.xml" rel="self"/>
   
   <link href="http://hahuillu.cn/"/>
-  <updated>2020-10-26T00:27:15.885Z</updated>
+  <updated>2020-11-09T02:42:38.689Z</updated>
   <id>http://hahuillu.cn/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Guitar|曲谱</title>
+    <link href="http://hahuillu.cn/2020/11/09/guitar-1/"/>
+    <id>http://hahuillu.cn/2020/11/09/guitar-1/</id>
+    <published>2020-11-09T02:08:30.000Z</published>
+    <updated>2020-11-09T02:42:38.689Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;0x00-前言&quot;&gt;&lt;a href=&quot;#0x00-前言&quot; class=&quot;headerlink&quot; title=&quot;0x00 前言&quot;&gt;&lt;/a&gt;0x00 前言&lt;/h2&gt;&lt;p&gt;最近在练习吉他和弦，于是在这里收集一些我自己喜欢的吉他谱，希望能早日弹出流利的曲子&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="吉他" scheme="http://hahuillu.cn/categories/%E5%90%89%E4%BB%96/"/>
+    
+    
+    <category term="Guitar" scheme="http://hahuillu.cn/tags/Guitar/"/>
+    
+  </entry>
   
   <entry>
     <title>原理|Vue：MVVM实现</title>
