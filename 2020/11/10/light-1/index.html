@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="梳理|量子计算（3）：线性代数基础, Mumu">
+    <meta name="keywords" content="Light|来设计一款编程语言吧(1)：词法分析, Mumu">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>梳理|量子计算（3）：线性代数基础 | Mumu</title>
+    <title>Light|来设计一款编程语言吧(1)：词法分析 | Mumu</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -247,12 +247,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/cat.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1605071301907&di=d28006e66b11805f0bb53809f6ee1990&imgtype=0&src=http%3A%2F%2Fup.36992.com%2Fpic_360%2F36%2F71%2Fa3%2F3671a313d70e8036dd0a15576a4e5d80.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">梳理|量子计算（3）：线性代数基础</h1>
+                    <h1 class="description center-align post-title">Light|来设计一款编程语言吧(1)：词法分析</h1>
                 </div>
             </div>
         </div>
@@ -370,12 +370,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/">
-                                <span class="chip bg-color">量子计算</span>
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
                             </a>
                         
-                            <a href="/tags/%E6%A2%B3%E7%90%86/">
-                                <span class="chip bg-color">梳理</span>
+                            <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">
+                                <span class="chip bg-color">编译原理</span>
                             </a>
                         
                     </div>
@@ -386,8 +386,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/" class="post-category">
-                                量子计算
+                            <a href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" class="post-category">
+                                编译原理
                             </a>
                         
                     </div>
@@ -399,7 +399,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-10-24
+                    2020-11-10
                 </div>
                 
 
@@ -408,7 +408,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    1.7k
+                    1.4k
                 </div>
                 
 
@@ -425,159 +425,241 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>传统计算机使用比特 0 和 1 以及它们之间的逻辑操作 and，or，not，xor 等位运算构造加减乘除，并搭建整个经典计算机体系。</p>
-<p>在量子计算机上，基本的存储单元是量子位，即 Qubit。只要搞明白了 Qubit，以及它们之间的逻辑操作，原理上就可以搭建量子计算机。</p>
-<p>Qubit 可以是任意两个本征态<code>|0&gt;</code>和<code>|1&gt;</code>，或者是它们的线性叠加</p>
-<script type="math/tex; mode=display">\mathinner{|\varphi\rangle} = \alpha\mathinner{|0\rangle} + \beta\mathinner{|1\rangle} s.t. |\alpha|^2 + |\beta|^2 = 1</script><p>其中<code>α、β</code>是复数</p>
-<p>可以用向量形式来表示狄拉克符号：</p>
-<script type="math/tex; mode=display">\mathinner{|0\rangle}=
-\begin{pmatrix}
-1\\ 
-0\\
-\end{pmatrix}
-,
-\mathinner{|1\rangle}=
-\begin{pmatrix}
-0\\ 
-1\\
-\end{pmatrix}</script><p>在物理意义上，这对应着薛定谔的猫的状态：0——死，1——生。此时这只猫属于既死又活状态，且概率由<code>α、β</code>决定。</p>
-<h2 id="0x01-基本概念"><a href="#0x01-基本概念" class="headerlink" title="0x01 基本概念"></a>0x01 基本概念</h2><p>这里列举的都是最常用的概念，其他的遇到时再查阅资料即可</p>
-<h3 id="1-线性独立"><a href="#1-线性独立" class="headerlink" title="1. 线性独立"></a>1. 线性独立</h3><p>对于一个矢量集$\mathinner{|\alpha_1\rangle},…,\mathinner{|\alpha_n\rangle}\in V$，如果对于复数$c_i$，当且仅当$c_1=…=c_m=0$时，关系式</p>
-<script type="math/tex; mode=display">c_1\mathinner{|\alpha_1\rangle}+...+c_n\mathinner{|\alpha_n\rangle}=0</script><p>才成立，我们称这些矢量线性独立。</p>
-<h3 id="2-内积"><a href="#2-内积" class="headerlink" title="2. 内积"></a>2. 内积</h3><p>$\mathinner{|\alpha\rangle}、\mathinner{|\beta\rangle}$的内积满足以下性质：</p>
+                <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>该系列对Light语言进行一个总结性质的记录，emm勉强算官方文档吧<span class="github-emoji"><span>😝</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f61d.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
+<p>Light是一款跨平台轻量级的解释型语言，语法借鉴JavaScript，支持条件语句、循环语句，目前变量支持整数类型、函数类型</p>
+<p>完整项目见我的GitHub</p>
+<p>该语言使用实例如下所示：</p>
+<pre><code>#############################################
+#                 Quick start               #
+#############################################
+func add(a, b){
+    return a+b
+}
+three = add(1, 2)
+print(three)
+</code></pre><p>具体语法规则放在第二篇blog中介绍，下面开始进行词法分析</p>
+<h2 id="0x01-基本原理"><a href="#0x01-基本原理" class="headerlink" title="0x01 基本原理"></a>0x01 基本原理</h2><p>词法分析处于编译原理的第一环节，目的是将源文件转化成可供语法分析的Token串。在该过程中，需要将变量、数字、关键词、分隔符等都识别出来，并制备成Token格式</p>
+<p>先了解一下词法分析的知识关系图</p>
+<p><img src="https://img-blog.csdnimg.cn/20190112203946406.png" alt=""></p>
+<p>开发一个词法分析器是在词法定义的基础上的，词法定义需要使用正则表达式</p>
+<p>正则表达式可以转换为NFA（Non-determinate finite automata 不确定的有穷自动机），NFA可以转换为DFA（determinate finite automata 确定有穷自动机），DFA可以极小化，进而使用为开发词法分析器的工具</p>
+<p>词法分析器有两种识别方法，分别是关联和独立两种形式，这里我们使用独立的形式，即把词法分析当做是一个独立的整体，并将处理好的结果交给下一步来执行。</p>
+<h3 id="1-1-Token"><a href="#1-1-Token" class="headerlink" title="1.1 Token"></a>1.1 Token</h3><p>定义Token如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>KEYWORD</th>
+<th>tokenID</th>
+<th>SEPARATOR</th>
+<th>tokenID</th>
+<th>OPERATOR</th>
+<th>tokenID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>if</td>
+<td>100</td>
+<td>(</td>
+<td>300</td>
+<td>+</td>
+<td>400</td>
+</tr>
+<tr>
+<td>elif</td>
+<td>101</td>
+<td>)</td>
+<td>301</td>
+<td>-</td>
+<td>401</td>
+</tr>
+<tr>
+<td>else</td>
+<td>102</td>
+<td>[</td>
+<td>302</td>
+<td>*</td>
+<td>402</td>
+</tr>
+<tr>
+<td>while</td>
+<td>103</td>
+<td>]</td>
+<td>303</td>
+<td>/</td>
+<td>403</td>
+</tr>
+<tr>
+<td>break</td>
+<td>104</td>
+<td>{</td>
+<td>304</td>
+<td>&gt;</td>
+<td>404</td>
+</tr>
+<tr>
+<td>func</td>
+<td>105</td>
+<td>}</td>
+<td>305</td>
+<td>&lt;</td>
+<td>405</td>
+</tr>
+<tr>
+<td>return</td>
+<td>106</td>
+<td>:</td>
+<td>306</td>
+<td>=</td>
+<td>406</td>
+</tr>
+<tr>
+<td>———</td>
+<td>———</td>
+<td>;</td>
+<td>307</td>
+<td>&gt;=</td>
+<td>407</td>
+</tr>
+<tr>
+<td>IDENTIFY</td>
+<td>500</td>
+<td>\n</td>
+<td>308</td>
+<td>&lt;=</td>
+<td>408</td>
+</tr>
+<tr>
+<td>INT</td>
+<td>600</td>
+<td></td>
+<td></td>
+<td>==</td>
+<td>409</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>下面就不一一列举了…</p>
+<p>一个词法单元(Token)由两部分组成，分别是(id, content)，其中</p>
 <ul>
-<li>反称：$\mathinner{\langle\alpha|\beta\rangle}=\mathinner{\langle\beta|\alpha\rangle}^*$</li>
-<li>线性：$\mathinner{\langle\alpha|c\beta+d\gamma\rangle}=c\mathinner{\langle\alpha|\beta\rangle}+d\mathinner{\langle\alpha|\gamma\rangle}$</li>
-<li>正定：$\mathinner{\langle\alpha|\beta\rangle}\ge 0$<br>作为例子，我们定义两个矢量$\mathinner{|\alpha\rangle}=(\alpha_1,…,\alpha_n)$和$\mathinner{|\beta\rangle}=(\beta,…,\beta)$在$C^n$中的内积为<script type="math/tex; mode=display">\mathinner{\langle\alpha|\beta\rangle}=\sum_{i=1}^n\alpha_i^*\beta_i</script></li>
+<li>关键词(KEYWORD)<br>是具有特殊意义的词，不能被其他方式使用</li>
+<li>分隔符(SEPARATOR)<br>分隔语句，产生语义</li>
+<li>操作符(OPERATOR)<br>进行运算与比较</li>
+<li>变量(IDENTIFY)<br>变量可以是函数，也可以是数</li>
+<li>整数类型(INT)<br>定义整数类型</li>
 </ul>
-<h3 id="3-模"><a href="#3-模" class="headerlink" title="3. 模"></a>3. 模</h3><script type="math/tex; mode=display">||\mathinner{|\alpha\rangle}||=\mathinner{\langle\alpha|\alpha\rangle}=\sum_{i=1}^n\alpha_i^*\alpha_i</script><p>量子力学把一个物理系统的态和希尔伯特空间中的单位矢量联系起来，在物理现象和数学之间建立了一座桥梁，这个桥梁便是线性代数。</p>
-<h3 id="4-线性算符"><a href="#4-线性算符" class="headerlink" title="4. 线性算符"></a>4. 线性算符</h3><p>一个算符A将矢量$\mathinner{|\alpha\rangle}\in V$映射到另一个矢量$\mathinner{|\beta\rangle}\in V$，即</p>
-<script type="math/tex; mode=display">\mathinner{|\beta\rangle}=A\mathinner{|\alpha\rangle}</script><p>注意到，对量子比特的操作都是通过线性算符实现的。</p>
-<p>在物理意义上，线性算符就是特定波长频率的射线，用来影响量子比特的行为。</p>
-<p>如果对于$\forall \mathinner{|\alpha\rangle}\in V,A\mathinner{|\alpha\rangle}=B\mathinner{|\alpha\rangle}$，则A和B算符是相等的，记为A=B。</p>
-<p>两个线性算符A和B之和C=A+B也是线性的，为</p>
-<script type="math/tex; mode=display">C\mathinner{|\alpha\rangle}=(A+B)\mathinner{|\alpha\rangle}=A\mathinner{|\alpha\rangle}+B\mathinner{|\alpha\rangle}</script><h3 id="5-泡利矩阵"><a href="#5-泡利矩阵" class="headerlink" title="5. 泡利矩阵"></a>5. 泡利矩阵</h3><p>泡利矩阵是经常用到的一种矩阵，</p>
-<script type="math/tex; mode=display">
-\sigma_x=
-\begin{pmatrix}
-0 & 1\\ 
-1 & 0\\
-\end{pmatrix}，
-\sigma_y=
-\begin{pmatrix}
-0 & -i\\ 
-i & 0\\
-\end{pmatrix}，
-\sigma_z=
-\begin{pmatrix}
-1 & 0\\ 
-0 & -1\\
-\end{pmatrix}</script><p>且它有良好的性质：<br>1) $\sigma_x^2=\sigma_y^2=\sigma_z^2=I$ 其中I是单位阵<br>2) $\sigma_x\sigma_y=i\sigma_z，\sigma_y\sigma_z=i\sigma_x，\sigma_z\sigma_x=i\sigma_y$</p>
-<h3 id="6-投影算符"><a href="#6-投影算符" class="headerlink" title="6. 投影算符"></a>6. 投影算符</h3><p>投影算符是用来测量的一种算符，如果$\mathinner{|\alpha\rangle}\in V$是单位矢量，在$\mathinner{|\alpha\rangle}$的一维投影定义如下：</p>
-<script type="math/tex; mode=display">\forall\mathinner{|\gamma\rangle}\in V，\mathinner{|\beta\rangle}
-=P_\alpha\mathinner{|\gamma\rangle}
-=\mathinner{|\alpha\rangle}\mathinner{\langle\alpha|\gamma\rangle}
-=\mathinner{\langle\alpha|\gamma\rangle}\mathinner{|\alpha\rangle}</script><p>该算符叫做投影算符，它把一个一般的矢量$\mathinner{|\gamma\rangle}$投影到$\mathinner{|\alpha\rangle}$的方向上。</p>
-<h3 id="7-么正算符"><a href="#7-么正算符" class="headerlink" title="7. 么正算符"></a>7. 么正算符</h3><p>若</p>
-<script type="math/tex; mode=display">UU^+=U^+U=I</script><p>则称U是么正的，即酉矩阵，从定义中我们知道，U的伴随算符就是它的逆，即</p>
-<script type="math/tex; mode=display">U^+=U^{-1}</script><p>此外，两个么正算符的乘积UV也是么正的，这是量子门串联的基础</p>
-<script type="math/tex; mode=display">(UV)(UV)^+=UVU^+V^+=I</script><p>么正算符的性质非常重要，因为么正算符不改变一个矢量的模，因此么正算符对希尔伯特空间中的矢量的作用，相当于欧几里得空间的坐标旋转。</p>
-<p>所以量子门都是么正算符。</p>
-<h3 id="8-张量积"><a href="#8-张量积" class="headerlink" title="8. 张量积"></a>8. 张量积</h3><p>在希尔伯特空间$\mathcal{H}=\mathcal{H}_1\otimes\mathcal{H}_2$中，对于矢量$\mathinner{|\alpha\rangle}\in\mathcal{H}_1$，$\mathinner{|\beta\rangle}\in\mathcal{H}_2$，都有一个矢量与它们相联系，且后者称为前两者的张量积，记为$\mathinner{|\alpha\rangle}\otimes\mathinner{|\beta\rangle}$</p>
-<p>经常用简写$\mathinner{|\alpha\rangle}\mathinner{|\beta\rangle}，\mathinner{|\alpha\beta\rangle}，\mathinner{|\alpha,\beta\rangle}$来表示张量积</p>
-<h2 id="0x02-单比特系统"><a href="#0x02-单比特系统" class="headerlink" title="0x02 单比特系统"></a>0x02 单比特系统</h2><p>一个量子位可以表示为一个布洛赫球上的向量，对量子位的操作就是旋转这个向量<br><img src="/img/qc-3-1.png" alt=""><br>而旋转操作是用量子门来实现的，要注意的一点是为了满足归一性，量子门必须是酉矩阵</p>
-<p>有一些常用的单量子门，如<code>NOT</code>门</p>
-<script type="math/tex; mode=display">NOT=
-\begin{pmatrix}
-0 & 1\\ 
-1 & 0\\
-\end{pmatrix},
-NOT\mathinner{|0\rangle}=\mathinner{|1\rangle},
-NOT\mathinner{|1\rangle}=\mathinner{|0\rangle}</script><p><code>NOT</code>门的作用是将量子比特翻转，对应在布洛赫球上的几何意义是将向量翻转</p>
-<h2 id="0x03-多比特系统"><a href="#0x03-多比特系统" class="headerlink" title="0x03 多比特系统"></a>0x03 多比特系统</h2><p>多量子比特之间的关系是用张量积来描述的，比如两量子比特系统有4种基本状态，</p>
-<script type="math/tex; mode=display">
-\mathinner{|00\rangle}=\mathinner{|0\rangle}\otimes\mathinner{|0\rangle}=
-\begin{pmatrix}
-1\\ 
-0\\
-\end{pmatrix}
-\otimes
-\begin{pmatrix}
-1\\ 
-0\\
-\end{pmatrix}
-=
-\begin{pmatrix}
-1\\ 
-0\\
-0\\
-0\\
-\end{pmatrix}</script><script type="math/tex; mode=display">
-\mathinner{|01\rangle}=\mathinner{|0\rangle}\otimes\mathinner{|1\rangle}=
-\begin{pmatrix}
-1\\ 
-0\\
-\end{pmatrix}
-\otimes
-\begin{pmatrix}
-0\\ 
-1\\
-\end{pmatrix}
-=
-\begin{pmatrix}
-0\\ 
-1\\
-0\\
-0\\
-\end{pmatrix}</script><script type="math/tex; mode=display">
-\mathinner{|10\rangle}=\mathinner{|1\rangle}\otimes\mathinner{|0\rangle}=
-\begin{pmatrix}
-0\\ 
-1\\
-\end{pmatrix}
-\otimes
-\begin{pmatrix}
-1\\ 
-0\\
-\end{pmatrix}
-=
-\begin{pmatrix}
-0\\ 
-0\\
-1\\
-0\\
-\end{pmatrix}</script><script type="math/tex; mode=display">
-\mathinner{|11\rangle}=\mathinner{|1\rangle}\otimes\mathinner{|1\rangle}=
-\begin{pmatrix}
-0\\ 
-1\\
-\end{pmatrix}
-\otimes
-\begin{pmatrix}
-0\\ 
-1\\
-\end{pmatrix}
-=
-\begin{pmatrix}
-0\\ 
-0\\
-0\\
-1\\
-\end{pmatrix}</script><p>对于一般的两量子系统，可写作</p>
-<script type="math/tex; mode=display">\mathinner{|\varphi\rangle}=\alpha_{00}\mathinner{|00\rangle}+\alpha_{01}\mathinner{|01\rangle}+\alpha_{10}\mathinner{|10\rangle}+\alpha_{11}\mathinner{|11\rangle}</script><p>而双量子门则为4*4的矩阵，例如CNOT门</p>
-<script type="math/tex; mode=display">CNOT=
-\begin{pmatrix}
-1 & 0 & 0 & 0\\ 
-0 & 1 & 0 & 0\\
-0 & 0 & 0 & 1\\
-0 & 0 & 1 & 0\\
-\end{pmatrix}</script><p>它的作用是，当控制位为1时，翻转目标位，否则不变。</p>
-<p>代入矩阵运算很容易验证，</p>
-<script type="math/tex; mode=display">CNOT\mathinner{|00\rangle}=\mathinner{|00\rangle}</script><script type="math/tex; mode=display">CNOT\mathinner{|01\rangle}=\mathinner{|01\rangle}</script><script type="math/tex; mode=display">CNOT\mathinner{|10\rangle}=\mathinner{|11\rangle}</script><script type="math/tex; mode=display">CNOT\mathinner{|11\rangle}=\mathinner{|10\rangle}</script><h2 id="0x04-量子纠缠"><a href="#0x04-量子纠缠" class="headerlink" title="0x04 量子纠缠"></a>0x04 量子纠缠</h2><p>一言以蔽之，在线性代数的视角下，量子纠缠就是无法将态分解成张量积的形式。若</p>
-<script type="math/tex; mode=display">\mathinner{|\varphi\rangle}=H_1 \otimes H_2, \exists \mathinner{|\alpha\rangle}\in H_1, \exists \mathinner{|\beta\rangle}\in H_2 s.t. \mathinner{|\varphi\rangle}=\mathinner{|\alpha\rangle}\otimes \mathinner{|\beta\rangle}</script><p>则该量子态不纠缠。举个例子，有两个双量子系统，分别为$\varphi_1$、$\varphi_2$</p>
-<script type="math/tex; mode=display">\mathinner{|\varphi_1\rangle}=\frac{1}{\sqrt{2}}(\mathinner{|00\rangle}+\mathinner{|11\rangle})</script><script type="math/tex; mode=display">\mathinner{|\varphi_2\rangle}=\frac{1}{\sqrt{2}}(\mathinner{|00\rangle}+\mathinner{|01\rangle})</script><p>其中$\varphi_1$处于纠缠态，而$\varphi_2$不处于纠缠态，原因在于</p>
-<script type="math/tex; mode=display">\mathinner{|\varphi_2\rangle}=\frac{1}{\sqrt{2}}\mathinner{|0\rangle}\otimes (\mathinner{|0\rangle}+\mathinner{|1\rangle})</script><p>$\varphi_2$可以被分解成张量积的形式</p>
+<h3 id="1-2-DFA"><a href="#1-2-DFA" class="headerlink" title="1.2 DFA"></a>1.2 DFA</h3><p>DFA是确定有穷自动机，使用DFA来生成我们需要的符号，比如生成一个无符号实数的DFA：</p>
+<p><img src="https://img-blog.csdnimg.cn/20190113124130830.png" alt=""></p>
+<p>对于DFA，我们往往需要把它化成最简，然后就可以直接用代码实现了</p>
+<h3 id="1-3-NFA"><a href="#1-3-NFA" class="headerlink" title="1.3 NFA"></a>1.3 NFA</h3><p>词法分析的一般过程是 regular =&gt; NFA =&gt; DFA =&gt; code</p>
+<p>NFA是对正则表达式的直接翻译，DFA 可以认为是一种特殊的 NFA，它最大的特点就是确定性。它的确定性在于，在一个状态下，输入一个符号，一定是转换到确定的状态，没有其他的可能性</p>
+<p>而NFA是不确定的，同样的输入可能有不同的输出，因此需要把NFA转为DFA，转化方法有Thompson算法，这里就不细展开了</p>
+<h2 id="0x02-编码"><a href="#0x02-编码" class="headerlink" title="0x02 编码"></a>0x02 编码</h2><p>对词法分析器进行代码实现，我们首先实现<code>getNextChar</code>函数，该函数的作用是匹配一个字符，并将指针移动到下一个字符</p>
+<pre><code>def getNextChar(self):
+    self.current_column += 1
+    if self.current_raw &gt;= len(self.source_code):
+        return self.EOF
+    if self.current_column &gt;= len(self.source_code[self.current_raw]):
+        self.current_raw += 1
+        self.current_column = -1
+        return '\\n'
+    return self.source_code[self.current_raw][self.current_column]
+</code></pre><p>有时候我们需要向前看一位，</p>
+<pre><code>def lookahead(self):
+    ch = self.getNextChar()
+    self.back()
+    return ch
+</code></pre><p>然后我们识别变量(IDENTIFY)，注意到IDENTIFY的DFA图很容易可以画出来，我们定义一个变量首字母必须以字母或下划线开头，然后可以接字母或下划线或数字。如果遇到其他字符（如分隔符或空格），则表示该变量结束匹配</p>
+<p>因此画出DFA，代码如下：</p>
+<pre><code>def recognizeId(self, ch):
+    '''识别标志符 Identity，包括关键词'''
+    state = 0
+    str_id = ''
+    while state != 2:
+        if state == 0:
+            if ch.isalpha() or ch == '_':
+                state = 1
+                str_id += ch
+            else:
+                raise ValueError('Failed to recognizeId ch: {}'.format(ch))
+        if state == 1:
+            ch = self.getNextChar()
+            if ch.isalpha() or ch.isdigit() or ch == '_':
+                state = 1
+                str_id += ch
+            else:
+                state = 2
+    #这里需要回退一个字符
+    self.back()     
+    return str_id
+</code></pre><p>对于注释，我们使用//进行单行注释</p>
+<pre><code>def recognizeComment(self, ch):
+    state = 0
+    str = ''
+    while state != 3:
+        if state == 0:
+            if ch == '/':
+                state = 1
+                str += ch
+            else:
+                raise ValueError('Failed to recognizeComment ch: {}'.format(ch))
+        if state == 1:
+            if ch == '/':
+                state = 2
+                str += ch
+            else:
+                raise ValueError('Failed to recognizeComment ch: {}'.format(ch))
+        if state == 2:
+            ch = self.getNextChar()
+            if ch != '\\n':
+                state = 2
+                str += ch
+            else:
+                state = 3
+    self.back()
+    return str
+</code></pre><p>其他识别同理不再赘述</p>
+<p>最后，使用<code>scanner</code>函数对所有识别方式进行整合，根据得到的不同字符来选择不同的识别方法，并将结果保存在<code>TOKEN</code>列表中</p>
+<pre><code>def scanner(self):
+    ch = ''
+    while ch != '\0':
+        ch = self.getNextChar()
+        if ch == ' ':
+            pass
+        elif ch == '\n':
+            self.TOKEN.append([Token.TOKENID['\\n'], ch])
+        elif ch.isalpha() or ch == '_':
+            Identify = self.recognizeId(ch)
+            if Token.isKEYWORD(Identify):
+                self.TOKEN.append([Token.TOKENID[Identify], Identify])
+            else:
+                self.TOKEN.append([Token.TOKENID['Identify'], Identify])
+        elif ch.isdigit():
+            Integer = self.recognizeInteger(ch)
+            self.TOKEN.append([Token.TOKENID['INT'], Integer])
+        elif Token.isOPERATOR(ch):
+            if ch == '/' and self.lookahead() == '/':
+                self.recognizeComment(ch)
+                self.TOKEN.append([Token.TOKENID['\\n'], '\n'])
+            else:
+                Op = self.recognizeOp(ch)
+                self.TOKEN.append([Token.TOKENID[Op], Op])
+        elif Token.isSEPARATOR(ch):
+            self.TOKEN.append([Token.TOKENID[ch], ch])
+        else:
+            raise ValueError('Failed to scanner ch: {}'.format(ch))
+</code></pre><p>下面执行该词法分析器，生成TOKEN串如下所示：</p>
+<pre><code>// 源代码
+func add(a, b){
+    return a+b
+}
+three = add(1, 2)
 
+// 生成Token串
+[[105, 'func'], [500, 'add'], [300, '('], [500, 'a'], [500, 'b'], [301, ')'], [304, '{'], [308, '\n'], [106, 'return'], [500, 'a'], [400, '+'], [500, 'b'], [308, '\n'], [305, '}'], [308, '\n'], [500, 'three'], [406, '='], [500, 'add'], [300, '('], [600, '1'], [600, '2'], [301, ')'], [308, '\n']]
+</code></pre>
             </div>
             <hr/>
 
@@ -602,7 +684,7 @@ NOT\mathinner{|1\rangle}=\mathinner{|0\rangle}</script><p><code>NOT</code>门的
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://hahuillu.cn/2020/10/24/qc-3/">http://hahuillu.cn/2020/10/24/qc-3/</a>
+                    <a href="http://hahuillu.cn/2020/11/10/light-1/">http://hahuillu.cn/2020/11/10/light-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -640,12 +722,12 @@ NOT\mathinner{|1\rangle}=\mathinner{|0\rangle}</script><p><code>NOT</code>门的
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/">
-                                    <span class="chip bg-color">量子计算</span>
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
                                 </a>
                             
-                                <a href="/tags/%E6%A2%B3%E7%90%86/">
-                                    <span class="chip bg-color">梳理</span>
+                                <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">
+                                    <span class="chip bg-color">编译原理</span>
                                 </a>
                             
                         </div>
@@ -817,12 +899,12 @@ NOT\mathinner{|1\rangle}=\mathinner{|0\rangle}</script><p><code>NOT</code>门的
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2020/10/25/vue-1/">
+                <a href="/2020/11/11/light-2/">
                     <div class="card-image">
                         
-                        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603682083821&di=a8807e27e8ab1c752ffdae21777739d4&imgtype=0&src=http%3A%2F%2Fpic1.zhimg.com%2Fv2-cf23526f451784ff137f161b8fe18d5a_r.jpg" class="responsive-img" alt="原理|Vue：MVVM实现">
+                        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1605071301907&di=d28006e66b11805f0bb53809f6ee1990&imgtype=0&src=http%3A%2F%2Fup.36992.com%2Fpic_360%2F36%2F71%2Fa3%2F3671a313d70e8036dd0a15576a4e5d80.jpg" class="responsive-img" alt="Light|来设计一款编程语言吧(2)：语法分析">
                         
-                        <span class="card-title">原理|Vue：MVVM实现</span>
+                        <span class="card-title">Light|来设计一款编程语言吧(2)：语法分析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -833,14 +915,14 @@ NOT\mathinner{|1\rangle}=\mathinner{|0\rangle}</script><p><code>NOT</code>门的
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-25
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-11-11
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
-                                    前端
+                            <a href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" class="post-category">
+                                    编译原理
                                 </a>
                             
                             
@@ -850,12 +932,12 @@ NOT\mathinner{|1\rangle}=\mathinner{|0\rangle}</script><p><code>NOT</code>门的
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Vue/">
-                        <span class="chip bg-color">Vue</span>
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
+                    <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">
+                        <span class="chip bg-color">编译原理</span>
                     </a>
                     
                 </div>
@@ -869,12 +951,12 @@ NOT\mathinner{|1\rangle}=\mathinner{|0\rangle}</script><p><code>NOT</code>门的
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/10/23/qc-2/">
+                <a href="/2020/11/09/guitar-1/">
                     <div class="card-image">
                         
-                        <img src="/medias/featureimages/cat.jpg" class="responsive-img" alt="梳理|量子计算（2）：量子力学基础">
+                        <img src="http://www.jitaba.cn/upimg/allimg/1909/1-1Z9200I129.jpg" class="responsive-img" alt="Guitar|曲谱">
                         
-                        <span class="card-title">梳理|量子计算（2）：量子力学基础</span>
+                        <span class="card-title">Guitar|曲谱</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -885,14 +967,14 @@ NOT\mathinner{|1\rangle}=\mathinner{|0\rangle}</script><p><code>NOT</code>门的
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-23
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-11-09
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/" class="post-category">
-                                    量子计算
+                            <a href="/categories/%E5%90%89%E4%BB%96/" class="post-category">
+                                    吉他
                                 </a>
                             
                             
@@ -902,12 +984,8 @@ NOT\mathinner{|1\rangle}=\mathinner{|0\rangle}</script><p><code>NOT</code>门的
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/">
-                        <span class="chip bg-color">量子计算</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%A2%B3%E7%90%86/">
-                        <span class="chip bg-color">梳理</span>
+                    <a href="/tags/Guitar/">
+                        <span class="chip bg-color">Guitar</span>
                     </a>
                     
                 </div>
@@ -1047,13 +1125,6 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 
 
-
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
 
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>

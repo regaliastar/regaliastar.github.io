@@ -6,7 +6,7 @@
   <link href="http://hahuillu.cn/atom.xml" rel="self"/>
   
   <link href="http://hahuillu.cn/"/>
-  <updated>2020-11-09T02:42:38.689Z</updated>
+  <updated>2020-11-11T02:43:38.564Z</updated>
   <id>http://hahuillu.cn/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Light|来设计一款编程语言吧(2)：语法分析</title>
+    <link href="http://hahuillu.cn/2020/11/11/light-2/"/>
+    <id>http://hahuillu.cn/2020/11/11/light-2/</id>
+    <published>2020-11-11T02:14:30.000Z</published>
+    <updated>2020-11-11T02:43:38.564Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;0x00-前言&quot;&gt;&lt;a href=&quot;#0x00-前言&quot; class=&quot;headerlink&quot; title=&quot;0x00 前言&quot;&gt;&lt;/a&gt;0x00</summary>
+        
+      
+    
+    
+    
+    <category term="编译原理" scheme="http://hahuillu.cn/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
+    
+    
+    <category term="python" scheme="http://hahuillu.cn/tags/python/"/>
+    
+    <category term="编译原理" scheme="http://hahuillu.cn/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Light|来设计一款编程语言吧(1)：词法分析</title>
+    <link href="http://hahuillu.cn/2020/11/10/light-1/"/>
+    <id>http://hahuillu.cn/2020/11/10/light-1/</id>
+    <published>2020-11-10T13:14:30.000Z</published>
+    <updated>2020-11-11T02:42:28.416Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;0x00-前言&quot;&gt;&lt;a href=&quot;#0x00-前言&quot; class=&quot;headerlink&quot; title=&quot;0x00 前言&quot;&gt;&lt;/a&gt;0x00 前言&lt;/h2&gt;&lt;p&gt;该系列对Light语言进行一个总结性质的记录，emm勉强算官方文档吧&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="编译原理" scheme="http://hahuillu.cn/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
+    
+    
+    <category term="python" scheme="http://hahuillu.cn/tags/python/"/>
+    
+    <category term="编译原理" scheme="http://hahuillu.cn/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>Guitar|曲谱</title>
