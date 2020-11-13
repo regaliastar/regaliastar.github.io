@@ -6,7 +6,7 @@
   <link href="http://hahuillu.cn/atom.xml" rel="self"/>
   
   <link href="http://hahuillu.cn/"/>
-  <updated>2020-11-11T02:43:38.564Z</updated>
+  <updated>2020-11-13T02:53:44.456Z</updated>
   <id>http://hahuillu.cn/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>从奥术神座到数理学史</title>
+    <link href="http://hahuillu.cn/2020/11/13/phy-history/"/>
+    <id>http://hahuillu.cn/2020/11/13/phy-history/</id>
+    <published>2020-11-13T01:38:30.000Z</published>
+    <updated>2020-11-13T02:53:44.456Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;说实话【奥术神座】这本书一直在我的书架上吃灰，直到看完诡秘之主，在强烈的书荒感下，我才捡起了乌贼娘的这本成神之作。&lt;/p&gt;
+&lt;p&gt;虽然是一本老书了，但是看了之后才意识到这果然是一本仙草，给我的惊喜感甚至超过了诡秘之主。就像是戳中了作为理科生的内心深处，我对这种“研究万物研究</summary>
+        
+      
+    
+    
+    
+    <category term="随笔" scheme="http://hahuillu.cn/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="随笔" scheme="http://hahuillu.cn/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+    <category term="小说" scheme="http://hahuillu.cn/tags/%E5%B0%8F%E8%AF%B4/"/>
+    
+  </entry>
   
   <entry>
     <title>Light|来设计一款编程语言吧(2)：语法分析</title>
