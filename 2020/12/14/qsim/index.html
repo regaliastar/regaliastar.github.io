@@ -425,8 +425,9 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在量子计算中，线路模型和图灵机模型理论上是等价的，常用的量子计算模型是线路模型，除此之外还有基于测量的模型，而前者比后者更直观简单。</p>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近量子计算很火的样子，作为一个学计算机的，我们不妨自己做一个量子计算机<span class="github-emoji"><span>😊</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
 <p>所谓的量子计算机，就是控制一系列量子比特的演化过程，对其施以酉变换，通过测量得出结果的装置。</p>
+<p>在量子计算中，线路模型和图灵机模型理论上是等价的，最常用的量子计算模型便是线路模型，除此之外还有基于测量的模型，而前者比后者更直观简单，这也是我们选择用线路模型来实现的原因了。</p>
 <p>下面我们用经典计算机来模拟量子计算的过程，实现一个量子计算模拟器（玩具版）。</p>
 <h2 id="量子比特"><a href="#量子比特" class="headerlink" title="量子比特"></a>量子比特</h2><p>经典计算机使用比特进行计算，量子计算机就有量子比特，而单量子比特的矩阵表示有：</p>
 <script type="math/tex; mode=display">\mathinner{|0\rangle}=
@@ -513,15 +514,13 @@
 <p>首先引入需要的包：<br></p><pre class="line-numbers language-none"><code class="language-none">import numpy as np
 from sklearn.preprocessing import normalize<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><br>现在生成初态的量子比特，1位比特维度是2，n位比特维度是$2^n$，使用kronecker积对比特维度进行计算。<p></p>
 <p>定义 <code>basis</code> 方法得到kronecker积：<br></p><pre class="line-numbers language-none"><code class="language-none">def basis(string='00000'):
-    '''string: the qubits sequence'''
     spin_up = np.array([[1, 0]]).T
     spin_down = np.array([[0, 1]]).T
-    # bit[0] = |0&gt;, bit[1] = |1&gt;
     bit = [spin_up, spin_down]
     res = np.array([[1]])
     for idx in string[::-1]:
         res = np.kron(bit[int(idx)], res)
-    return np.matrix(res)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>打开 <code>jupyter</code> 测试一下，生成4个量子比特 <code>0100</code> 的初态：<br><pre class="line-numbers language-none"><code class="language-none">amplitudes = basis('0100').A1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br>打印 <code>amplitudes</code>:  <p></p>
+    return np.matrix(res)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>打开 <code>jupyter</code> 测试一下，生成4个量子比特 <code>0100</code> 的初态：<br><pre class="line-numbers language-none"><code class="language-none">amplitudes = basis('0100').A1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br>打印 <code>amplitudes</code>:  <p></p>
 <p><code>[0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0]</code> </p>
 <p><strong>如果想生成任意振幅的量子比特呢？</strong></p>
 <p>在一个量子系统中，波函数可以写作：</p>
@@ -555,10 +554,7 @@ amplitudes = wave_func(coef=coef, seqs=['00','01','11']).A1<span aria-hidden="tr
     return wave_func.H * direction
 
 def decompose(wave_func):
-    '''
-    将叠加态波函数分解
-    :param wave_func: np.martix
-    '''
+    '''将叠加态波函数分解'''
     nbit = int(np.log2(len(wave_func)))
     amplitudes = []
     direct_str = []
@@ -568,19 +564,15 @@ def decompose(wave_func):
         if np.linalg.norm(amp) != 0:
             amplitudes.append(amp)
             direct_str.append(seq)
-    return amplitudes, direct_str<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>定义函数<code>a2wf</code>将 振幅 转为能被 <code>print_wf</code> 函数解析的 <code>wave_func</code> 格式<br><pre class="line-numbers language-none"><code class="language-none">def a2wf(amplitudes, n):
+    return amplitudes, direct_str<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>定义函数<code>a2wf</code>将 振幅 转为能被 <code>print_wf</code> 函数解析的 <code>wave_func</code> 格式<br><pre class="line-numbers language-none"><code class="language-none">def a2wf(amplitudes, n):
     return np.mat(amplitudes.reshape(2 ** n, 1))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><br>再使用 <code>print_wf</code> 函数打印出波函数<br><pre class="line-numbers language-none"><code class="language-none">def print_wf(wf):
-    '''
-    :param wf: np.martix
-    :return: str
-    '''
     coef, seqs = decompose(wf)
     str = '|psi&gt; = '
     for i, seq in enumerate(seqs):
         str += '{}|{}&gt;'.format(coef[i], seq)
         if i != len(seqs) - 1:
             str += '+'
-    return str<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
+    return str<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
 <p>测试一下，生成一个大名鼎鼎的 <code>bell</code> 纠缠态 $\mathinner{|\varphi\rangle} = \frac{1}{\sqrt{2}}\mathinner{|00\rangle} + \frac{1}{\sqrt{2}}\mathinner{|11\rangle}$：<br></p><pre class="line-numbers language-none"><code class="language-none">wf = a2wf(np.matrix([np.sqrt(1/2),0,0,np.sqrt(1/2)]), 2)
 print_wf(wf)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p></p>
 <p>打印：<br><code>|psi&gt; = 0.7071067811865476|00&gt;+0.7071067811865476|11&gt;</code></p>
@@ -724,16 +716,16 @@ for i in range(int(m_size / 4)):
     amplitudes = wave_func(co, ba).A1
     numQubits = len(ba[0])
     return selected<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>不同的是，在进行单个比特的测量后，需要重新生成状态。<p></p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>如此一来，我们就实现了一个量子计算机，麻雀虽小五脏俱全，大部分量子算法都可以用这个玩具实现了~</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>如此一来，我们就实现了一个量子计算机，麻雀虽小五脏俱全，绝大部分量子算法都可以用这个玩具实现了~</p>
 <p>总结一下，我们用到了哪些知识：</p>
 <ul>
 <li>线性代数</li>
 <li>量子力学基础</li>
 <li>Python</li>
 </ul>
-<p>未来可以给这个量子计算机加上其他的功能，比如 <em>量子排列优化</em>、<em>量子线路分解</em>、<em>量子并行模拟</em> 等等，感兴趣可以自己动手~</p>
+<p>未来可以给这个量子计算机加上其他的功能，比如 <em>量子排列优化</em>、<em>量子线路分解</em>、<em>量子并行模拟</em> 等等，总之接下来就是搭积木了</p>
 <blockquote>
-<p>Reference<br>[1] <a target="_blank" rel="noopener" href="https://github.com/adamisntdead/QuSimPy">https://github.com/adamisntdead/QuSimPy</a><br>[2] <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/267302584">https://zhuanlan.zhihu.com/p/267302584</a><br>[3] <a target="_blank" rel="noopener" href="https://qiskit.org/">qiskit文档</a></p>
+<p>Reference<br>[1] <a target="_blank" rel="noopener" href="https://github.com/adamisntdead/QuSimPy">https://github.com/adamisntdead/QuSimPy</a><br>[2] <a target="_blank" rel="noopener" href="https://github.com/corbett/QuantumComputing">https://github.com/corbett/QuantumComputing</a><br>[3] <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/267302584">https://zhuanlan.zhihu.com/p/267302584</a><br>[4] <a target="_blank" rel="noopener" href="https://qiskit.org/">qiskit文档</a></p>
 </blockquote>
 
             </div>
