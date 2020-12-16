@@ -32,7 +32,7 @@
 <meta name="generator" content="Hexo 5.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Mumu" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
 
@@ -449,8 +449,7 @@
 <p>1) 文法不含左递归</p>
 <p>2) 文法中每一个非终结符 A 的各个产生式的候选首符集不相交，即若 A → α1 | α2 | … | αn<br>FIRST(αi)∩FIRST(αj) = ∅，i ≠ j</p>
 <p>3) 对于文法中的每个非终结符 A，若它的某个候选首符集包含 ε，则 FIRST(αi)∩FOLLOW(A) = ∅</p>
-<p>Light语言的部分文法如下所示：</p>
-<pre><code>INT := [0-9]+
+<p>Light语言的部分文法如下所示：<br></p><pre class="line-numbers language-none"><code class="language-none">INT := [0-9]+
 Array := [a-zA-Z]*\[INT\]
 Identifier := [_a-zA-Z]+[_a-zA-Z0-9]*
 Compare := &gt;|&lt;|==|&gt;=|&lt;=
@@ -466,8 +465,8 @@ Return      ---------&gt; return INT|Identifier
 Statement   ---------&gt; IFStatement | WhileStatement | FuncStatement
 Declare     ---------&gt; Identifier = FuncStatement|INT
 Program     ---------&gt; Declare { ; Statement}
-FuncCall    ---------&gt; Identifier([INT]*)
-</code></pre><h3 id="1-2-自上向下的文法分析"><a href="#1-2-自上向下的文法分析" class="headerlink" title="1.2 自上向下的文法分析"></a>1.2 自上向下的文法分析</h3><p>文法分析可以分为自上向下和自下向上，对于Light语言我们采用自上向下的分析方式，同时自上向下的分析主要有递归下降分析和构造LR语法分析表的方法</p>
+FuncCall    ---------&gt; Identifier([INT]*)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
+<h3 id="1-2-自上向下的文法分析"><a href="#1-2-自上向下的文法分析" class="headerlink" title="1.2 自上向下的文法分析"></a>1.2 自上向下的文法分析</h3><p>文法分析可以分为自上向下和自下向上，对于Light语言我们采用自上向下的分析方式，同时自上向下的分析主要有递归下降分析和构造LR语法分析表的方法</p>
 <p>在实现文法分析上，我们采用递归下降分析法。<del>主要是为了方便写代码</del></p>
 <p>递归下降分析法被很多编译器采用，如GCC 4.0，LLVM，…</p>
 <p>算法的基本思想是</p>
@@ -475,30 +474,27 @@ FuncCall    ---------&gt; Identifier([INT]*)
 <li>每个非终结符构造一个分析函数</li>
 <li>用向前看符号指导产生式规则的规则</li>
 </ul>
-<p>实现方面举个例子，对于一般的语法</p>
-<pre><code>X -&gt; β11 ... β1i
+<p>实现方面举个例子，对于一般的语法<br></p><pre class="line-numbers language-none"><code class="language-none">X -&gt; β11 ... β1i
    | β21 ... β2j
    | β31 ... β3k
-   | ...
-</code></pre><p>我们写出它的递归下降分析程序：</p>
-<pre><code>parse_X():
+   | ...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><br>我们写出它的递归下降分析程序：<br><pre class="line-numbers language-none"><code class="language-none">parse_X():
     token = nextToken()
     switch(token)
         case ...:  // β11 ... β1i
         case ...:  // β21 ... β2j
         case ...:  // β31 ... β3k
         ...
-        default: error("...")
-</code></pre><h2 id="0x02-编码"><a href="#0x02-编码" class="headerlink" title="0x02 编码"></a>0x02 编码</h2><p>作为输出对象，首先进行抽象语法树(AST)的构造</p>
+        default: error("...")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
+<h2 id="0x02-编码"><a href="#0x02-编码" class="headerlink" title="0x02 编码"></a>0x02 编码</h2><p>作为输出对象，首先进行抽象语法树(AST)的构造</p>
 <p>AST可以参考二叉树，与二叉树不同的是，AST可以不只有一个子节点，同时AST的根节点都是非终结符，叶节点都是终结符</p>
-<pre><code>class SyntaxTree(object):
+<pre class="line-numbers language-none"><code class="language-none">class SyntaxTree(object):
     def __init__(self):
         self.root = None
         self.current = None
 
     def add_child_node(self, new_node, father=None):
         pass
-
+    
 class SyntaxTreeNode(object):
     def __init__(self, value=None, _type=None):
         self.value = value
@@ -506,9 +502,8 @@ class SyntaxTreeNode(object):
         self.father = None
         self.left = None
         self.right = None
-        self.first_son = None
-</code></pre><p>接下来构造<code>match</code>函数，该函数匹配一个token并将指针向后移一位</p>
-<pre><code>def match(self, token):
+        self.first_son = None<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>接下来构造<code>match</code>函数，该函数匹配一个token并将指针向后移一位<br></p><pre class="line-numbers language-none"><code class="language-none">def match(self, token):
     if self.lookahead[0] == token[0]:
         self.lookahead = self.getNextToken()
 
@@ -516,9 +511,9 @@ def getNextToken(self):
     self.current_token += 1
     if self.current_token &gt;= len(self.TOKEN):
         return self.EOF
-    return self.TOKEN[self.current_token]
-</code></pre><p>下面给出递归下降分析法的实例，例如对算数表达式进行分析</p>
-<pre><code>parse_E()
+    return self.TOKEN[self.current_token]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
+<p>下面给出递归下降分析法的实例，例如对算数表达式进行分析</p>
+<pre class="line-numbers language-none"><code class="language-none">parse_E()
     parse_T()
     match(token)
     while(token == +)
@@ -530,10 +525,9 @@ parse_T()
     match(token)  
     while(token == *)
         parse_F()
-        match(token)
-</code></pre><p>其他语法的分析也是同样的道理，需要对每一个非终结符都编写一个分析函数，根据输入的Token的类型执行相应的分析函数</p>
-<p>最后执行该语法分析器，生成的语法树如下所示：</p>
-<pre><code>// 源代码
+        match(token)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>其他语法的分析也是同样的道理，需要对每一个非终结符都编写一个分析函数，根据输入的Token的类型执行相应的分析函数</p>
+<p>最后执行该语法分析器，生成的语法树如下所示：<br></p><pre class="line-numbers language-none"><code class="language-none">// 源代码
 func add(a, b){
     return a+b
 }
@@ -578,8 +572,8 @@ three = add(1, 2)
 
 ( self: 1 600,first_son: None, father: ParameterList, left: None, right: 2 )
 
-( self: 2 600,first_son: None, father: ParameterList, left: 1, right: None )
-</code></pre>
+( self: 2 600,first_son: None, father: ParameterList, left: 1, right: None )<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
+
             </div>
             <hr/>
 

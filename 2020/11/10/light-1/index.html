@@ -32,7 +32,7 @@
 <meta name="generator" content="Hexo 5.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Mumu" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
 
@@ -408,7 +408,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    1.4k
+                    1.3k
                 </div>
                 
 
@@ -428,16 +428,15 @@
                 <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>该系列对Light语言进行一个总结性质的记录，emm勉强算官方文档吧<span class="github-emoji"><span>😝</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f61d.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
 <p>Light是一款跨平台轻量级的解释型语言，语法借鉴JavaScript，支持条件语句、循环语句，目前变量支持整数类型、函数类型</p>
 <p>完整项目见我的GitHub</p>
-<p>该语言使用实例如下所示：</p>
-<pre><code>#############################################
+<p>该语言使用实例如下所示：<br></p><pre class="line-numbers language-none"><code class="language-none">#############################################
 #                 Quick start               #
 #############################################
 func add(a, b){
     return a+b
 }
 three = add(1, 2)
-print(three)
-</code></pre><p>具体语法规则放在第二篇blog中介绍，下面开始进行词法分析</p>
+print(three)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
+<p>具体语法规则放在第二篇blog中介绍，下面开始进行词法分析</p>
 <h2 id="0x01-基本原理"><a href="#0x01-基本原理" class="headerlink" title="0x01 基本原理"></a>0x01 基本原理</h2><p>词法分析处于编译原理的第一环节，目的是将源文件转化成可供语法分析的Token串。在该过程中，需要将变量、数字、关键词、分隔符等都识别出来，并制备成Token格式</p>
 <p>先了解一下词法分析的知识关系图</p>
 <p><img src="https://img-blog.csdnimg.cn/20190112203946406.png" alt=""></p>
@@ -556,8 +555,7 @@ print(three)
 <h3 id="1-3-NFA"><a href="#1-3-NFA" class="headerlink" title="1.3 NFA"></a>1.3 NFA</h3><p>词法分析的一般过程是 regular =&gt; NFA =&gt; DFA =&gt; code</p>
 <p>NFA是对正则表达式的直接翻译，DFA 可以认为是一种特殊的 NFA，它最大的特点就是确定性。它的确定性在于，在一个状态下，输入一个符号，一定是转换到确定的状态，没有其他的可能性</p>
 <p>而NFA是不确定的，同样的输入可能有不同的输出，因此需要把NFA转为DFA，转化方法有Thompson算法，这里就不细展开了</p>
-<h2 id="0x02-编码"><a href="#0x02-编码" class="headerlink" title="0x02 编码"></a>0x02 编码</h2><p>对词法分析器进行代码实现，我们首先实现<code>getNextChar</code>函数，该函数的作用是匹配一个字符，并将指针移动到下一个字符</p>
-<pre><code>def getNextChar(self):
+<h2 id="0x02-编码"><a href="#0x02-编码" class="headerlink" title="0x02 编码"></a>0x02 编码</h2><p>对词法分析器进行代码实现，我们首先实现<code>getNextChar</code>函数，该函数的作用是匹配一个字符，并将指针移动到下一个字符<br></p><pre class="line-numbers language-none"><code class="language-none">def getNextChar(self):
     self.current_column += 1
     if self.current_raw &gt;= len(self.source_code):
         return self.EOF
@@ -565,15 +563,11 @@ print(three)
         self.current_raw += 1
         self.current_column = -1
         return '\\n'
-    return self.source_code[self.current_raw][self.current_column]
-</code></pre><p>有时候我们需要向前看一位，</p>
-<pre><code>def lookahead(self):
+    return self.source_code[self.current_raw][self.current_column]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>有时候我们需要向前看一位，<br><pre class="line-numbers language-none"><code class="language-none">def lookahead(self):
     ch = self.getNextChar()
     self.back()
-    return ch
-</code></pre><p>然后我们识别变量(IDENTIFY)，注意到IDENTIFY的DFA图很容易可以画出来，我们定义一个变量首字母必须以字母或下划线开头，然后可以接字母或下划线或数字。如果遇到其他字符（如分隔符或空格），则表示该变量结束匹配</p>
-<p>因此画出DFA，代码如下：</p>
-<pre><code>def recognizeId(self, ch):
+    return ch<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><br>然后我们识别变量(IDENTIFY)，注意到IDENTIFY的DFA图很容易可以画出来，我们定义一个变量首字母必须以字母或下划线开头，然后可以接字母或下划线或数字。如果遇到其他字符（如分隔符或空格），则表示该变量结束匹配<p></p>
+<p>因此画出DFA，代码如下：<br></p><pre class="line-numbers language-none"><code class="language-none">def recognizeId(self, ch):
     '''识别标志符 Identity，包括关键词'''
     state = 0
     str_id = ''
@@ -593,9 +587,9 @@ print(three)
                 state = 2
     #这里需要回退一个字符
     self.back()     
-    return str_id
-</code></pre><p>对于注释，我们使用//进行单行注释</p>
-<pre><code>def recognizeComment(self, ch):
+    return str_id<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
+<p>对于注释，我们使用//进行单行注释</p>
+<pre class="line-numbers language-none"><code class="language-none">def recognizeComment(self, ch):
     state = 0
     str = ''
     while state != 3:
@@ -619,10 +613,9 @@ print(three)
             else:
                 state = 3
     self.back()
-    return str
-</code></pre><p>其他识别同理不再赘述</p>
-<p>最后，使用<code>scanner</code>函数对所有识别方式进行整合，根据得到的不同字符来选择不同的识别方法，并将结果保存在<code>TOKEN</code>列表中</p>
-<pre><code>def scanner(self):
+    return str<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>其他识别同理不再赘述</p>
+<p>最后，使用<code>scanner</code>函数对所有识别方式进行整合，根据得到的不同字符来选择不同的识别方法，并将结果保存在<code>TOKEN</code>列表中<br></p><pre class="line-numbers language-none"><code class="language-none">def scanner(self):
     ch = ''
     while ch != '\0':
         ch = self.getNextChar()
@@ -649,17 +642,16 @@ print(three)
         elif Token.isSEPARATOR(ch):
             self.TOKEN.append([Token.TOKENID[ch], ch])
         else:
-            raise ValueError('Failed to scanner ch: {}'.format(ch))
-</code></pre><p>下面执行该词法分析器，生成TOKEN串如下所示：</p>
-<pre><code>// 源代码
+            raise ValueError('Failed to scanner ch: {}'.format(ch))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
+<p>下面执行该词法分析器，生成TOKEN串如下所示：<br></p><pre class="line-numbers language-none"><code class="language-none">// 源代码
 func add(a, b){
     return a+b
 }
 three = add(1, 2)
 
 // 生成Token串
-[[105, 'func'], [500, 'add'], [300, '('], [500, 'a'], [500, 'b'], [301, ')'], [304, '{'], [308, '\n'], [106, 'return'], [500, 'a'], [400, '+'], [500, 'b'], [308, '\n'], [305, '}'], [308, '\n'], [500, 'three'], [406, '='], [500, 'add'], [300, '('], [600, '1'], [600, '2'], [301, ')'], [308, '\n']]
-</code></pre>
+[[105, 'func'], [500, 'add'], [300, '('], [500, 'a'], [500, 'b'], [301, ')'], [304, '{'], [308, '\n'], [106, 'return'], [500, 'a'], [400, '+'], [500, 'b'], [308, '\n'], [305, '}'], [308, '\n'], [500, 'three'], [406, '='], [500, 'add'], [300, '('], [600, '1'], [600, '2'], [301, ')'], [308, '\n']]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
+
             </div>
             <hr/>
 
