@@ -4,6 +4,60 @@
   
     
     <entry>
+      <title>JavaScript|面向对象</title>
+      <link href="2020/12/23/js-oo/"/>
+      <url>2020/12/23/js-oo/</url>
+      
+        <content type="html"><![CDATA[<p>JavaScript是一门面向对象的语言，而面向对象有三大特性：封装、多态和继承。</p><p>在es5及以前，继承的特性是通过原型链实现的，这种方法繁琐又复杂，且有各自的问题。因此，es6新增了class关键词语法糖，虽然原理没变，依旧是利用原型链实现的类方法，却更简单直观了。</p><p><code>class</code> 其实是一种特殊的函数，同是JavaScript世界中的一等公民。</p><p>首先聊聊 <code>prototype、__proto__、constructor</code> 之间的关系，这也是实现面向对象的基础。</p><p><img src="/img/js-prototype.png" alt="出自https://blog.csdn.net/cc18868876837/article/details/81211729"></p><p>我们需要牢记两点： </p><ol><li><strong>proto</strong>和constructor属性是对象所独有的； </li><li>prototype属性是函数所独有的，因为函数也是一种对象，所以函数也拥有<strong>proto</strong>和constructor属性。 </li></ol><p><strong>proto</strong>属性的作用就是当访问一个对象的属性时，如果该对象内部不存在这个属性，那么就会去它的<strong>proto</strong>属性所指向的那个对象（父对象）里找，一直找，直到<strong>proto</strong>属性的终点null，然后返回undefined，再往上找就相当于在null上取值，会报错。</p><p>通过<strong>proto</strong>属性将对象连接起来的这条链路即我们所谓的原型链。</p><p>prototype属性的作用就是让该函数所实例化的对象们都可以找到公用的属性和方法，即f1.<strong>proto</strong> === Foo.prototype。</p><p>constructor属性的含义就是指向该对象的构造函数，所有函数（此时看成对象了）最终的构造函数都指向Function。 </p><p>另外 <code>__proto__</code> 属性是浏览器对es5的实现，而不是es标准。</p><p>所有对象的prototype的<strong>proto</strong>都指向上一级的prototype，Function的上一级是Object，自定义函数的上一级也是Object。</p><p>每个函数都有一个prototype属性（函数独有），prototype属性里有两个属性，分别是：<code>constructor、__proto__</code>，其中，constructor就是本身，两者循环引用。每次调用该函数的构造方法创建一个实例的时候，这个实例内部的[[prototype]]指针就会被赋值为构造函数的prototype，在Firefox、Safari、Chrome的编译器中，这个<code>[[prototype]]</code>指针被实现为<code>__proto__</code>。</p><p>当对象遇到自己作用域内没有的属性或方法时，就会沿着原型链上找，如：<br>调用 <code>F.hasOwnProperty('name')</code> ，会调用 <code>F.prototype.__proto__.hasOwnProperty</code> 方法<br>默认情况下，所有引用类型都继承自<code>Object</code>，包括所有函数，因此F.prototype.<strong>proto</strong>就是Object.prototype。</p><p>在 <code>new</code> 操作符调用构造函数时会执行如下操作</p><ol><li>在内存中创建一个新对象。</li><li>这个新对象内部的[[Prototype]]特性被赋值为构造函数（就是指向该函数本身）的 prototype 属性。</li><li>构造函数内部的 this 被赋值为这个新对象（即 this 指向新对象）。</li><li>执行构造函数内部的代码（给新对象添加属性）</li><li>如果构造函数返回非空对象，则返回该对象；否则，返回刚创建的新对象。</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaScript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JavaScript </tag>
+            
+            <tag> 原型 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>总结|常用算法</title>
+      <link href="2020/12/16/leet-algo/"/>
+      <url>2020/12/16/leet-algo/</url>
+      
+        <content type="html"><![CDATA[<p>总结一下经常出现 或 巧妙的算法~</p><h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h3><p><a href="https://leetcode-cn.com/problems/implement-strstr/">leetcode 28 implement-strStr</a><br></p><pre class="line-numbers language-none"><code class="language-none">/** * @param {string} haystack * @param {string} needle * @return {number} */var strStr = function(haystack, needle) {    function generateNext(needle){        let next = new Array(needle.length), x = 1, now = 0;        next[0] = 0        while(x &lt; needle.length){            if(needle[now] === needle[x]){                now += 1                next[x] = now                x++            }else{                if(now &gt; 0){                    now = next[now-1]                }else{                    next[x] = 0                    x++                }            }        }        return next    }    function core(haystack, needle){        if(needle == haystack){            return 0        }        const next = generateNext(needle)        let p1 = 0, p2 = 0;        while(p1 &lt; haystack.length &amp;&amp; p2 &lt; needle.length){            if(haystack[p1] === needle[p2]){                p1++                p2++            }else{                if(p2 &gt; 0){                    p2 = next[p2-1]                }else{                    p1++                }            }        }        if(p2 == needle.length){            return p1-p2        }        return -1     }    return core(haystack, needle)};<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>奇淫巧技: 使用js内置方法<br><pre class="line-numbers language-none"><code class="language-none">var strStr = function(haystack, needle) {    return haystack.search(needle)};<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JavaScript </tag>
+            
+            <tag> 算法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>实现一个量子计算机</title>
       <link href="2020/12/14/qsim/"/>
       <url>2020/12/14/qsim/</url>

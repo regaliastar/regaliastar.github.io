@@ -6,7 +6,7 @@
   <link href="http://hahuillu.cn/atom.xml" rel="self"/>
   
   <link href="http://hahuillu.cn/"/>
-  <updated>2020-12-16T07:17:46.884Z</updated>
+  <updated>2020-12-23T08:54:51.525Z</updated>
   <id>http://hahuillu.cn/</id>
   
   <author>
@@ -15,6 +15,62 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript|面向对象</title>
+    <link href="http://hahuillu.cn/2020/12/23/js-oo/"/>
+    <id>http://hahuillu.cn/2020/12/23/js-oo/</id>
+    <published>2020-12-23T03:07:00.000Z</published>
+    <updated>2020-12-23T08:54:51.525Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;JavaScript是一门面向对象的语言，而面向对象有三大特性：封装、多态和继承。&lt;/p&gt;
+&lt;p&gt;在es5及以前，继承的特性是通过原型链实现的，这种方法繁琐又复杂，且有各自的问题。因此，es6新增了class关键词语法糖，虽然原理没变，依旧是利用原型链实现的类方法，却更简单</summary>
+        
+      
+    
+    
+    
+    <category term="JavaScript" scheme="http://hahuillu.cn/categories/JavaScript/"/>
+    
+    
+    <category term="JavaScript" scheme="http://hahuillu.cn/tags/JavaScript/"/>
+    
+    <category term="原型" scheme="http://hahuillu.cn/tags/%E5%8E%9F%E5%9E%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>总结|常用算法</title>
+    <link href="http://hahuillu.cn/2020/12/16/leet-algo/"/>
+    <id>http://hahuillu.cn/2020/12/16/leet-algo/</id>
+    <published>2020-12-16T03:07:00.000Z</published>
+    <updated>2020-12-18T09:16:48.857Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;总结一下经常出现 或 巧妙的算法~&lt;/p&gt;
+&lt;h2 id=&quot;字符串&quot;&gt;&lt;a href=&quot;#字符串&quot; class=&quot;headerlink&quot; title=&quot;字符串&quot;&gt;&lt;/a&gt;字符串&lt;/h2&gt;&lt;h3 id=&quot;KMP&quot;&gt;&lt;a href=&quot;#KMP&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="算法" scheme="http://hahuillu.cn/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="JavaScript" scheme="http://hahuillu.cn/tags/JavaScript/"/>
+    
+    <category term="算法" scheme="http://hahuillu.cn/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>实现一个量子计算机</title>
