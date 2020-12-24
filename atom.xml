@@ -6,7 +6,7 @@
   <link href="http://hahuillu.cn/atom.xml" rel="self"/>
   
   <link href="http://hahuillu.cn/"/>
-  <updated>2020-12-23T08:54:51.525Z</updated>
+  <updated>2020-12-24T01:58:43.219Z</updated>
   <id>http://hahuillu.cn/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>JavaScript|面向对象</title>
-    <link href="http://hahuillu.cn/2020/12/23/js-oo/"/>
-    <id>http://hahuillu.cn/2020/12/23/js-oo/</id>
-    <published>2020-12-23T03:07:00.000Z</published>
-    <updated>2020-12-23T08:54:51.525Z</updated>
+    <link href="http://hahuillu.cn/2020/12/24/js-oo/"/>
+    <id>http://hahuillu.cn/2020/12/24/js-oo/</id>
+    <published>2020-12-24T03:07:00.000Z</published>
+    <updated>2020-12-24T01:58:43.219Z</updated>
     
     
       
@@ -29,7 +29,7 @@
         
         
     <summary type="html">&lt;p&gt;JavaScript是一门面向对象的语言，而面向对象有三大特性：封装、多态和继承。&lt;/p&gt;
-&lt;p&gt;在es5及以前，继承的特性是通过原型链实现的，这种方法繁琐又复杂，且有各自的问题。因此，es6新增了class关键词语法糖，虽然原理没变，依旧是利用原型链实现的类方法，却更简单</summary>
+&lt;p&gt;在es5及以前，继承的特性是通过原型链实现的，这种方法繁琐又复杂，且有各自的问题。因此，es6新增了 &lt;code&gt;class&lt;/code&gt;</summary>
         
       
     
