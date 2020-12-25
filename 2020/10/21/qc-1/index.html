@@ -1,456 +1,237 @@
-<!DOCTYPE HTML>
-<html lang="en">
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
+
 
 
 <head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="梳理|量子计算（1）：体系结构, Mumu">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="mumu">
+  <meta name="keywords" content="">
+  <title>梳理|量子计算（1）：体系结构 - Mumu</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
 
-    <title>梳理|量子计算（1）：体系结构 | Mumu</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
-    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/matery.css">
-    <link rel="stylesheet" type="text/css" href="/css/my.css">
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
 
-    <script src="/libs/jquery/jquery.min.js"></script>
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"hahuillu.cn","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Mumu" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
-
-
+</head>
 
 
 <body>
-    <header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper container">
-            <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
-                    
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
-                    
-                    <span class="logo-span">Mumu</span>
-                </a>
-            </div>
-            
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Mumu</strong>&nbsp;</a>
 
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>Tags</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/categories" class="waves-effect waves-light">
-      
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>Categories</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>About</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/friends" class="waves-effect waves-light">
-      
-      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
-      
-      <span>Links</span>
-    </a>
-    
-  </li>
-  
-  <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-</ul>
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
 
-
-<div id="mobile-nav" class="side-nav sidenav">
-
-    <div class="mobile-head bg-color">
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
         
-        <div class="logo-name">Mumu</div>
-        <div class="logo-desc">
-            
-            Never really desperate, only the lost of the soul.
-            
-        </div>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                Links
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
     </div>
+  </div>
+</nav>
 
-    
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="梳理|量子计算（1）：体系结构">
+              
+            </span>
 
-    <ul class="menu-list mobile-menu-list">
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			Tags
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			Categories
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			About
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/friends" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-address-book"></i>
-			
-			Links
-		</a>
-          
-        </li>
-        
-        
-        <li><div class="divider"></div></li>
-        <li>
-            <a href="https://github.com/regaliastar" class="waves-effect waves-light" target="_blank">
-                <i class="fab fa-github-square fa-fw"></i>githubLink
-            </a>
-        </li>
-        
-    </ul>
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-10-21 21:52" pubdate>
+        October 21, 2020 pm
+      </time>
+    </span>
+  
 </div>
 
-
-        </div>
-
-        
-            <style>
-    .nav-transparent .github-corner {
-        display: none !important;
-    }
-
-    .github-corner {
-        position: absolute;
-        z-index: 10;
-        top: 0;
-        right: 0;
-        border: 0;
-        transform: scale(1.1);
-    }
-
-    .github-corner svg {
-        color: #0f9d58;
-        fill: #fff;
-        height: 64px;
-        width: 64px;
-    }
-
-    .github-corner:hover .octo-arm {
-        animation: a 0.56s ease-in-out;
-    }
-
-    .github-corner .octo-arm {
-        animation: none;
-    }
-
-    @keyframes a {
-        0%,
-        to {
-            transform: rotate(0);
-        }
-        20%,
-        60% {
-            transform: rotate(-25deg);
-        }
-        40%,
-        80% {
-            transform: rotate(10deg);
-        }
-    }
-</style>
-
-<a href="https://github.com/regaliastar" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
-   data-tooltip="githubLink" data-position="left" data-delay="50">
-    <svg viewBox="0 0 250 250" aria-hidden="true">
-        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-              fill="currentColor" class="octo-body"></path>
-    </svg>
-</a>
-        
-    </nav>
-
-</header>
-
+<div class="mt-1">
+  
     
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3k 字
+    </span>
+  
 
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      32
+       分钟
+    </span>
+  
 
-
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/cat.jpg')">
-    <div class="container" style="right: 0px;left: 0px;">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <div class="brand">
-                    <h1 class="description center-align post-title">梳理|量子计算（1）：体系结构</h1>
-                </div>
-            </div>
-        </div>
-    </div>
+  
+  
 </div>
 
+            
+          </div>
 
-
-
-<main class="post-container content">
-
-    
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
-<style>
-    #articleContent h1::before,
-    #articleContent h2::before,
-    #articleContent h3::before,
-    #articleContent h4::before,
-    #articleContent h5::before,
-    #articleContent h6::before {
-        display: block;
-        content: " ";
-        height: 100px;
-        margin-top: -100px;
-        visibility: hidden;
-    }
-
-    #articleContent :focus {
-        outline: none;
-    }
-
-    .toc-fixed {
-        position: fixed;
-        top: 64px;
-    }
-
-    .toc-widget {
-        width: 345px;
-        padding-left: 20px;
-    }
-
-    .toc-widget .toc-title {
-        margin: 1px 0 15px 0;
-        padding-left: 17px;
-        padding-top: 35px;
-        font-size: 1.5rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    .toc-widget ol {
-        padding: 0;
-        list-style: none;
-    }
-
-    #toc-content {
-        height: calc(100vh - 250px);
-        overflow: auto;
-    }
-
-    #toc-content ol {
-        padding-left: 10px;
-    }
-
-    #toc-content ol li {
-        padding-left: 10px;
-    }
-
-    #toc-content .toc-link:hover {
-        color: #42b983;
-        font-weight: 700;
-        text-decoration: underline;
-    }
-
-    #toc-content .toc-link::before {
-        background-color: transparent;
-        max-height: 25px;
-
-        position: absolute;
-        right: 23.5vw;
-        display: block;
-    }
-
-    #toc-content .is-active-link {
-        color: #42b983;
-    }
-
-    #floating-toc-btn {
-        position: fixed;
-        right: 15px;
-        bottom: 76px;
-        padding-top: 15px;
-        margin-bottom: 0;
-        z-index: 998;
-    }
-
-    #floating-toc-btn .btn-floating {
-        width: 48px;
-        height: 48px;
-    }
-
-    #floating-toc-btn .btn-floating i {
-        line-height: 48px;
-        font-size: 1.4rem;
-    }
-</style>
-<div class="row">
-    <div id="main-content" class="col s12 m12 l9">
-        <!-- 文章内容详情 -->
-<div id="artDetail">
-    <div class="card">
-        <div class="card-content article-info">
-            <div class="row tag-cate">
-                <div class="col s7">
-                    
-                    <div class="article-tag">
-                        
-                            <a href="/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/">
-                                <span class="chip bg-color">量子计算</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%A2%B3%E7%90%86/">
-                                <span class="chip bg-color">梳理</span>
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-                <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/" class="post-category">
-                                量子计算
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-
-            <div class="post-info">
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-10-21
-                </div>
-                
-
-                
-
-                
-                <div class="info-break-policy">
-                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    3k
-                </div>
-                
-
-                
-
-                
-                    <div id="busuanzi_container_page_pv" class="info-break-policy">
-                        <i class="far fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
-                        <span id="busuanzi_value_page_pv"></span>
-                    </div>
-				
-            </div>
+          
         </div>
-        <hr class="clearfix">
-        <div class="card-content article-card-content">
-            <div id="articleContent">
-                <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>　　作为一个工程师，我习惯于对任何看起来神秘的事物刨根问底，量子计算同样如此。看到一辆玩具小车在横冲直撞，我会思考这是因为电池驱动的马达带动轴承做旋转运动；看到日升日落，我会思考这是由于万有引力的束缚，抑或是广义相对论的时空约束。<br>　　万物均有体系结构，就算是看起来最反常识的量子力学，也接受薛定谔方程的描述。因此，我把<code>体系结构</code>作为本系列的第一篇文章，作为对自己知识的梳理。<br>　　或许是我担任”计算机组成与体系结构”这门课程助教的原因:)，体系结构这个话题可以聊的就太多了。然而我毕竟不是搞的芯片，因此本文从工程的角度出发，对比经典与量子两种架构，对其进行一个全面的阐述。  </p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">梳理|量子计算（1）：体系结构</h1>
+            
+            <div class="markdown-body">
+              <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>　　作为一个工程师，我习惯于对任何看起来神秘的事物刨根问底，量子计算同样如此。看到一辆玩具小车在横冲直撞，我会思考这是因为电池驱动的马达带动轴承做旋转运动；看到日升日落，我会思考这是由于万有引力的束缚，抑或是广义相对论的时空约束。<br>　　万物均有体系结构，就算是看起来最反常识的量子力学，也接受薛定谔方程的描述。因此，我把<code>体系结构</code>作为本系列的第一篇文章，作为对自己知识的梳理。<br>　　或许是我担任”计算机组成与体系结构”这门课程助教的原因:)，体系结构这个话题可以聊的就太多了。然而我毕竟不是搞的芯片，因此本文从工程的角度出发，对比经典与量子两种架构，对其进行一个全面的阐述。  </p>
 <h2 id="0x01-经典架构"><a href="#0x01-经典架构" class="headerlink" title="0x01 经典架构"></a>0x01 经典架构</h2><p>　　首先讨论经典计算机的架构，先从最基本的单元说起。<br>　　经典计算机基本单元是比特0-1，用高电平和低电平来表示。比特的基本处理单元是逻辑门，而逻辑门使用晶体管实现。同时使用晶体管可以来构建存储单元SRAM、DRAM，前者是register、cache的主要成分，后者则是memory的主要成分。同样的，像是CPU中的处理单元加法器、算术逻辑单元等等，这些都可以通过晶体管构成。存储单元和处理单元是可以分开的，所以我们有非常出名的冯诺依曼体系结构，它告诉人们一台计算机可以用什么样的方式搭建出来。  </p>
-<p><img src="/img/qc-1-1.png" alt="Fig. 1: MIPS microarchitecture"></p>
+<p><img src="/img/qc-1-1.png" srcset="/img/loading.gif" alt="Fig. 1: MIPS microarchitecture"></p>
 <p>　　上图是一个极度简化的CPU的组成，它包含几个部分，总的概括便是存储器和算术逻辑单元，为了让存储和运算单元组合到一起工作，于是有一个控制器。这些所有单元都是由晶体管构成，所以我们说，数据的存储、处理、控制都是同质的（homogeneous），因此我们可以把它集成到同一块芯片上来。<br>　　有了这样一个架构，我们就可以在上面运行软件了。比如有一个AI应用，它是用编程语言python来实现的，经过编译器进行编译，生成了二进制文件。这些二进制的指令，便放在处理器上面执行。于是经典计算机自顶向下的流程便结束了。  </p>
-<p><img src="/img/qc-1-2.png" alt="">  </p>
+<p><img src="/img/qc-1-2.png" srcset="/img/loading.gif" alt="">  </p>
 <h2 id="0x02-量子架构"><a href="#0x02-量子架构" class="headerlink" title="0x02 量子架构"></a>0x02 量子架构</h2><p>　　有了经典架构做铺垫，再看量子环境会有什么不同。首先从最基本的单元说起。量子计算机最基本的单元是量子比特（qubit），而量子比特  </p>
 <script type="math/tex; mode=display">\mathinner{|\phi\rangle} = \alpha\mathinner{|0\rangle} + \beta\mathinner{|1\rangle} s.t. |\alpha|^2 + |\beta|^2 = 1</script><p>表示该比特有|α|^2的概率为0，否则为1。该量子比特处于0和1的叠加态之中。同理，若有n个qubit则系统同时有2^n个状态的叠加。<br>　　量子计算和经典计算不同的一点在于，量子比特既是数据存储的单元，又是数据处理的单元，因此运算过程就发生在量子比特身上。经典计算机使用逻辑门处理比特，而量子计算机使用量子门来处理。量子门处理的过程是对所有比特进行处理，同时有着巨大的状态空间以及巨大的并行性，因此量子算法效率往往会有指数级别的提升。在简单的介绍之后，下面从工程的角度来看一些实物，一个量子芯片到底该长啥样。  </p>
-<p><img src="/img/qc-1-3.png" alt="">  </p>
+<p><img src="/img/qc-1-3.png" srcset="/img/loading.gif" alt="">  </p>
 <p>　　上图量子芯片来自荷兰代尔夫特理工大学实验室，它在20mK温度下工作，只有两个量子比特[28]（芯片中央两个黑色圆点）。现探索该量子比特的结构。<br>图1.11(a)则为上图量子芯片中的量子比特放大图，可以看到上极板有3个接口，下极板也有3个接口连接出去，两个极板中间有一层介质，它们共同构成了电容。图1.11(b)是该结构的电路图，图中线条标注了它们之间的对应关系。  </p>
-<p><img src="/img/qc-1-4.png" alt="">    </p>
+<p><img src="/img/qc-1-4.png" srcset="/img/loading.gif" alt="">    </p>
 <p>　　图中黑色线条相连的部分是电容，红色线条相连的部分是约瑟夫森结（Josephson junction）。这两个约瑟夫森结等效于一个电感，于是这个电路中有了电容、电感，就构成了一个LC振荡电路。那么能量就在电容与电感之间来回震荡。如果用量子电动力学去探索它的基态，可以看到它是一个等分的能级的结构，于是我们可以得到这样一个能量间隔不均匀的能级图：  </p>
-<p><img src="/img/qc-1-5.png" alt="">    </p>
+<p><img src="/img/qc-1-5.png" srcset="/img/loading.gif" alt="">    </p>
 <p>　　取最低能级为0，取第一激发态为1来作为量子态，这样就构成了一个量子比特。注意在这里，我们观测的是整个约瑟夫森结的状态，也就是说观测的量子状态是宏观的，这就相当于用宏观的表现来观测到了微观的量子状态，所以我们才能操作量子比特。<br>　　有了量子比特后，该怎么对量子比特进行操纵呢，这是通过良好定义的波形来实现的。在图1.10中，可以看到该量子芯片周围有6个接口，这些接口通过导线连接到外部，因此能够通过这些接口把波形传到量子比特上面去。比如说单比特门就用20ns的脉冲，通过接口打在量子比特上面去。<br>　　现在回到上面说的问题，在经典计算机中，存储单元和处理单元是分离的。而在量子计算机中，量子比特既是数据存储的地方，又是数据处理的地方，控制媒介则是模拟波形（模拟信号）。经典电路控制媒介则是数字信号。在经典的架构中，有了CPU便可以直接安装软件运行，而在量子计算机中，由于它们是异构的（同时存在模拟/数字信号），则需要一个专门的控制器来进行沟通转换。就是说在软件和量子比特之间一定要引入一个控制器。  </p>
-<p><img src="/img/qc-1-6.png" alt="">    </p>
+<p><img src="/img/qc-1-6.png" srcset="/img/loading.gif" alt="">    </p>
 <p>　　上图中，AWG（Arbitrary waveform generator）是任意波形发生器的缩写，用它来发射定义好的模拟波形来操作量子比特。Data Collection Card（数据采集卡）用来采集测量量子比特后返回的结果，这个测量结果也是模拟信号，所以要对模拟信号进行识别从而判断结果是0还是1。整个流程便是PC机软件控制发出数字波形，然后控制器中的AWGs发出定义好的模拟波形打在量子比特上，最后测量结果返回给数字采集卡，数字采集卡判断结果后返回给PC主机。这是过去主流的控制量子比特的方法，也是目前少数实验室采用的方法，但是它是不可扩展的，因此后面会提到全栈量子计算机的架构。<br>　　现在可以比较经典计算和量子计算的不同了：  </p>
 <ol>
 <li>从数据流过程上。经典计算是把数据流拿出来运动，经过一个个函数/运算模块中处理，最后得到结果。所以是数据在动，操作不动。而量子计算中，所有数据保存在量子比特上面，我们把操作一个个的打上去，所以是数据不动，操作在动。这种不同也决定了量子计算机的体系结构和经典是不同的。  </li>
 <li>从编程语言上。经典计算发展到现在，有无数编程语言能够满足经典计算的使用。为了描述与操作量子比特，现在也有很多量子高级语言（如Qiskit），然而这些语言经典算法中的高级特性，如递归等操作并没有很好的实现。在使用量子高级语言的时候，更多的是考虑如何实现电路图，这对于量子算法的产生是个很不利的因素。  </li>
 </ol>
 <p>　　在图1.13控制方法中，控制流程是不可扩展的，因此现在主流的组成如下图所示  </p>
-<p><img src="/img/qc-1-7.png" alt="">  </p>
+<p><img src="/img/qc-1-7.png" srcset="/img/loading.gif" alt="">  </p>
 <p>　　最上层是一些量子算法，如shor算法等等；中间一层是编程语言和编译器，如Qiskit、Q#、QPanda等等；再下面是要转化成的指令集，如eQASM、OpenQASM；最下层便是量子芯片，可能是超导芯片、离子阱等等。<br>　　接下来看看IBM对它的物理实现：  </p>
-<p><img src="/img/qc-1-8.png" alt="">  </p>
+<p><img src="/img/qc-1-8.png" srcset="/img/loading.gif" alt="">  </p>
 <p>　　上图(a)就是IBM展示的量子计算机，(b)是封装起来的样子，其内部是一个大号的“冰箱”，芯片要求在20mK的温度下工作。    </p>
 <h2 id="0x03-现在-amp-未来"><a href="#0x03-现在-amp-未来" class="headerlink" title="0x03 现在&amp;未来"></a>0x03 现在&amp;未来</h2><p>　　上面说了那么多过去的知识，接下来看看现在此刻的芯片所处的时代~<br>　　学术界预计在未来几年内，我们将进入有噪声中间量子(Noisy Intermediate-Scale Quantum,NISQ)时代，届时具有数十到数百个量子位元的QC器件将面世。<br>　　虽然量子位的数量不足以构成量子纠错(QEC)，但它仍然被期望使用超出可用的经典计算机的能力，来解决现实世界的问题。<br>　　在NISQ时代，由于技术的限制，量子软件和硬件之间存在差距。当前最流行的电路模型设计一个量子程序时，总是假设量子位和量子操作是完美的，你可以应用任何量子物理操作。但在NISQ硬件上，量子位的相干时间有限，量子运算也不完美。下图是 IBM Q20 芯片，可以看到其参数如图  </p>
-<p><img src="/img/qc-1-9.png" alt="Fig. 2:  IBM Q20 Tokyo Information">  </p>
+<p><img src="/img/qc-1-9.png" srcset="/img/loading.gif" alt="Fig. 2:  IBM Q20 Tokyo Information">  </p>
 <p>　　上图显示了有关IBMQ 20芯片的信息，量子比特的平均寿命仅仅约为50µs，同时量子门之间的操作也有错误率，这意味着该芯片将无法运行大规模的程序。量子比特被放置在一个平面几何体上，由于芯片上的放置和路由限制，耦合器只能将一个量子比特连接到相邻的量子比特上。<br>　　有学者估计，要使量子计算机达到通用计算机的程度，至少需要数十万个量子比特，而当前的进展仅仅是几十个比特。或许将量子计算机作为专用计算才是未来的方向，毕竟从理论到实践的路还很漫长…<br>　　事实上，如今的量子计算机是作为云的形式提供服务的，因为目前最流行的超导体系结构无法在室温下工作，所以只能通过提供API的方式调用。这是不是很像云计算？这也是实验室之外唯一能够使用量子芯片的方法了，目前国外有IBM提供的免费量子芯片可供使用（虽然才5比特…），并且需要排队才能申请到使用权限。    </p>
 <p>　　PS：前两天习大大提出要发展量子科技，难道这个冷门中的冷门方向要出头了吗？！惊了！</p>
 <blockquote>
@@ -458,687 +239,296 @@
 </blockquote>
 
             </div>
-            <hr/>
-
-            
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        Author:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">mumu</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        Link:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="http://hahuillu.cn/2020/10/21/qc-1/">http://hahuillu.cn/2020/10/21/qc-1/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        Reprint policy:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    All articles in this blog are used except for special statements
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    reprint polocy. If reproduced, please indicate source
-                    <a href="/about" target="_blank">mumu</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
-        M.toast({html: toastHTML})
-      });
-
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
-
-
-
-            <div class="tag_share" style="display: block;">
-                <div class="post-meta__tag-list" style="display: inline-block;">
-                    
-                        <div class="article-tag">
-                            
-                                <a href="/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/">
-                                    <span class="chip bg-color">量子计算</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%A2%B3%E7%90%86/">
-                                    <span class="chip bg-color">梳理</span>
-                                </a>
-                            
-                        </div>
-                    
-                </div>
-                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
-<div id="article-share">
-
-    
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="/libs/share/js/social-share.min.js"></script>
-    
-
-    
-
-</div>
-
-                </div>
-            </div>
-            
-                <style>
-    #reward {
-        margin: 40px 0;
-        text-align: center;
-    }
-
-    #reward .reward-link {
-        font-size: 1.4rem;
-        line-height: 38px;
-    }
-
-    #reward .btn-floating:hover {
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    #rewardModal {
-        width: 320px;
-        height: 350px;
-    }
-
-    #rewardModal .reward-title {
-        margin: 15px auto;
-        padding-bottom: 5px;
-    }
-
-    #rewardModal .modal-content {
-        padding: 10px;
-    }
-
-    #rewardModal .close {
-        position: absolute;
-        right: 15px;
-        top: 15px;
-        color: rgba(0, 0, 0, 0.5);
-        font-size: 1.3rem;
-        line-height: 20px;
-        cursor: pointer;
-    }
-
-    #rewardModal .close:hover {
-        color: #ef5350;
-        transform: scale(1.3);
-        -moz-transform:scale(1.3);
-        -webkit-transform:scale(1.3);
-        -o-transform:scale(1.3);
-    }
-
-    #rewardModal .reward-tabs {
-        margin: 0 auto;
-        width: 210px;
-    }
-
-    .reward-tabs .tabs {
-        height: 38px;
-        margin: 10px auto;
-        padding-left: 0;
-    }
-
-    .reward-content ul {
-        padding-left: 0 !important;
-    }
-
-    .reward-tabs .tabs .tab {
-        height: 38px;
-        line-height: 38px;
-    }
-
-    .reward-tabs .tab a {
-        color: #fff;
-        background-color: #ccc;
-    }
-
-    .reward-tabs .tab a:hover {
-        background-color: #ccc;
-        color: #fff;
-    }
-
-    .reward-tabs .wechat-tab .active {
-        color: #fff !important;
-        background-color: #22AB38 !important;
-    }
-
-    .reward-tabs .alipay-tab .active {
-        color: #fff !important;
-        background-color: #019FE8 !important;
-    }
-
-    .reward-tabs .reward-img {
-        width: 210px;
-        height: 210px;
-    }
-</style>
-
-<div id="reward">
-    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
-
-    <!-- Modal Structure -->
-    <div id="rewardModal" class="modal">
-        <div class="modal-content">
-            <a class="close modal-close"><i class="fas fa-times"></i></a>
-            <h4 class="reward-title">(๑＞ڡ＜)☆谢谢老板~</h4>
-            <div class="reward-content">
-                <div class="reward-tabs">
-                    <ul class="tabs row">
-                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
-                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
-                    </ul>
-                    <div id="alipay">
-                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
-                    </div>
-                    <div id="wechat">
-                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    $(function () {
-        $('.tabs').tabs();
-    });
-</script>
-
-            
-        </div>
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-<article id="prenext-posts" class="prev-next articles">
-    <div class="row article-row">
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
-            <div class="card">
-                <a href="/2020/10/23/qc-2/">
-                    <div class="card-image">
-                        
-                        <img src="/medias/featureimages/cat.jpg" class="responsive-img" alt="梳理|量子计算（2）：量子力学基础">
-                        
-                        <span class="card-title">梳理|量子计算（2）：量子力学基础</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-23
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/" class="post-category">
-                                    量子计算
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
                 
-                <div class="card-action article-tags">
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
                     
-                    <a href="/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/">
-                        <span class="chip bg-color">量子计算</span>
-                    </a>
+                      <a class="hover-with-bg" href="/categories/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/">量子计算</a>
                     
-                    <a href="/tags/%E6%A2%B3%E7%90%86/">
-                        <span class="chip bg-color">梳理</span>
-                    </a>
-                    
-                </div>
+                  </div>
                 
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/10/21/xue-zhu-zi-yuan/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="我常用的一些学术资源">
-                        
-                        <span class="card-title">我常用的一些学术资源</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-21
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%AD%A6%E6%9C%AF%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    学术笔记
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
                 
-                <div class="card-action article-tags">
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
                     
-                    <a href="/tags/%E7%AC%94%E8%AE%B0/">
-                        <span class="chip bg-color">笔记</span>
-                    </a>
+                      <a class="hover-with-bg" href="/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/">量子计算</a>
                     
-                    <a href="/tags/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/">
-                        <span class="chip bg-color">实用工具</span>
-                    </a>
+                      <a class="hover-with-bg" href="/tags/%E6%A2%B3%E7%90%86/">梳理</a>
                     
-                </div>
+                  </div>
                 
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/10/23/qc-2/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">梳理|量子计算（2）：量子力学基础</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/10/21/xue-zhu-zi-yuan/">
+                        <span class="hidden-mobile">我常用的一些学术资源</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
             </div>
-        </div>
-        
-    </div>
-</article>
 
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
-
-
-<!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
-
-<!-- 代码语言 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
-
-
-<!-- 代码块复制 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
-
-
-<!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-
-
-<!-- 代码块折行 -->
-
-<style type="text/css">
-code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-</style>
-
-
-    </div>
-    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget" style="background-color: white;">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
-            <div id="toc-content"></div>
-        </div>
-    </div>
+      </div>
+    
+  </div>
 </div>
 
-<!-- TOC 悬浮按钮. -->
+<!-- Custom -->
 
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fas fa-list-ul"></i>
-    </a>
-</div>
-
-
-<script src="/libs/tocbot/tocbot.min.js"></script>
-<script>
-    $(function () {
-        tocbot.init({
-            tocSelector: '#toc-content',
-            contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
-        });
-
-        // modify the toc link href to support Chinese.
-        let i = 0;
-        let tocHeading = 'toc-heading-';
-        $('#toc-content a').each(function () {
-            $(this).attr('href', '#' + tocHeading + (++i));
-        });
-
-        // modify the heading title id to support Chinese.
-        i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
-            $(this).attr('id', tocHeading + (++i));
-        });
-
-        // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
-            /* add post toc fixed. */
-            if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
-            } else {
-                $tocWidget.removeClass('toc-fixed');
-            }
-        });
-
-        
-        /* 修复文章卡片 div 的宽度. */
-        let fixPostCardWidth = function (srcId, targetId) {
-            let srcDiv = $('#' + srcId);
-            if (srcDiv.length === 0) {
-                return;
-            }
-
-            let w = srcDiv.width();
-            if (w >= 450) {
-                w = w + 21;
-            } else if (w >= 350 && w < 450) {
-                w = w + 18;
-            } else if (w >= 300 && w < 350) {
-                w = w + 16;
-            } else {
-                w = w + 14;
-            }
-            $('#' + targetId).width(w);
-        };
-
-        // 切换TOC目录展开收缩的相关操作.
-        const expandedClass = 'expanded';
-        let $tocAside = $('#toc-aside');
-        let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
-            if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
-            } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
-            }
-            fixPostCardWidth('artDetail', 'prenext-posts');
-        });
-        
-    });
-</script>
 
     
 
-</main>
-
-
-
-
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
-
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
-
-<!--&lt;!&ndash; 评论start &ndash;&gt;-->
-<!--&lt;!&ndash;PC版&ndash;&gt;-->
-<!--<div id="SOHUCS" sid="请将此处替换为配置SourceID的语句"></div>-->
-<!--<script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>-->
-<!--<script type="text/javascript">-->
-<!--    window.changyan.api.config({-->
-<!--        appid: 'cyv7kJuW9',-->
-<!--        conf: 'prod_9ae5037f9e7e801d2e1a69912c71e860'-->
-<!--    });-->
-<!--</script>-->
-<!--&lt;!&ndash; 评论end &ndash;&gt;-->
-
-    <footer class="page-footer bg-color">
     
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
-<!--        访客 start -->
-        <div class="col s12 m8 l8 copy-right">
-            
-                <span id="busuanzi_container_site_pv" style='display:none'>
-        <i class="fa fa-heart-o"></i>
-        本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
-    </span>
-            
-            
-                <span id="busuanzi_container_site_uv" style='display:none'>
-        人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
-    </span>
-            
-<!--                访客 end -->
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-            <span id="sitetime"></span>
-            
-            
-            
-            
-            
-            <br>
-            
-            <br>
-            
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
         </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/regaliastar" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:regaliastar@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
-
-</div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
     </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://github.com/regaliastar" target="_blank" rel="nofollow noopener"><span>Github</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/regaliastar" target="_blank" rel="nofollow noopener"><span>Mumu</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
 </footer>
 
-<div class="progress-bar"></div>
-<script language=javascript>
-    function siteTime() {
-        window.setTimeout("siteTime()", 1000);
-        var seconds = 1000;
-        var minutes = seconds * 60;
-        var hours = minutes * 60;
-        var days = hours * 24;
-        var years = days * 365;
-        var today = new Date();
-        var todayYear = today.getFullYear();
-        var todayMonth = today.getMonth() + 1;
-        var todayDate = today.getDate();
-        var todayHour = today.getHours();
-        var todayMinute = today.getMinutes();
-        var todaySecond = today.getSeconds();
-        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
-        year - 作为date对象的年份，为4位年份值
-        month - 0-11之间的整数，做为date对象的月份
-        day - 1-31之间的整数，做为date对象的天数
-        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
-        minutes - 0-59之间的整数，做为date对象的分钟数
-        seconds - 0-59之间的整数，做为date对象的秒数
-        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
-        var t1 = Date.UTC(2020, 10, 21, 00, 00, 00); //北京时间2018-2-13 00:00:00
-        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
-        var diff = t2 - t1;
-        var diffYears = Math.floor(diff / years);
-        var diffDays = Math.floor((diff / days) - diffYears * 365);
-        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
-        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
-        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
-        document.getElementById("sitetime").innerHTML = "本站已运行 " +diffYears+" 年 "+diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
-    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
-    siteTime();
-</script>
-<script>
-    $(document).ready(function () {
+<!-- SCRIPTS -->
 
-        var int = setInterval(fixCount, 50);  // 50ms周期检测函数
-        var pvcountOffset = 80000;  // 初始化首次数据
-        var uvcountOffset = 20000;
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
 
-        function fixCount() {
-            if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
-                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + pvcountOffset);
-                clearInterval(int);
-            }
-            if ($("#busuanzi_container_site_pv").css("display") != "none") {
-                $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + uvcountOffset); // 加上初始数据
-                clearInterval(int); // 停止检测
-            }
-        }
-    });
-</script>
-
-    <!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
-            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
-                   class="search-input">
-        </div>
-        <div id="searchResult"></div>
-    </div>
-</div>
-
-<script src="/js/search.js"></script>
-<script type="text/javascript">
-$(function () {
-    searchFunc('/search.xml', 'searchInput', 'searchResult');
-});
-</script>
-
-    <!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
 
 
-    <script src="/libs/materialize/materialize.min.js"></script>
-    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="/libs/aos/aos.js"></script>
-    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="/js/matery.js"></script>
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
-    <!-- Baidu Analytics -->
+<!-- Plugins -->
 
-    <!-- Baidu Push -->
 
-<script>
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
     (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      var path = "/search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
         }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
+      };
+    </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
-    
-    
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-    
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
 
-    
+  
 
-    
 
-    
 
-    
 
-    
 
-    
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
-    
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
 
 </body>
-
 </html>

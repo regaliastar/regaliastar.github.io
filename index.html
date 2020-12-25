@@ -1,1078 +1,829 @@
-<!DOCTYPE HTML>
-<html lang="en">
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
+
 
 
 <head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="Mumu">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Mumu">
+  <meta name="keywords" content="">
+  <title>Mumu</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
 
-    <title>Mumu</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
 
-    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/matery.css">
-    <link rel="stylesheet" type="text/css" href="/css/my.css">
+<!-- 主题依赖的图标库，不要自行修改 -->
 
-    <script src="/libs/jquery/jquery.min.js"></script>
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"hahuillu.cn","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Mumu" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
-
-
+</head>
 
 
 <body>
-    <header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper container">
-            <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
-                    
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
-                    
-                    <span class="logo-span">Mumu</span>
-                </a>
-            </div>
-            
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Mumu</strong>&nbsp;</a>
 
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>Tags</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/categories" class="waves-effect waves-light">
-      
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>Categories</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>About</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/friends" class="waves-effect waves-light">
-      
-      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
-      
-      <span>Links</span>
-    </a>
-    
-  </li>
-  
-  <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-</ul>
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
 
-
-<div id="mobile-nav" class="side-nav sidenav">
-
-    <div class="mobile-head bg-color">
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
         
-        <div class="logo-name">Mumu</div>
-        <div class="logo-desc">
-            
-            Never really desperate, only the lost of the soul.
-            
-        </div>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                Links
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
     </div>
+  </div>
+</nav>
 
-    
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="米♂奇♂妙♂妙♂屋">
+              
+            </span>
 
-    <ul class="menu-list mobile-menu-list">
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			Tags
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			Categories
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			About
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/friends" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-address-book"></i>
-			
-			Links
-		</a>
-          
-        </li>
-        
-        
-        <li><div class="divider"></div></li>
-        <li>
-            <a href="https://github.com/regaliastar" class="waves-effect waves-light" target="_blank">
-                <i class="fab fa-github-square fa-fw"></i>githubLink
-            </a>
-        </li>
-        
-    </ul>
-</div>
+            
+          </div>
 
-
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
         </div>
+      </div>
+    </div>
+  </header>
 
-        
-            <style>
-    .nav-transparent .github-corner {
-        display: none !important;
-    }
-
-    .github-corner {
-        position: absolute;
-        z-index: 10;
-        top: 0;
-        right: 0;
-        border: 0;
-        transform: scale(1.1);
-    }
-
-    .github-corner svg {
-        color: #0f9d58;
-        fill: #fff;
-        height: 64px;
-        width: 64px;
-    }
-
-    .github-corner:hover .octo-arm {
-        animation: a 0.56s ease-in-out;
-    }
-
-    .github-corner .octo-arm {
-        animation: none;
-    }
-
-    @keyframes a {
-        0%,
-        to {
-            transform: rotate(0);
-        }
-        20%,
-        60% {
-            transform: rotate(-25deg);
-        }
-        40%,
-        80% {
-            transform: rotate(10deg);
-        }
-    }
-</style>
-
-<a href="https://github.com/regaliastar" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
-   data-tooltip="githubLink" data-position="left" data-delay="50">
-    <svg viewBox="0 0 250 250" aria-hidden="true">
-        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-              fill="currentColor" class="octo-body"></path>
-    </svg>
-</a>
-        
-    </nav>
-
-</header>
-
+  <main>
     
-<style>
-    .carousel-control {
-        width: 45px;
-        height: 45px;
-        line-height: 55px;
-        border-radius: 45px;
-        background: transparent;
-        cursor: pointer;
-        z-index: 100;
-    }
-
-    #prev-cover {
-        position: absolute;
-        top: 48%;
-        left: 8px;
-    }
-
-    #next-cover {
-        position: absolute;
-        top: 48%;
-        right: 8px;;
-    }
-
-    #prev-cover i {
-        margin-right: 3px;
-    }
-
-    #next-cover i {
-        margin-left: 3px;
-    }
-
-    .carousel-control:hover {
-        background-color: rgba(0, 0, 0, .4);
-    }
-
-    .carousel-control i {
-        color: #fff;
-        font-size: 2.4rem;
-    }
-</style>
-
-
-
-<div class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
-    
-
-    <div class="carousel-item red white-text bg-cover about-cover">
-        <div class="container">
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
             <div class="row">
-    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-        <div class="brand">
-            <div class="title center-align">
+              <div class="col-12 col-md-10 m-auto">
                 
-                Mumu
-                
-            </div>
-
-            <div class="description center-align">
-                
-                <span id="subtitle"></span>
-                <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
-                <script>
-                    var typed = new Typed("#subtitle", {
-                        strings: ['从来没有真正的绝境, 只有心灵的迷途','Never really desperate, only the lost of the soul'],
-                        startDelay: 300,
-                        typeSpeed: 100,
-                        loop: true,
-                        backSpeed: 50,
-                        showCursor: true
-                    });
-                </script>
-                
-            </div>
-        </div>
-    </div>
-</div>
 
 
-<script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
-    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
-</script>
-
-
-
-            <div class="cover-btns">
-                <a href="#articles" class="waves-effect waves-light btn">
-                    <i class="fa fa-angle-double-down"></i>Start
-                </a>
-
-                
-                    <a href="https://github.com/regaliastar" class="waves-effect waves-light btn" target="_blank">
-                        <i class="fab fa-github-alt"></i>Github
-                    </a>
-                
-            </div>
-            <div class="cover-social-link">
-    <a href="https://github.com/regaliastar" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:regaliastar@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
-
-</div>
-        </div>
-    </div>
-
+  <div class="row mx-auto index-card">
     
-</div>
-
-<script>
-    $(function () {
-        let coverSlider = $('.carousel');
-
-        //用户触摸轮播自动 restartPlay 是否生效
-        let initUserPressedOrDraggedActive = false
-
-        //用户触摸轮播自动 restartPlay
-        function initUserPressedOrDragged(instance) {
-            setInterval(() => {
-                if (instance.pressed || instance.dragged) {
-                    // console.log('initUserPressedOrDragged: ',instance.pressed,instance.dragged)
-                    restartPlay()
-                }
-            }, 1000)
-        }
-
-        coverSlider.carousel({
-            duration: Number('120'),
-            fullWidth: true,
-            indicators: 'true' === 'true',
-            onCycleTo() {
-                if (!initUserPressedOrDraggedActive) {
-                    // console.log('initUserPressedOrDraggedActive')
-                    initUserPressedOrDragged(this)
-                    initUserPressedOrDraggedActive = true
-                }
-            },
-        })
-
-        let carouselIntervalId;
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/12/24/js-oo/" target="_self">
+          <img src="/img/featureimages/2.jpg" srcset="/img/loading.gif" alt="JavaScript|面向对象">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
         
-        // Loop to call the next cover article picture.
-        let autoCarousel = function () {
-            carouselIntervalId = setInterval(function () {
-                coverSlider.carousel('next');
-            }, 5000);
-        };
-        autoCarousel();
+        <a href="/2020/12/24/js-oo/">JavaScript|面向对象</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/12/24/js-oo/">
+          
+          
+            
+          
+          JavaScript是一门面向对象的语言，而面向对象有三大特性：封装、多态和继承。
+在es5及以前，继承的特性是通过原型链实现的，这种方法繁琐又复杂，且有各自的问题。因此，es6新增了 class 关键词语法糖，虽然原理没变，依旧是利用原型链实现的类方法，却更简单直观了。
+class 其实是一种特殊的函数，同是JavaScript世界中的一等公民。
+对象在代码执行过程中的任何时候都可以被创建和增强
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
         
-
-        function restartPlay() {
-            
-            clearInterval(carouselIntervalId);
-            autoCarousel();
-            
-        };
-
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-24 11:07" pubdate>
+              2020-12-24
+            </time>
+          </div>
         
-        // prev and next cover post.
-        $('#prev-cover').click(function () {
-            coverSlider.carousel('prev');
-            restartPlay();
-        });
-        $('#next-cover').click(function () {
-            coverSlider.carousel('next');
-            restartPlay();
-        });
         
-    });
-</script>
-
-
-
-<main class="content">
-
-    
-    <div id="indexCard" class="index-card">
-        <div class="container ">
-            <div class="card">
-                <div class="card-content">
-                    
-                        <div class="dream">
-    
-    <div class="title center-align">
-        <i class="far fa-lightbulb"></i>&nbsp;&nbsp;About me
-    </div>
-    
-    <div class="row">
-        <div class="col l8 offset-l2 m10 offset-m1 s10 offset-s1 center-align text">
-            喜欢计算机&amp;数学&amp;物理&amp;动画&amp;游戏&amp;音乐，渴望成为一个有趣的人~
-        </div>
-    </div>
-</div>
-
-                    
-
-                    
-
-                    
-
-                    
-                    <div id="recommend-sections" class="recommend">
-                        
-
-
-
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-    
-
-    
-
-    <!-- 所有文章卡片 -->
-    <article id="articles" class="container articles">
-        <div class="row article-row">
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2020/12/24/js-oo/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="JavaScript|面向对象">
-                            
-                            <span class="card-title">JavaScript|面向对象</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                JavaScript是一门面向对象的语言，而面向对象有三大特性：封装、多态和继承。
-在es5及以前，继承的特性是通过原型链实现的，这种方法繁琐又复杂，且有各自的问题。因此，es6新增了 class 关键词语法糖，虽然原理没变，依旧是利用原型
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-24
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/JavaScript/" class="post-category">
-                                    JavaScript
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/JavaScript/">
-                            <span class="chip bg-color">JavaScript</span>
-                        </a>
-                        
-                        <a href="/tags/%E5%8E%9F%E5%9E%8B/">
-                            <span class="chip bg-color">原型</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
+              <a href="/categories/JavaScript/">JavaScript</a>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2020/12/16/leet-algo/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="总结|常用算法">
-                            
-                            <span class="card-title">总结|常用算法</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                总结一下经常出现 或 巧妙的算法~
-字符串KMPleetcode 28 implement-strStr/**
- * @param {string} haystack
- * @param {string} needle
- * @return
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-16
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                    算法
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/JavaScript/">
-                            <span class="chip bg-color">JavaScript</span>
-                        </a>
-                        
-                        <a href="/tags/%E7%AE%97%E6%B3%95/">
-                            <span class="chip bg-color">算法</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2020/12/14/qsim/">
-                        <div class="card-image">
-                            
-                            <img src="/medias/featureimages/cat.jpg" class="responsive-img" alt="实现一个量子计算机">
-                            
-                            <span class="card-title">实现一个量子计算机</span>
-                        </div>
-                    </a>
+              <a href="/tags/JavaScript/">JavaScript</a>
+            
+              <a href="/tags/%E5%8E%9F%E5%9E%8B/">原型</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
 
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                前言最近量子计算很火的样子，作为一个学计算机的，我们不妨自己做一个量子计算机😊
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/12/16/leet-algo/" target="_self">
+          <img src="/img/featureimages/1.jpg" srcset="/img/loading.gif" alt="总结|常用算法">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/12/16/leet-algo/">总结|常用算法</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/12/16/leet-algo/">
+          
+          
+            
+          
+          总结一下经常出现 或 巧妙的算法~
+字符串KMPleetcode 28 implement-strStr12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152/** * @param {string} haystack * @param {string} need
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-16 11:07" pubdate>
+              2020-12-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/JavaScript/">JavaScript</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/12/14/qsim/" target="_self">
+          <img src="/img/cat.jpg" srcset="/img/loading.gif" alt="实现一个量子计算机">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/12/14/qsim/">实现一个量子计算机</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/12/14/qsim/">
+          
+          
+            
+          
+          前言最近量子计算很火的样子，作为一个学计算机的，我们不妨自己做一个量子计算机😊
 所谓的量子计算机，就是控制一系列量子比特的演化过程，对其施以酉变换，通过测量得出结果的装置。
-在量子计算中，线路模型和图灵机模型理论上是等价的，最常用的量子计
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-14
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/" class="post-category">
-                                    量子计算
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
+在量子计算中，线路模型和图灵机模型理论上是等价的，最常用的量子计算模型便是线路模型，除此之外还有基于测量的模型，而前者比后者更直观简单，这也是我们选择用线路模型来实现的原因了。
+下面我们用经典计算机来模拟量子计算的过程，实现
+        </a>
+      </p>
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/python/">
-                            <span class="chip bg-color">python</span>
-                        </a>
-                        
-                        <a href="/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/">
-                            <span class="chip bg-color">量子计算</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-14 11:07" pubdate>
+              2020-12-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2020/11/13/phy-history/">
-                        <div class="card-image">
-                            
-                            <img src="http://07imgmini.eastday.com/mobile/20200404/20200404155256_5039dacecc791a37d30f4a66007b8eed_3.jpeg" class="responsive-img" alt="从奥术神座到数理学史">
-                            
-                            <span class="card-title">从奥术神座到数理学史</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                说实话【奥术神座】这本书一直在我的书架上吃灰，直到看完诡秘之主，在强烈的书荒感下，我才捡起了乌贼娘的这本成神之作。
-虽然是一本老书了，但是看了之后才意识到这果然是一本仙草，给我的惊喜感甚至超过了诡秘之主。就像是戳中了作为理科生的内心深处，我
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-11-13
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E9%9A%8F%E7%AC%94/" class="post-category">
-                                    随笔
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E9%9A%8F%E7%AC%94/">
-                            <span class="chip bg-color">随笔</span>
-                        </a>
-                        
-                        <a href="/tags/%E5%B0%8F%E8%AF%B4/">
-                            <span class="chip bg-color">小说</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
+              <a href="/categories/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/">量子计算</a>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2020/11/11/light-2/">
-                        <div class="card-image">
-                            
-                            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1605071301907&di=d28006e66b11805f0bb53809f6ee1990&imgtype=0&src=http%3A%2F%2Fup.36992.com%2Fpic_360%2F36%2F71%2Fa3%2F3671a313d70e8036dd0a15576a4e5d80.jpg" class="responsive-img" alt="Light|来设计一款编程语言吧(2)：语法分析">
-                            
-                            <span class="card-title">Light|来设计一款编程语言吧(2)：语法分析</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                0x00 前言上一篇blog介绍了Light语言的词法分析程序，生成的Token串就是语法分析的输入。这篇文章将对Light使用的语法分析器进行一个总结
-语法分析器的目的是将Token串生成抽象语法树(AST)，通过抽象语法树可以很容易的生
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-11-11
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" class="post-category">
-                                    编译原理
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/python/">
-                            <span class="chip bg-color">python</span>
-                        </a>
-                        
-                        <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">
-                            <span class="chip bg-color">编译原理</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2020/11/10/light-1/">
-                        <div class="card-image">
-                            
-                            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1605071301907&di=d28006e66b11805f0bb53809f6ee1990&imgtype=0&src=http%3A%2F%2Fup.36992.com%2Fpic_360%2F36%2F71%2Fa3%2F3671a313d70e8036dd0a15576a4e5d80.jpg" class="responsive-img" alt="Light|来设计一款编程语言吧(1)：词法分析">
-                            
-                            <span class="card-title">Light|来设计一款编程语言吧(1)：词法分析</span>
-                        </div>
-                    </a>
+              <a href="/tags/python/">python</a>
+            
+              <a href="/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/">量子计算</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
 
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                0x00 前言该系列对Light语言进行一个总结性质的记录，emm勉强算官方文档吧😝
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/11/13/phy-history/" target="_self">
+          <img src="http://07imgmini.eastday.com/mobile/20200404/20200404155256_5039dacecc791a37d30f4a66007b8eed_3.jpeg" srcset="/img/loading.gif" alt="从奥术神座到数理学史">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/11/13/phy-history/">从奥术神座到数理学史</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/11/13/phy-history/">
+          
+          
+            
+          
+          说实话【奥术神座】这本书一直在我的书架上吃灰，直到看完诡秘之主，在强烈的书荒感下，我才捡起了乌贼娘的这本成神之作。
+虽然是一本老书了，但是看了之后才意识到这果然是一本仙草，给我的惊喜感甚至超过了诡秘之主。就像是戳中了作为理科生的内心深处，我对这种“研究万物研究神”的小说没有丝毫抵抗力，幸好没有错过啊~
+根据书中的设定，人的实力会随着认识世界的深刻程度而增强，换句话说就是“知识就是力量（物理版）”。
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-13 09:38" pubdate>
+              2020-11-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a>
+            
+              <a href="/tags/%E5%B0%8F%E8%AF%B4/">小说</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/11/11/light-2/" target="_self">
+          <img src="/img/featureimages/byyl.png" srcset="/img/loading.gif" alt="Light|来设计一款编程语言吧(2)：语法分析">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/11/11/light-2/">Light|来设计一款编程语言吧(2)：语法分析</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/11/11/light-2/">
+          
+          
+            
+          
+          0x00 前言上一篇blog介绍了Light语言的词法分析程序，生成的Token串就是语法分析的输入。这篇文章将对Light使用的语法分析器进行一个总结
+语法分析器的目的是将Token串生成抽象语法树(AST)，通过抽象语法树可以很容易的生成目标代码，或者进行代码优化等操作
+任何语言都有其语法，Light的语法遵循LL(1)文法设计，下面介绍基本原理与实现
+0x01 基本原理1.1 LL(1)文法
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-11 10:14" pubdate>
+              2020-11-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">python</a>
+            
+              <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/11/10/light-1/" target="_self">
+          <img src="/img/featureimages/byyl.png" srcset="/img/loading.gif" alt="Light|来设计一款编程语言吧(1)：词法分析">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/11/10/light-1/">Light|来设计一款编程语言吧(1)：词法分析</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/11/10/light-1/">
+          
+          
+            
+          
+          0x00 前言该系列对Light语言进行一个总结性质的记录，emm勉强算官方文档吧😝
 Light是一款跨平台轻量级的解释型语言，语法借鉴JavaScript，支持条件语句、循环语句，目前变量支持整数类型、函数类型
-完整项目见我的GitHu
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-11-10
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" class="post-category">
-                                    编译原理
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
+完整项目见我的GitHub
+该语言使用实例如下所示：12345678##############################################            
+        </a>
+      </p>
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/python/">
-                            <span class="chip bg-color">python</span>
-                        </a>
-                        
-                        <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">
-                            <span class="chip bg-color">编译原理</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-10 21:14" pubdate>
+              2020-11-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2020/11/09/guitar-1/">
-                        <div class="card-image">
-                            
-                            <img src="http://www.jitaba.cn/upimg/allimg/1909/1-1Z9200I129.jpg" class="responsive-img" alt="Guitar|曲谱">
-                            
-                            <span class="card-title">Guitar|曲谱</span>
-                        </div>
-                    </a>
+              <a href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">python</a>
+            
+              <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
 
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                0x00 前言最近在练习吉他和弦，于是在这里收集一些我自己喜欢的吉他谱，希望能早日弹出流利的曲子😊
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/11/09/guitar-1/" target="_self">
+          <img src="http://www.jitaba.cn/upimg/allimg/1909/1-1Z9200I129.jpg" srcset="/img/loading.gif" alt="Guitar|曲谱">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/11/09/guitar-1/">Guitar|曲谱</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/11/09/guitar-1/">
+          
+          
+            
+          
+          0x00 前言最近在练习吉他和弦，于是在这里收集一些我自己喜欢的吉他谱，希望能早日弹出流利的曲子😊
 以后会在这里继续更新~
 0x01 弹唱曲谱指弹童话镇
 成都
 扫弦当你
 
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-11-09
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%90%89%E4%BB%96/" class="post-category">
-                                    吉他
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
+        </a>
+      </p>
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Guitar/">
-                            <span class="chip bg-color">Guitar</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-09 10:08" pubdate>
+              2020-11-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2020/10/25/vue-1/">
-                        <div class="card-image">
-                            
-                            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603682083821&di=a8807e27e8ab1c752ffdae21777739d4&imgtype=0&src=http%3A%2F%2Fpic1.zhimg.com%2Fv2-cf23526f451784ff137f161b8fe18d5a_r.jpg" class="responsive-img" alt="原理|Vue：MVVM实现">
-                            
-                            <span class="card-title">原理|Vue：MVVM实现</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                0x01 前言最近Vue.js特别火，对于它的mvvm的特性，我感到特别好奇，于是通过尤大的话了解到，Vue使用了JavaScript的 Object.defineProperty函数来实现数据的双向绑定。
-这里，我将记录该方法的学习成果，
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-25
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
-                                    前端
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Vue/">
-                            <span class="chip bg-color">Vue</span>
-                        </a>
-                        
-                        <a href="/tags/JavaScript/">
-                            <span class="chip bg-color">JavaScript</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
+              <a href="/categories/%E5%90%89%E4%BB%96/">吉他</a>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2020/10/24/qc-3/">
-                        <div class="card-image">
-                            
-                            <img src="/medias/featureimages/cat.jpg" class="responsive-img" alt="梳理|量子计算（3）：线性代数基础">
-                            
-                            <span class="card-title">梳理|量子计算（3）：线性代数基础</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                0x00 前言传统计算机使用比特 0 和 1 以及它们之间的逻辑操作 and，or，not，xor 等位运算构造加减乘除，并搭建整个经典计算机体系。
-在量子计算机上，基本的存储单元是量子位，即 Qubit。只要搞明白了 Qubit，以及它们
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-24
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/" class="post-category">
-                                    量子计算
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/">
-                            <span class="chip bg-color">量子计算</span>
-                        </a>
-                        
-                        <a href="/tags/%E6%A2%B3%E7%90%86/">
-                            <span class="chip bg-color">梳理</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2020/10/23/qc-2/">
-                        <div class="card-image">
-                            
-                            <img src="/medias/featureimages/cat.jpg" class="responsive-img" alt="梳理|量子计算（2）：量子力学基础">
-                            
-                            <span class="card-title">梳理|量子计算（2）：量子力学基础</span>
-                        </div>
-                    </a>
+              <a href="/tags/Guitar/">Guitar</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
 
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                0x01 量子力学公理
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/10/25/vue-1/" target="_self">
+          <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603682083821&di=a8807e27e8ab1c752ffdae21777739d4&imgtype=0&src=http%3A%2F%2Fpic1.zhimg.com%2Fv2-cf23526f451784ff137f161b8fe18d5a_r.jpg" srcset="/img/loading.gif" alt="原理|Vue：MVVM实现">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/10/25/vue-1/">原理|Vue：MVVM实现</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/25/vue-1/">
+          
+          
+            
+          
+          0x01 前言最近Vue.js特别火，对于它的mvvm的特性，我感到特别好奇，于是通过尤大的话了解到，Vue使用了JavaScript的 Object.defineProperty函数来实现数据的双向绑定。
+这里，我将记录该方法的学习成果，也算是一个总结吧 ￣へ￣ 
+0x02 过程描述首先看 MDN 上对该方法的描述：1234567891011Object.defineProperty(obj, 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-25 17:42" pubdate>
+              2020-10-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Vue/">Vue</a>
+            
+              <a href="/tags/JavaScript/">JavaScript</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/10/24/qc-3/" target="_self">
+          <img src="/img/cat.jpg" srcset="/img/loading.gif" alt="梳理|量子计算（3）：线性代数基础">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/10/24/qc-3/">梳理|量子计算（3）：线性代数基础</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/24/qc-3/">
+          
+          
+            
+          
+          0x00 前言传统计算机使用比特 0 和 1 以及它们之间的逻辑操作 and，or，not，xor 等位运算构造加减乘除，并搭建整个经典计算机体系。
+在量子计算机上，基本的存储单元是量子位，即 Qubit。只要搞明白了 Qubit，以及它们之间的逻辑操作，原理上就可以搭建量子计算机。
+Qubit 可以是任意两个本征态|0&gt;和|1&gt;，或者是它们的线性叠加
+\mathinner{|\var
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-24 21:38" pubdate>
+              2020-10-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/">量子计算</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/">量子计算</a>
+            
+              <a href="/tags/%E6%A2%B3%E7%90%86/">梳理</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/10/23/qc-2/" target="_self">
+          <img src="/img/cat.jpg" srcset="/img/loading.gif" alt="梳理|量子计算（2）：量子力学基础">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/10/23/qc-2/">梳理|量子计算（2）：量子力学基础</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/23/qc-2/">
+          
+          
+            
+          
+          0x01 量子力学公理
 每个物理系统都与希尔伯特空间有关。希尔伯特空间是一个向量空间加上一个内积&lt;a|b&gt;，其满足: 
 
 
 复共轭关系: &lt;a|b&gt; = &lt;b|a&gt;*
-线性关系：&lt;x*a1 + y*
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-23
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/" class="post-category">
-                                    量子计算
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
+线性关系：&lt;x*a1 + y*a2|b&gt; = x&lt;a1|b&gt; + y&lt;a2|b&gt;
+正定性：&lt;a|a&gt; ≥ 0
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/">
-                            <span class="chip bg-color">量子计算</span>
-                        </a>
-                        
-                        <a href="/tags/%E6%A2%B3%E7%90%86/">
-                            <span class="chip bg-color">梳理</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
+
+希尔伯特空间中的每一个raw都与系
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-23 14:26" pubdate>
+              2020-10-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2020/10/21/qc-1/">
-                        <div class="card-image">
-                            
-                            <img src="/medias/featureimages/cat.jpg" class="responsive-img" alt="梳理|量子计算（1）：体系结构">
-                            
-                            <span class="card-title">梳理|量子计算（1）：体系结构</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                0x00 前言　　作为一个工程师，我习惯于对任何看起来神秘的事物刨根问底，量子计算同样如此。看到一辆玩具小车在横冲直撞，我会思考这是因为电池驱动的马达带动轴承做旋转运动；看到日升日落，我会思考这是由于万有引力的束缚，抑或是广义相对论的时空约
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-21
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/" class="post-category">
-                                    量子计算
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/">
-                            <span class="chip bg-color">量子计算</span>
-                        </a>
-                        
-                        <a href="/tags/%E6%A2%B3%E7%90%86/">
-                            <span class="chip bg-color">梳理</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
+              <a href="/categories/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/">量子计算</a>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2020/10/21/xue-zhu-zi-yuan/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="我常用的一些学术资源">
-                            
-                            <span class="card-title">我常用的一些学术资源</span>
-                        </div>
-                    </a>
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/">量子计算</a>
+            
+              <a href="/tags/%E6%A2%B3%E7%90%86/">梳理</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
 
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                不定期更新~😗
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/10/21/qc-1/" target="_self">
+          <img src="/img/cat.jpg" srcset="/img/loading.gif" alt="梳理|量子计算（1）：体系结构">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/10/21/qc-1/">梳理|量子计算（1）：体系结构</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/21/qc-1/">
+          
+          
+            
+          
+          0x00 前言　　作为一个工程师，我习惯于对任何看起来神秘的事物刨根问底，量子计算同样如此。看到一辆玩具小车在横冲直撞，我会思考这是因为电池驱动的马达带动轴承做旋转运动；看到日升日落，我会思考这是由于万有引力的束缚，抑或是广义相对论的时空约束。　　万物均有体系结构，就算是看起来最反常识的量子力学，也接受薛定谔方程的描述。因此，我把体系结构作为本系列的第一篇文章，作为对自己知识的梳理。　　或许是我担
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-21 21:52" pubdate>
+              2020-10-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/">量子计算</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/">量子计算</a>
+            
+              <a href="/tags/%E6%A2%B3%E7%90%86/">梳理</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/10/21/xue-zhu-zi-yuan/" target="_self">
+          <img src="/img/featureimages/0.jpg" srcset="/img/loading.gif" alt="我常用的一些学术资源">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/10/21/xue-zhu-zi-yuan/">我常用的一些学术资源</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/21/xue-zhu-zi-yuan/">
+          
+          
+            
+          
+          不定期更新~😗
 0x01 论文相关
 sci-hub可用链接
 备用1
@@ -1090,238 +841,232 @@ webstrom激活
 matlab 2018a
 
 
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-21
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%AD%A6%E6%9C%AF%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    学术笔记
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E7%AC%94%E8%AE%B0/">
-                            <span class="chip bg-color">笔记</span>
-                        </a>
-                        
-                        <a href="/tags/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/">
-                            <span class="chip bg-color">实用工具</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
+0x03 实用网站
+wolframalpha
+非常好用的数学计算工具，nice！😍
+可识别自然语言，功能非常齐全
+
+
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-21 21:52" pubdate>
+              2020-10-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
             
-        </div>
+              <a href="/categories/%E5%AD%A6%E6%9C%AF%E7%AC%94%E8%AE%B0/">学术笔记</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
+            
+              <a href="/tags/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/">实用工具</a>
+            
+          </div>
+        
+      </div>
     </article>
-
-</main>
-
+  </div>
 
 
 
-    <footer class="page-footer bg-color">
-    
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
-<!--        访客 start -->
-        <div class="col s12 m8 l8 copy-right">
-            
-                <span id="busuanzi_container_site_pv" style='display:none'>
-        <i class="fa fa-heart-o"></i>
-        本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
-    </span>
-            
-            
-                <span id="busuanzi_container_site_uv" style='display:none'>
-        人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
-    </span>
-            
-<!--                访客 end -->
 
-            <span id="sitetime"></span>
-            
-            
-            
-            
-            
-            <br>
-            
-            <br>
-            
+
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/regaliastar" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
+      </div>
+    
 
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-
-    <a href="mailto:regaliastar@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
-
-</div>
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
     </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://github.com/regaliastar" target="_blank" rel="nofollow noopener"><span>Github</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/regaliastar" target="_blank" rel="nofollow noopener"><span>Mumu</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
 </footer>
 
-<div class="progress-bar"></div>
-<script language=javascript>
-    function siteTime() {
-        window.setTimeout("siteTime()", 1000);
-        var seconds = 1000;
-        var minutes = seconds * 60;
-        var hours = minutes * 60;
-        var days = hours * 24;
-        var years = days * 365;
-        var today = new Date();
-        var todayYear = today.getFullYear();
-        var todayMonth = today.getMonth() + 1;
-        var todayDate = today.getDate();
-        var todayHour = today.getHours();
-        var todayMinute = today.getMinutes();
-        var todaySecond = today.getSeconds();
-        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
-        year - 作为date对象的年份，为4位年份值
-        month - 0-11之间的整数，做为date对象的月份
-        day - 1-31之间的整数，做为date对象的天数
-        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
-        minutes - 0-59之间的整数，做为date对象的分钟数
-        seconds - 0-59之间的整数，做为date对象的秒数
-        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
-        var t1 = Date.UTC(2020, 10, 21, 00, 00, 00); //北京时间2018-2-13 00:00:00
-        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
-        var diff = t2 - t1;
-        var diffYears = Math.floor(diff / years);
-        var diffDays = Math.floor((diff / days) - diffYears * 365);
-        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
-        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
-        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
-        document.getElementById("sitetime").innerHTML = "本站已运行 " +diffYears+" 年 "+diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
-    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
-    siteTime();
-</script>
-<script>
-    $(document).ready(function () {
+<!-- SCRIPTS -->
 
-        var int = setInterval(fixCount, 50);  // 50ms周期检测函数
-        var pvcountOffset = 80000;  // 初始化首次数据
-        var uvcountOffset = 20000;
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
 
-        function fixCount() {
-            if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
-                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + pvcountOffset);
-                clearInterval(int);
-            }
-            if ($("#busuanzi_container_site_pv").css("display") != "none") {
-                $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + uvcountOffset); // 加上初始数据
-                clearInterval(int); // 停止检测
-            }
-        }
-    });
-</script>
-
-    <!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
-            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
-                   class="search-input">
-        </div>
-        <div id="searchResult"></div>
-    </div>
-</div>
-
-<script src="/js/search.js"></script>
-<script type="text/javascript">
-$(function () {
-    searchFunc('/search.xml', 'searchInput', 'searchResult');
-});
-</script>
-
-    <!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
 
 
-    <script src="/libs/materialize/materialize.min.js"></script>
-    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="/libs/aos/aos.js"></script>
-    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="/js/matery.js"></script>
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
-    <!-- Baidu Analytics -->
+<!-- Plugins -->
 
-    <!-- Baidu Push -->
 
-<script>
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
     (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
+      var path = "/search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
-    
-    
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
-    
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
 
 </body>
-
 </html>

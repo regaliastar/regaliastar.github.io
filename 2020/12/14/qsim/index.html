@@ -1,431 +1,212 @@
-<!DOCTYPE HTML>
-<html lang="en">
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
+
 
 
 <head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="实现一个量子计算机, Mumu">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="mumu">
+  <meta name="keywords" content="">
+  <title>实现一个量子计算机 - Mumu</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
 
-    <title>实现一个量子计算机 | Mumu</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
-    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/matery.css">
-    <link rel="stylesheet" type="text/css" href="/css/my.css">
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
 
-    <script src="/libs/jquery/jquery.min.js"></script>
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"hahuillu.cn","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Mumu" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
-
-
+</head>
 
 
 <body>
-    <header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper container">
-            <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
-                    
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
-                    
-                    <span class="logo-span">Mumu</span>
-                </a>
-            </div>
-            
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Mumu</strong>&nbsp;</a>
 
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>Tags</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/categories" class="waves-effect waves-light">
-      
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>Categories</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>About</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/friends" class="waves-effect waves-light">
-      
-      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
-      
-      <span>Links</span>
-    </a>
-    
-  </li>
-  
-  <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-</ul>
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
 
-
-<div id="mobile-nav" class="side-nav sidenav">
-
-    <div class="mobile-head bg-color">
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
         
-        <div class="logo-name">Mumu</div>
-        <div class="logo-desc">
-            
-            Never really desperate, only the lost of the soul.
-            
-        </div>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                Links
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
     </div>
+  </div>
+</nav>
 
-    
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="实现一个量子计算机">
+              
+            </span>
 
-    <ul class="menu-list mobile-menu-list">
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			Tags
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			Categories
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			About
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/friends" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-address-book"></i>
-			
-			Links
-		</a>
-          
-        </li>
-        
-        
-        <li><div class="divider"></div></li>
-        <li>
-            <a href="https://github.com/regaliastar" class="waves-effect waves-light" target="_blank">
-                <i class="fab fa-github-square fa-fw"></i>githubLink
-            </a>
-        </li>
-        
-    </ul>
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-12-14 11:07" pubdate>
+        December 14, 2020 am
+      </time>
+    </span>
+  
 </div>
 
-
-        </div>
-
-        
-            <style>
-    .nav-transparent .github-corner {
-        display: none !important;
-    }
-
-    .github-corner {
-        position: absolute;
-        z-index: 10;
-        top: 0;
-        right: 0;
-        border: 0;
-        transform: scale(1.1);
-    }
-
-    .github-corner svg {
-        color: #0f9d58;
-        fill: #fff;
-        height: 64px;
-        width: 64px;
-    }
-
-    .github-corner:hover .octo-arm {
-        animation: a 0.56s ease-in-out;
-    }
-
-    .github-corner .octo-arm {
-        animation: none;
-    }
-
-    @keyframes a {
-        0%,
-        to {
-            transform: rotate(0);
-        }
-        20%,
-        60% {
-            transform: rotate(-25deg);
-        }
-        40%,
-        80% {
-            transform: rotate(10deg);
-        }
-    }
-</style>
-
-<a href="https://github.com/regaliastar" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
-   data-tooltip="githubLink" data-position="left" data-delay="50">
-    <svg viewBox="0 0 250 250" aria-hidden="true">
-        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-              fill="currentColor" class="octo-body"></path>
-    </svg>
-</a>
-        
-    </nav>
-
-</header>
-
+<div class="mt-1">
+  
     
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.9k 字
+    </span>
+  
 
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      41
+       分钟
+    </span>
+  
 
-
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/cat.jpg')">
-    <div class="container" style="right: 0px;left: 0px;">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <div class="brand">
-                    <h1 class="description center-align post-title">实现一个量子计算机</h1>
-                </div>
-            </div>
-        </div>
-    </div>
+  
+  
 </div>
 
+            
+          </div>
 
-
-
-<main class="post-container content">
-
-    
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
-<style>
-    #articleContent h1::before,
-    #articleContent h2::before,
-    #articleContent h3::before,
-    #articleContent h4::before,
-    #articleContent h5::before,
-    #articleContent h6::before {
-        display: block;
-        content: " ";
-        height: 100px;
-        margin-top: -100px;
-        visibility: hidden;
-    }
-
-    #articleContent :focus {
-        outline: none;
-    }
-
-    .toc-fixed {
-        position: fixed;
-        top: 64px;
-    }
-
-    .toc-widget {
-        width: 345px;
-        padding-left: 20px;
-    }
-
-    .toc-widget .toc-title {
-        margin: 1px 0 15px 0;
-        padding-left: 17px;
-        padding-top: 35px;
-        font-size: 1.5rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    .toc-widget ol {
-        padding: 0;
-        list-style: none;
-    }
-
-    #toc-content {
-        height: calc(100vh - 250px);
-        overflow: auto;
-    }
-
-    #toc-content ol {
-        padding-left: 10px;
-    }
-
-    #toc-content ol li {
-        padding-left: 10px;
-    }
-
-    #toc-content .toc-link:hover {
-        color: #42b983;
-        font-weight: 700;
-        text-decoration: underline;
-    }
-
-    #toc-content .toc-link::before {
-        background-color: transparent;
-        max-height: 25px;
-
-        position: absolute;
-        right: 23.5vw;
-        display: block;
-    }
-
-    #toc-content .is-active-link {
-        color: #42b983;
-    }
-
-    #floating-toc-btn {
-        position: fixed;
-        right: 15px;
-        bottom: 76px;
-        padding-top: 15px;
-        margin-bottom: 0;
-        z-index: 998;
-    }
-
-    #floating-toc-btn .btn-floating {
-        width: 48px;
-        height: 48px;
-    }
-
-    #floating-toc-btn .btn-floating i {
-        line-height: 48px;
-        font-size: 1.4rem;
-    }
-</style>
-<div class="row">
-    <div id="main-content" class="col s12 m12 l9">
-        <!-- 文章内容详情 -->
-<div id="artDetail">
-    <div class="card">
-        <div class="card-content article-info">
-            <div class="row tag-cate">
-                <div class="col s7">
-                    
-                    <div class="article-tag">
-                        
-                            <a href="/tags/python/">
-                                <span class="chip bg-color">python</span>
-                            </a>
-                        
-                            <a href="/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/">
-                                <span class="chip bg-color">量子计算</span>
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-                <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/" class="post-category">
-                                量子计算
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-
-            <div class="post-info">
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-12-14
-                </div>
-                
-
-                
-
-                
-                <div class="info-break-policy">
-                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    2.9k
-                </div>
-                
-
-                
-
-                
-                    <div id="busuanzi_container_page_pv" class="info-break-policy">
-                        <i class="far fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
-                        <span id="busuanzi_value_page_pv"></span>
-                    </div>
-				
-            </div>
+          
         </div>
-        <hr class="clearfix">
-        <div class="card-content article-card-content">
-            <div id="articleContent">
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近量子计算很火的样子，作为一个学计算机的，我们不妨自己做一个量子计算机<span class="github-emoji"><span>😊</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">实现一个量子计算机</h1>
+            
+            <div class="markdown-body">
+              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近量子计算很火的样子，作为一个学计算机的，我们不妨自己做一个量子计算机<span class="github-emoji"><span>😊</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png?v8" srcset="/img/loading.gif" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
 <p>所谓的量子计算机，就是控制一系列量子比特的演化过程，对其施以酉变换，通过测量得出结果的装置。</p>
 <p>在量子计算中，线路模型和图灵机模型理论上是等价的，最常用的量子计算模型便是线路模型，除此之外还有基于测量的模型，而前者比后者更直观简单，这也是我们选择用线路模型来实现的原因了。</p>
 <p>下面我们用经典计算机来模拟量子计算的过程，实现一个量子计算模拟器（玩具版）。</p>
@@ -511,28 +292,14 @@
 1\\
 \end{pmatrix}</script><p>可以看到，对于2个比特的系统，向量的维度是4，而对于n个比特的系统，向量的维度就是$2^n$。可以做一个简单的估计，假设我们使用复数存储一个数字，计算它占据的大小<code>sys.getsizeof(c)</code>为32个字节，也就是说对于10比特的量子计算机，存储状态的空间就有32KB，对于20比特需要32MB，而30个量子比特就需要32GB，再往下就超出了个人计算机的极限了。</p>
 <p>由于维度是指数级的增加，因此在经典计算机上只能进行有限的模拟，2018年一篇顶刊使用超级计算机（天河二号）模拟了超过50个量子比特，这已经是很大的进步了。当然，我们这里只是个玩具量子计算机 :)</p>
-<p>首先引入需要的包：<br></p><pre class="line-numbers language-none"><code class="language-none">import numpy as np
-from sklearn.preprocessing import normalize<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><br>现在生成初态的量子比特，1位比特维度是2，n位比特维度是$2^n$，使用kronecker积对比特维度进行计算。<p></p>
-<p>定义 <code>basis</code> 方法得到kronecker积：<br></p><pre class="line-numbers language-none"><code class="language-none">def basis(string='00000'):
-    spin_up = np.array([[1, 0]]).T
-    spin_down = np.array([[0, 1]]).T
-    bit = [spin_up, spin_down]
-    res = np.array([[1]])
-    for idx in string[::-1]:
-        res = np.kron(bit[int(idx)], res)
-    return np.matrix(res)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>打开 <code>jupyter</code> 测试一下，生成4个量子比特 <code>0100</code> 的初态：<br><pre class="line-numbers language-none"><code class="language-none">amplitudes = basis('0100').A1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br>打印 <code>amplitudes</code>:  <p></p>
+<p>首先引入需要的包：<br></p><figure class="highlight elm"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs elm"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-title">from</span> sklearn.preprocessing <span class="hljs-keyword">import</span> normalize<br></code></pre></td></tr></tbody></table></figure><br>现在生成初态的量子比特，1位比特维度是2，n位比特维度是$2^n$，使用kronecker积对比特维度进行计算。<p></p>
+<p>定义 <code>basis</code> 方法得到kronecker积：<br></p><figure class="highlight lua"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs lua">def basis(<span class="hljs-built_in">string</span>=<span class="hljs-string">'00000'</span>):<br>    spin_up = np.array(<span class="hljs-string">[[1, 0]]</span>).T<br>    spin_down = np.array(<span class="hljs-string">[[0, 1]]</span>).T<br>    bit = [spin_up, spin_down]<br>    res = np.array(<span class="hljs-string">[[1]]</span>)<br>    <span class="hljs-keyword">for</span> idx <span class="hljs-keyword">in</span> <span class="hljs-built_in">string</span>[::<span class="hljs-number">-1</span>]:<br>        res = np.kron(bit[int(idx)], res)<br>    <span class="hljs-keyword">return</span> np.matrix(res)<br></code></pre></td></tr></tbody></table></figure><br>打开 <code>jupyter</code> 测试一下，生成4个量子比特 <code>0100</code> 的初态：<br><figure class="highlight ini"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">amplitudes</span> = basis(<span class="hljs-string">'0100'</span>).A1<br></code></pre></td></tr></tbody></table></figure><br>打印 <code>amplitudes</code>:  <p></p>
 <p><code>[0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0]</code> </p>
 <p><strong>如果想生成任意振幅的量子比特呢？</strong></p>
 <p>在一个量子系统中，波函数可以写作：</p>
 <script type="math/tex; mode=display">
 \mathinner{|\varphi\rangle} = \sum_{i=0}^{2^n-1}\alpha_i\mathinner{|i\rangle} \quad s.t. \sum_{i=0}^{2^n-1}\alpha_i^2 = 1</script><p>其中$\alpha_i$是振幅，$\mathinner{|i\rangle}$是基底，它们乘积之和就得到了一个叠加的波函数。</p>
-<p>于是可以定义波函数 <code>wave_func</code><br></p><pre class="line-numbers language-none"><code class="language-none">def wave_func(coef=[], seqs=[]):
-    '''返回由振幅和几个Qubit序列表示的叠加态波函数'''
-    res = 0
-    for i, a in enumerate(coef):
-        res += a * basis(seqs[i])
-    return np.matrix(res)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>测试一下，生成量子叠加态 $\mathinner{|\varphi\rangle}=\frac{1}{\sqrt{3}}(\mathinner{|00\rangle}+\mathinner{|01\rangle}+\mathinner{|11\rangle})$:<br><pre class="line-numbers language-none"><code class="language-none">coef = [np.sqrt(1/3), np.sqrt(1/3), np.sqrt(1/3)]
-amplitudes = wave_func(coef=coef, seqs=['00','01','11']).A1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><br>打印 <code>amplitudes</code>: <p></p>
+<p>于是可以定义波函数 <code>wave_func</code><br></p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">wave_func</span>(<span class="hljs-params">coef=[], seqs=[]</span>):</span><br>    <span class="hljs-string">'''返回由振幅和几个Qubit序列表示的叠加态波函数'''</span><br>    res = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> i, a <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(coef):<br>        res += a * basis(seqs[i])<br>    <span class="hljs-keyword">return</span> np.matrix(res)<br></code></pre></td></tr></tbody></table></figure><br>测试一下，生成量子叠加态 $\mathinner{|\varphi\rangle}=\frac{1}{\sqrt{3}}(\mathinner{|00\rangle}+\mathinner{|01\rangle}+\mathinner{|11\rangle})$:<br><figure class="highlight lsl"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lsl">coef = [np.sqrt(<span class="hljs-number">1</span>/<span class="hljs-number">3</span>), np.sqrt(<span class="hljs-number">1</span>/<span class="hljs-number">3</span>), np.sqrt(<span class="hljs-number">1</span>/<span class="hljs-number">3</span>)]<br>amplitudes = wave_func(coef=coef, seqs=['<span class="hljs-number">00</span>','<span class="hljs-number">01</span>','<span class="hljs-number">11</span>']).A1<br></code></pre></td></tr></tbody></table></figure><br>打印 <code>amplitudes</code>: <p></p>
 <p><code>[0.57735027 0.57735027 0.         0.57735027]</code> </p>
 <p>注意到，这种表示方法非常的不友好，简直不是人读的！于是我们尝试对波函数在投影方向进行分解。</p>
 <p>这里我们有投影算符：</p>
@@ -542,43 +309,13 @@ amplitudes = wave_func(coef=coef, seqs=['00','01','11']).A1<span aria-hidden="tr
 =\mathinner{\langle\alpha|\gamma\rangle}\mathinner{|\alpha\rangle}</script><p>它把一个一般的矢量$\mathinner{|\gamma\rangle}$投影到$\mathinner{|\alpha\rangle}$的方向上。</p>
 <p>先进行前置的准备工作：Hilbert空间是一个内积空间，所有量子比特都在Hilbert空间内。</p>
 <p>定义生成 <code>Hilbert空间</code> 函数：</p>
-<pre class="line-numbers language-none"><code class="language-none">def hilbert_space(nbit=5):
-    nspace = 2 ** nbit
-    for i in range(nspace):
-        # bin(7) = 0b100
-        binary = bin(i)[2:]
-        nzeros = nbit - len(binary)
-        yield '0' * nzeros + binary<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>再沿投影方向分解，投影的方向就是基向量的方向：<br></p><pre class="line-numbers language-none"><code class="language-none">def project(wave_func, direction):
-    '''&lt;Psi | phi_i&gt; to get the amplitude'''
-    return wave_func.H * direction
-
-def decompose(wave_func):
-    '''将叠加态波函数分解'''
-    nbit = int(np.log2(len(wave_func)))
-    amplitudes = []
-    direct_str = []
-    for seq in hilbert_space(nbit):
-        direct = basis(seq)
-        amp = project(wave_func, direct).A1[0]  #A1 属性将矩阵转化为 1 维 numpy 数组
-        if np.linalg.norm(amp) != 0:
-            amplitudes.append(amp)
-            direct_str.append(seq)
-    return amplitudes, direct_str<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>定义函数<code>a2wf</code>将 振幅 转为能被 <code>print_wf</code> 函数解析的 <code>wave_func</code> 格式<br><pre class="line-numbers language-none"><code class="language-none">def a2wf(amplitudes, n):
-    return np.mat(amplitudes.reshape(2 ** n, 1))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><br>再使用 <code>print_wf</code> 函数打印出波函数<br><pre class="line-numbers language-none"><code class="language-none">def print_wf(wf):
-    coef, seqs = decompose(wf)
-    str = '|psi&gt; = '
-    for i, seq in enumerate(seqs):
-        str += '{}|{}&gt;'.format(coef[i], seq)
-        if i != len(seqs) - 1:
-            str += '+'
-    return str<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
-<p>测试一下，生成一个大名鼎鼎的 <code>bell</code> 纠缠态 $\mathinner{|\varphi\rangle} = \frac{1}{\sqrt{2}}\mathinner{|00\rangle} + \frac{1}{\sqrt{2}}\mathinner{|11\rangle}$：<br></p><pre class="line-numbers language-none"><code class="language-none">wf = a2wf(np.matrix([np.sqrt(1/2),0,0,np.sqrt(1/2)]), 2)
-print_wf(wf)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p></p>
+<figure class="highlight maxima"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs maxima">def hilbert_space(nbit=<span class="hljs-number">5</span>):<br>    nspace = <span class="hljs-number">2</span> ** nbit<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(nspace):<br>        # bin(<span class="hljs-number">7</span>) = <span class="hljs-number">0b100</span><br>        binary = bin(i)[<span class="hljs-number">2</span>:]<br>        nzeros = nbit - len(binary)<br>        yield '<span class="hljs-number">0</span>' * nzeros + binary<br></code></pre></td></tr></tbody></table></figure>
+<p>再沿投影方向分解，投影的方向就是基向量的方向：<br></p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">project</span>(<span class="hljs-params">wave_func, direction</span>):</span><br>    <span class="hljs-string">'''&lt;Psi | phi_i&gt; to get the amplitude'''</span><br>    <span class="hljs-keyword">return</span> wave_func.H * direction<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">decompose</span>(<span class="hljs-params">wave_func</span>):</span><br>    <span class="hljs-string">'''将叠加态波函数分解'''</span><br>    nbit = <span class="hljs-built_in">int</span>(np.log2(<span class="hljs-built_in">len</span>(wave_func)))<br>    amplitudes = []<br>    direct_str = []<br>    <span class="hljs-keyword">for</span> seq <span class="hljs-keyword">in</span> hilbert_space(nbit):<br>        direct = basis(seq)<br>        amp = project(wave_func, direct).A1[<span class="hljs-number">0</span>]  <span class="hljs-comment">#A1 属性将矩阵转化为 1 维 numpy 数组</span><br>        <span class="hljs-keyword">if</span> np.linalg.norm(amp) != <span class="hljs-number">0</span>:<br>            amplitudes.append(amp)<br>            direct_str.append(seq)<br>    <span class="hljs-keyword">return</span> amplitudes, direct_str<br></code></pre></td></tr></tbody></table></figure><br>定义函数<code>a2wf</code>将 振幅 转为能被 <code>print_wf</code> 函数解析的 <code>wave_func</code> 格式<br><figure class="highlight ruby"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">a2wf</span><span class="hljs-params">(amplitudes, n)</span></span><span class="hljs-symbol">:</span><br>    <span class="hljs-keyword">return</span> np.mat(amplitudes.reshape(<span class="hljs-number">2</span> ** n, <span class="hljs-number">1</span>))<br></code></pre></td></tr></tbody></table></figure><br>再使用 <code>print_wf</code> 函数打印出波函数<br><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">print_wf</span>(<span class="hljs-params">wf</span>):</span><br>    coef, seqs = decompose(wf)<br>    <span class="hljs-built_in">str</span> = <span class="hljs-string">'|psi&gt; = '</span><br>    <span class="hljs-keyword">for</span> i, seq <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(seqs):<br>        <span class="hljs-built_in">str</span> += <span class="hljs-string">'{}|{}&gt;'</span>.<span class="hljs-built_in">format</span>(coef[i], seq)<br>        <span class="hljs-keyword">if</span> i != <span class="hljs-built_in">len</span>(seqs) - <span class="hljs-number">1</span>:<br>            <span class="hljs-built_in">str</span> += <span class="hljs-string">'+'</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">str</span><br></code></pre></td></tr></tbody></table></figure><p></p>
+<p>测试一下，生成一个大名鼎鼎的 <code>bell</code> 纠缠态 $\mathinner{|\varphi\rangle} = \frac{1}{\sqrt{2}}\mathinner{|00\rangle} + \frac{1}{\sqrt{2}}\mathinner{|11\rangle}$：<br></p><figure class="highlight apache"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">wf</span> = a<span class="hljs-number">2</span>wf(np.matrix([np.sqrt(<span class="hljs-number">1</span>/<span class="hljs-number">2</span>),<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,np.sqrt(<span class="hljs-number">1</span>/<span class="hljs-number">2</span>)]), <span class="hljs-number">2</span>)<br><span class="hljs-attribute">print_wf</span>(wf)<br></code></pre></td></tr></tbody></table></figure><p></p>
 <p>打印：<br><code>|psi&gt; = 0.7071067811865476|00&gt;+0.7071067811865476|11&gt;</code></p>
 <p>现在看起来就直观多了~</p>
 <h2 id="量子门"><a href="#量子门" class="headerlink" title="量子门"></a>量子门</h2><p>量子计算机仅仅只有量子比特是不够的，为了实现量子算法，还需要对量子比特进行酉变换，这种变换我们使用量子门实现。</p>
-<p>量子比特可以看做是布洛赫球上的一个向量：<br><img src="/img/qc-3-1.png" alt=""><br>量子门对应的就是该向量的旋转，要注意的一点是为了满足归一性，量子门必须是酉矩阵。</p>
+<p>量子比特可以看做是布洛赫球上的一个向量：<br><img src="/img/qc-3-1.png" srcset="/img/loading.gif" alt=""><br>量子门对应的就是该向量的旋转，要注意的一点是为了满足归一性，量子门必须是酉矩阵。</p>
 <p>量子门分为单比特量子门和多比特量子门，对于单比特量子门，常用的有泡利矩阵：</p>
 <script type="math/tex; mode=display">
 \sigma_x=
@@ -595,11 +332,7 @@ i & 0\\
 \begin{pmatrix}
 1 & 0\\ 
 0 & -1\\
-\end{pmatrix}</script><p>代码实现：<br></p><pre class="line-numbers language-none"><code class="language-none">X = np.array([[0, 1], [1, 0]])
-Y = np.array([[0, -1j], [1j, 0]])
-Z = np.array([[1, 0], [0, -1]])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><br>Hadamard门：<br><pre class="line-numbers language-none"><code class="language-none">H = np.array([[1 / np.sqrt(2), 1 / np.sqrt(2)], [1 / np.sqrt(2), -1 / np.sqrt(2)]])<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br>T门：<br><pre class="line-numbers language-none"><code class="language-none">T = np.array([[1, 0], [0, np.exp(1j * np.pi / 4)]])<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br>V门：<br><pre class="line-numbers language-none"><code class="language-none">V = np.array([[(1 + 1j) / 2, -1j * (1 + 1j) / 2], [-1j * (1 + 1j) / 2, (1 + 1j) / 2]])<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><br>我们将 <code>X</code> 门施加到一个基态为<code>0</code>的量子比特上：<br><pre class="line-numbers language-none"><code class="language-none">amplitudes = basis('0').A1
-wf = np.dot(amplitudes, X)
-print_wf(a2wf(wf, 1))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><br>打印：<br><code>|psi&gt; = 1|1&gt;</code>  <p></p>
+\end{pmatrix}</script><p>代码实现：<br></p><figure class="highlight angelscript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">X = np.<span class="hljs-built_in">array</span>([[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>], [<span class="hljs-number">1</span>, <span class="hljs-number">0</span>]])<br>Y = np.<span class="hljs-built_in">array</span>([[<span class="hljs-number">0</span>, <span class="hljs-number">-1</span>j], [<span class="hljs-number">1</span>j, <span class="hljs-number">0</span>]])<br>Z = np.<span class="hljs-built_in">array</span>([[<span class="hljs-number">1</span>, <span class="hljs-number">0</span>], [<span class="hljs-number">0</span>, <span class="hljs-number">-1</span>]])<br></code></pre></td></tr></tbody></table></figure><br>Hadamard门：<br><figure class="highlight maxima"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs maxima">H = <span class="hljs-built_in">np</span>.<span class="hljs-built_in">array</span>([[<span class="hljs-number">1</span> / <span class="hljs-built_in">np</span>.<span class="hljs-built_in">sqrt</span>(<span class="hljs-number">2</span>), <span class="hljs-number">1</span> / <span class="hljs-built_in">np</span>.<span class="hljs-built_in">sqrt</span>(<span class="hljs-number">2</span>)], [<span class="hljs-number">1</span> / <span class="hljs-built_in">np</span>.<span class="hljs-built_in">sqrt</span>(<span class="hljs-number">2</span>), -<span class="hljs-number">1</span> / <span class="hljs-built_in">np</span>.<span class="hljs-built_in">sqrt</span>(<span class="hljs-number">2</span>)]])<br></code></pre></td></tr></tbody></table></figure><br>T门：<br><figure class="highlight angelscript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">T = np.<span class="hljs-built_in">array</span>([[<span class="hljs-number">1</span>, <span class="hljs-number">0</span>], [<span class="hljs-number">0</span>, np.exp(<span class="hljs-number">1</span>j * np.pi / <span class="hljs-number">4</span>)]])<br></code></pre></td></tr></tbody></table></figure><br>V门：<br><figure class="highlight angelscript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">V = np.<span class="hljs-built_in">array</span>([[(<span class="hljs-number">1</span> + <span class="hljs-number">1</span>j) / <span class="hljs-number">2</span>, <span class="hljs-number">-1</span>j * (<span class="hljs-number">1</span> + <span class="hljs-number">1</span>j) / <span class="hljs-number">2</span>], [<span class="hljs-number">-1</span>j * (<span class="hljs-number">1</span> + <span class="hljs-number">1</span>j) / <span class="hljs-number">2</span>, (<span class="hljs-number">1</span> + <span class="hljs-number">1</span>j) / <span class="hljs-number">2</span>]])<br></code></pre></td></tr></tbody></table></figure><br>我们将 <code>X</code> 门施加到一个基态为<code>0</code>的量子比特上：<br><figure class="highlight stylus"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs stylus">amplitudes = basis(<span class="hljs-string">'0'</span>).A1<br>wf = np.dot(amplitudes, X)<br><span class="hljs-function"><span class="hljs-title">print_wf</span><span class="hljs-params">(a2wf(wf, <span class="hljs-number">1</span>)</span></span>)<br></code></pre></td></tr></tbody></table></figure><br>打印：<br><code>|psi&gt; = 1|1&gt;</code>  <p></p>
 <p>完全符合预期。</p>
 <p><strong>下面构造双量子门。</strong></p>
 <p>已经被证明，所有多量子门都可以用双量子门和单量子门生成，因此我们只需要构造双量子门即可。</p>
@@ -635,11 +368,7 @@ print_wf(a2wf(wf, 1))<span aria-hidden="true" class="line-numbers-rows"><span></
 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1\\
 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\
 \end{pmatrix}</script><p>可以看到，矩阵左上角是不变的，右下角重复<code>X</code>门</p>
-<p>推广到一般的情况，假设<code>m_size</code>表示门的维度，使用代码表示：<br></p><pre class="line-numbers language-none"><code class="language-none">base = np.identity(m_size)
-for i in range(int(m_size / 4)):
-    for j in range(2):
-        for k in range(2):
-            base[int(m_size / 2 + i * 2 + j)][int(m_size / 2 + i * 2 + k)] = GateManager.Gates[gate][j][k]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
+<p>推广到一般的情况，假设<code>m_size</code>表示门的维度，使用代码表示：<br></p><figure class="highlight angelscript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">base = np.identity(m_size)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-built_in">int</span>(m_size / <span class="hljs-number">4</span>)):<br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(<span class="hljs-number">2</span>):<br>        <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> range(<span class="hljs-number">2</span>):<br>            base[<span class="hljs-built_in">int</span>(m_size / <span class="hljs-number">2</span> + i * <span class="hljs-number">2</span> + j)][<span class="hljs-built_in">int</span>(m_size / <span class="hljs-number">2</span> + i * <span class="hljs-number">2</span> + k)] = GateManager.Gates[gate][j][k]<br></code></pre></td></tr></tbody></table></figure><p></p>
 <p>对于<strong>跨一条线且控制位在下</strong>的控制非门，会更麻烦一点，<br>我们定义为<code>CNOT3_20</code>，它的矩阵形式：</p>
 <script type="math/tex; mode=display">CNOT3\_20=
 \begin{pmatrix}
@@ -651,11 +380,8 @@ for i in range(int(m_size / 4)):
 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0\\
 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0\\
 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0\\
-\end{pmatrix}</script><p>推广到一般的情况，假设<code>m_size</code>表示门的维度，使用代码表示：<br></p><pre class="line-numbers language-none"><code class="language-none">base = np.identity(m_size)
-for i in range(int(m_size / 4)):
-    for j in range(2):
-        for k in range(2):
-            base[int(1 + 2 * i + j * m_size / 2)][int(1 + 2 * i + k * m_size / 2)] = GateManager.Gates[gate][j][k]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p></p>
+\end{pmatrix}</script><p>推广到一般的情况，假设<code>m_size</code>表示门的维度，使用代码表示：</p>
+<figure class="highlight angelscript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">base = np.identity(m_size)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-built_in">int</span>(m_size / <span class="hljs-number">4</span>)):<br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(<span class="hljs-number">2</span>):<br>        <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> range(<span class="hljs-number">2</span>):<br>            base[<span class="hljs-built_in">int</span>(<span class="hljs-number">1</span> + <span class="hljs-number">2</span> * i + j * m_size / <span class="hljs-number">2</span>)][<span class="hljs-built_in">int</span>(<span class="hljs-number">1</span> + <span class="hljs-number">2</span> * i + k * m_size / <span class="hljs-number">2</span>)] = GateManager.Gates[gate][j][k]<br></code></pre></td></tr></tbody></table></figure>
 <h2 id="测量"><a href="#测量" class="headerlink" title="测量"></a>测量</h2><p>一个量子系统是一个黑盒，在测试之前我们永远不知道它会塌缩到什么状态，而一个黑盒对我们来说是没有意义的。因此，从黑盒中提取出有用信息的过程就是测量了。</p>
 <p>测量会将量子比特塌缩为经典比特，而该量子比特的振幅就是塌缩成0或1的概率。举个例子，对于一个量子状态</p>
 <script type="math/tex; mode=display">\mathinner{|\varphi\rangle}=\frac{1}{\sqrt{3}}\mathinner{|0\rangle}+\frac{1}{\sqrt{3}}\mathinner{|1\rangle}+\frac{i}{\sqrt{3}}\mathinner{|2\rangle}=
@@ -685,37 +411,7 @@ for i in range(int(m_size / 4)):
 <script type="math/tex; mode=display">Prob(0)=\mathinner{\langle \varphi|}P_0\mathinner{|\varphi\rangle}=
 \mathinner{\langle \varphi|0 \rangle}\mathinner{\langle 0|\varphi \rangle}=
 |\mathinner{\langle 0|\varphi \rangle}|^2=\frac{1}{3}</script><p>通过测量算子，便求出了状态$\mathinner{|\varphi\rangle}$塌缩到$\mathinner{|0\rangle}$的概率为$\frac{1}{3}$</p>
-<p>已知了原理部分，就可以进行编码了。我们的量子计算机有两种测量方式，分别是进行全局测量和对单个比特进行测量，全局测量就是对所有比特同时进行测量：<br></p><pre class="line-numbers language-none"><code class="language-none">def measureAll():
-    probabilities = []
-    for amp in np.nditer(amplitudes):
-        probability = np.absolute(amp)**2
-        probabilities.append(probability)
-    results = list(range(len(probabilities)))
-    value = np.binary_repr(
-        np.random.choice(results, p=probabilities),
-        numQubits
-    )
-    return value<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>我们也可以对单个比特进行测量：<br><pre class="line-numbers language-none"><code class="language-none">def measureOne(place):
-    prob_0 = 0
-    probabilities = np.zeros(2)
-    for i, seq in enumerate(seqs):
-        prob_0 += np.square(coef[i]) if seq[index] == '0' else 0
-    probabilities[0] = prob_0
-    probabilities[1] = 1 - prob_0
-    ls = [0, 1]
-    selected = np.random.choice(ls, p=probabilities)
-    measured[place] = 1
-    # 重新生成状态
-    co = []
-    ba = []
-    for i, seq in enumerate(seqs):
-        if seq[index] == str(selected):
-            co.append(coef[i])
-            ba.append(seq[0:index] + seq[index+1:len(seq)])
-    co = normalization(co)
-    amplitudes = wave_func(co, ba).A1
-    numQubits = len(ba[0])
-    return selected<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>不同的是，在进行单个比特的测量后，需要重新生成状态。<p></p>
+<p>已知了原理部分，就可以进行编码了。我们的量子计算机有两种测量方式，分别是进行全局测量和对单个比特进行测量，全局测量就是对所有比特同时进行测量：<br></p><figure class="highlight maxima"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs maxima">def measureAll():<br>    probabilities = []<br>    <span class="hljs-keyword">for</span> amp <span class="hljs-keyword">in</span> <span class="hljs-built_in">np</span>.nditer(amplitudes):<br>        probability = <span class="hljs-built_in">np</span>.absolute(amp)**<span class="hljs-number">2</span><br>        probabilities.<span class="hljs-built_in">append</span>(probability)<br>    results = list(<span class="hljs-built_in">range</span>(len(probabilities)))<br>    value = <span class="hljs-built_in">np</span>.binary_repr(<br>        <span class="hljs-built_in">np</span>.<span class="hljs-built_in">random</span>.choice(results, p=probabilities),<br>        numQubits<br>    )<br>    <span class="hljs-built_in">return</span> value<br></code></pre></td></tr></tbody></table></figure><br>我们也可以对单个比特进行测量：<br><figure class="highlight perl"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs perl">def measureOne(place):<br>    prob_<span class="hljs-number">0</span> = <span class="hljs-number">0</span><br>    probabilities = np.zeros(<span class="hljs-number">2</span>)<br>    <span class="hljs-keyword">for</span> i, seq in enumerate(seqs):<br>        prob_<span class="hljs-number">0</span> += np.square(coef[i]) <span class="hljs-keyword">if</span> se<span class="hljs-string">q[index]</span> == <span class="hljs-string">'0'</span> <span class="hljs-keyword">else</span> <span class="hljs-number">0</span><br>    probabilities[<span class="hljs-number">0</span>] = prob_<span class="hljs-number">0</span><br>    probabilities[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span> - prob_<span class="hljs-number">0</span><br>    ls = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>]<br>    selected = np.random.choice(ls, p=probabilities)<br>    measured[place] = <span class="hljs-number">1</span><br>    <span class="hljs-comment"># 重新生成状态</span><br>    co = []<br>    ba = []<br>    <span class="hljs-keyword">for</span> i, seq in enumerate(seqs):<br>        <span class="hljs-keyword">if</span> se<span class="hljs-string">q[index]</span> == str(selected):<br>            co.append(coef[i])<br>            ba.append(se<span class="hljs-string">q[0:index]</span> + se<span class="hljs-string">q[index+1:len(seq)]</span>)<br>    co = normalization(co)<br>    amplitudes = wave_func(co, ba).A1<br>    numQubits = len(ba[<span class="hljs-number">0</span>])<br>    <span class="hljs-keyword">return</span> selected<br></code></pre></td></tr></tbody></table></figure><br>不同的是，在进行单个比特的测量后，需要重新生成状态。<p></p>
 <h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>如此一来，我们就实现了一个量子计算机，麻雀虽小五脏俱全，绝大部分量子算法都可以用这个玩具实现了~</p>
 <p>总结一下，我们用到了哪些知识：</p>
 <ul>
@@ -729,687 +425,296 @@ for i in range(int(m_size / 4)):
 </blockquote>
 
             </div>
-            <hr/>
-
-            
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        Author:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">mumu</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        Link:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="http://hahuillu.cn/2020/12/14/qsim/">http://hahuillu.cn/2020/12/14/qsim/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        Reprint policy:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    All articles in this blog are used except for special statements
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    reprint polocy. If reproduced, please indicate source
-                    <a href="/about" target="_blank">mumu</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
-        M.toast({html: toastHTML})
-      });
-
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
-
-
-
-            <div class="tag_share" style="display: block;">
-                <div class="post-meta__tag-list" style="display: inline-block;">
-                    
-                        <div class="article-tag">
-                            
-                                <a href="/tags/python/">
-                                    <span class="chip bg-color">python</span>
-                                </a>
-                            
-                                <a href="/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/">
-                                    <span class="chip bg-color">量子计算</span>
-                                </a>
-                            
-                        </div>
-                    
-                </div>
-                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
-<div id="article-share">
-
-    
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="/libs/share/js/social-share.min.js"></script>
-    
-
-    
-
-</div>
-
-                </div>
-            </div>
-            
-                <style>
-    #reward {
-        margin: 40px 0;
-        text-align: center;
-    }
-
-    #reward .reward-link {
-        font-size: 1.4rem;
-        line-height: 38px;
-    }
-
-    #reward .btn-floating:hover {
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    #rewardModal {
-        width: 320px;
-        height: 350px;
-    }
-
-    #rewardModal .reward-title {
-        margin: 15px auto;
-        padding-bottom: 5px;
-    }
-
-    #rewardModal .modal-content {
-        padding: 10px;
-    }
-
-    #rewardModal .close {
-        position: absolute;
-        right: 15px;
-        top: 15px;
-        color: rgba(0, 0, 0, 0.5);
-        font-size: 1.3rem;
-        line-height: 20px;
-        cursor: pointer;
-    }
-
-    #rewardModal .close:hover {
-        color: #ef5350;
-        transform: scale(1.3);
-        -moz-transform:scale(1.3);
-        -webkit-transform:scale(1.3);
-        -o-transform:scale(1.3);
-    }
-
-    #rewardModal .reward-tabs {
-        margin: 0 auto;
-        width: 210px;
-    }
-
-    .reward-tabs .tabs {
-        height: 38px;
-        margin: 10px auto;
-        padding-left: 0;
-    }
-
-    .reward-content ul {
-        padding-left: 0 !important;
-    }
-
-    .reward-tabs .tabs .tab {
-        height: 38px;
-        line-height: 38px;
-    }
-
-    .reward-tabs .tab a {
-        color: #fff;
-        background-color: #ccc;
-    }
-
-    .reward-tabs .tab a:hover {
-        background-color: #ccc;
-        color: #fff;
-    }
-
-    .reward-tabs .wechat-tab .active {
-        color: #fff !important;
-        background-color: #22AB38 !important;
-    }
-
-    .reward-tabs .alipay-tab .active {
-        color: #fff !important;
-        background-color: #019FE8 !important;
-    }
-
-    .reward-tabs .reward-img {
-        width: 210px;
-        height: 210px;
-    }
-</style>
-
-<div id="reward">
-    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
-
-    <!-- Modal Structure -->
-    <div id="rewardModal" class="modal">
-        <div class="modal-content">
-            <a class="close modal-close"><i class="fas fa-times"></i></a>
-            <h4 class="reward-title">(๑＞ڡ＜)☆谢谢老板~</h4>
-            <div class="reward-content">
-                <div class="reward-tabs">
-                    <ul class="tabs row">
-                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
-                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
-                    </ul>
-                    <div id="alipay">
-                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
-                    </div>
-                    <div id="wechat">
-                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    $(function () {
-        $('.tabs').tabs();
-    });
-</script>
-
-            
-        </div>
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-<article id="prenext-posts" class="prev-next articles">
-    <div class="row article-row">
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
-            <div class="card">
-                <a href="/2020/12/16/leet-algo/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="总结|常用算法">
-                        
-                        <span class="card-title">总结|常用算法</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-12-16
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                    算法
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
                 
-                <div class="card-action article-tags">
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
                     
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
-                    </a>
+                      <a class="hover-with-bg" href="/categories/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/">量子计算</a>
                     
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">算法</span>
-                    </a>
-                    
-                </div>
+                  </div>
                 
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/11/13/phy-history/">
-                    <div class="card-image">
-                        
-                        <img src="http://07imgmini.eastday.com/mobile/20200404/20200404155256_5039dacecc791a37d30f4a66007b8eed_3.jpeg" class="responsive-img" alt="从奥术神座到数理学史">
-                        
-                        <span class="card-title">从奥术神座到数理学史</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-11-13
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E9%9A%8F%E7%AC%94/" class="post-category">
-                                    随笔
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
                 
-                <div class="card-action article-tags">
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
                     
-                    <a href="/tags/%E9%9A%8F%E7%AC%94/">
-                        <span class="chip bg-color">随笔</span>
-                    </a>
+                      <a class="hover-with-bg" href="/tags/python/">python</a>
                     
-                    <a href="/tags/%E5%B0%8F%E8%AF%B4/">
-                        <span class="chip bg-color">小说</span>
-                    </a>
+                      <a class="hover-with-bg" href="/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/">量子计算</a>
                     
-                </div>
+                  </div>
                 
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/12/16/leet-algo/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">总结|常用算法</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/11/13/phy-history/">
+                        <span class="hidden-mobile">从奥术神座到数理学史</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
             </div>
-        </div>
-        
-    </div>
-</article>
 
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
-
-
-<!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
-
-<!-- 代码语言 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
-
-
-<!-- 代码块复制 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
-
-
-<!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-
-
-<!-- 代码块折行 -->
-
-<style type="text/css">
-code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-</style>
-
-
-    </div>
-    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget" style="background-color: white;">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
-            <div id="toc-content"></div>
-        </div>
-    </div>
+      </div>
+    
+  </div>
 </div>
 
-<!-- TOC 悬浮按钮. -->
+<!-- Custom -->
 
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fas fa-list-ul"></i>
-    </a>
-</div>
-
-
-<script src="/libs/tocbot/tocbot.min.js"></script>
-<script>
-    $(function () {
-        tocbot.init({
-            tocSelector: '#toc-content',
-            contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
-        });
-
-        // modify the toc link href to support Chinese.
-        let i = 0;
-        let tocHeading = 'toc-heading-';
-        $('#toc-content a').each(function () {
-            $(this).attr('href', '#' + tocHeading + (++i));
-        });
-
-        // modify the heading title id to support Chinese.
-        i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
-            $(this).attr('id', tocHeading + (++i));
-        });
-
-        // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
-            /* add post toc fixed. */
-            if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
-            } else {
-                $tocWidget.removeClass('toc-fixed');
-            }
-        });
-
-        
-        /* 修复文章卡片 div 的宽度. */
-        let fixPostCardWidth = function (srcId, targetId) {
-            let srcDiv = $('#' + srcId);
-            if (srcDiv.length === 0) {
-                return;
-            }
-
-            let w = srcDiv.width();
-            if (w >= 450) {
-                w = w + 21;
-            } else if (w >= 350 && w < 450) {
-                w = w + 18;
-            } else if (w >= 300 && w < 350) {
-                w = w + 16;
-            } else {
-                w = w + 14;
-            }
-            $('#' + targetId).width(w);
-        };
-
-        // 切换TOC目录展开收缩的相关操作.
-        const expandedClass = 'expanded';
-        let $tocAside = $('#toc-aside');
-        let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
-            if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
-            } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
-            }
-            fixPostCardWidth('artDetail', 'prenext-posts');
-        });
-        
-    });
-</script>
 
     
 
-</main>
-
-
-
-
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
-    });
-</script>
-
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
-
-<!--&lt;!&ndash; 评论start &ndash;&gt;-->
-<!--&lt;!&ndash;PC版&ndash;&gt;-->
-<!--<div id="SOHUCS" sid="请将此处替换为配置SourceID的语句"></div>-->
-<!--<script charset="utf-8" type="text/javascript" src="https://cy-cdn.kuaizhan.com/upload/changyan.js" ></script>-->
-<!--<script type="text/javascript">-->
-<!--    window.changyan.api.config({-->
-<!--        appid: 'cyv7kJuW9',-->
-<!--        conf: 'prod_9ae5037f9e7e801d2e1a69912c71e860'-->
-<!--    });-->
-<!--</script>-->
-<!--&lt;!&ndash; 评论end &ndash;&gt;-->
-
-    <footer class="page-footer bg-color">
     
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
-<!--        访客 start -->
-        <div class="col s12 m8 l8 copy-right">
-            
-                <span id="busuanzi_container_site_pv" style='display:none'>
-        <i class="fa fa-heart-o"></i>
-        本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
-    </span>
-            
-            
-                <span id="busuanzi_container_site_uv" style='display:none'>
-        人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
-    </span>
-            
-<!--                访客 end -->
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-            <span id="sitetime"></span>
-            
-            
-            
-            
-            
-            <br>
-            
-            <br>
-            
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
         </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/regaliastar" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:regaliastar@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
-
-</div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
     </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://github.com/regaliastar" target="_blank" rel="nofollow noopener"><span>Github</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/regaliastar" target="_blank" rel="nofollow noopener"><span>Mumu</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
 </footer>
 
-<div class="progress-bar"></div>
-<script language=javascript>
-    function siteTime() {
-        window.setTimeout("siteTime()", 1000);
-        var seconds = 1000;
-        var minutes = seconds * 60;
-        var hours = minutes * 60;
-        var days = hours * 24;
-        var years = days * 365;
-        var today = new Date();
-        var todayYear = today.getFullYear();
-        var todayMonth = today.getMonth() + 1;
-        var todayDate = today.getDate();
-        var todayHour = today.getHours();
-        var todayMinute = today.getMinutes();
-        var todaySecond = today.getSeconds();
-        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
-        year - 作为date对象的年份，为4位年份值
-        month - 0-11之间的整数，做为date对象的月份
-        day - 1-31之间的整数，做为date对象的天数
-        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
-        minutes - 0-59之间的整数，做为date对象的分钟数
-        seconds - 0-59之间的整数，做为date对象的秒数
-        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
-        var t1 = Date.UTC(2020, 10, 21, 00, 00, 00); //北京时间2018-2-13 00:00:00
-        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
-        var diff = t2 - t1;
-        var diffYears = Math.floor(diff / years);
-        var diffDays = Math.floor((diff / days) - diffYears * 365);
-        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
-        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
-        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
-        document.getElementById("sitetime").innerHTML = "本站已运行 " +diffYears+" 年 "+diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
-    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
-    siteTime();
-</script>
-<script>
-    $(document).ready(function () {
+<!-- SCRIPTS -->
 
-        var int = setInterval(fixCount, 50);  // 50ms周期检测函数
-        var pvcountOffset = 80000;  // 初始化首次数据
-        var uvcountOffset = 20000;
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
 
-        function fixCount() {
-            if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
-                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + pvcountOffset);
-                clearInterval(int);
-            }
-            if ($("#busuanzi_container_site_pv").css("display") != "none") {
-                $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + uvcountOffset); // 加上初始数据
-                clearInterval(int); // 停止检测
-            }
-        }
-    });
-</script>
-
-    <!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
-            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
-                   class="search-input">
-        </div>
-        <div id="searchResult"></div>
-    </div>
-</div>
-
-<script src="/js/search.js"></script>
-<script type="text/javascript">
-$(function () {
-    searchFunc('/search.xml', 'searchInput', 'searchResult');
-});
-</script>
-
-    <!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
 
 
-    <script src="/libs/materialize/materialize.min.js"></script>
-    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="/libs/aos/aos.js"></script>
-    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="/js/matery.js"></script>
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
-    <!-- Baidu Analytics -->
+<!-- Plugins -->
 
-    <!-- Baidu Push -->
 
-<script>
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
     (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      var path = "/search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
         }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
+      };
+    </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
-    
-    
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-    
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
 
-    
+  
 
-    
 
-    
 
-    
 
-    
 
-    
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
-    
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
 
 </body>
-
 </html>
