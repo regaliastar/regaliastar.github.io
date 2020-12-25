@@ -55,13 +55,13 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"hahuillu.cn","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"hahuillu.cn","root":"/","version":"1.8.7","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.2.0">
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Mumu" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Mumu" type="application/atom+xml">
 </head>
 
 
@@ -143,6 +143,8 @@
           <div class="page-header text-center fade-in-up">
             <span class="h2" id="subtitle" title="原理|Vue：MVVM实现">
               
+                原理|Vue：MVVM实现
+              
             </span>
 
             
@@ -221,7 +223,7 @@
 <p>翻开Vue源代码，可以看到里面普遍使用了<code>Object.defineProperty</code>方法，但是里面拓展了Property来避开<code>Object.defineProperty</code>，其实原理是一样的。如下面<code>Vue</code>的源码片段所示<br></p><figure class="highlight smali"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs smali">// For props<span class="hljs-built_in"> and </span>computed properties, we define the proxy getters on<br>// the Vue instances at extension time, on the extended prototype. This<br>// avoids Object.defineProperty calls for each<span class="hljs-built_in"> instance </span>created.<br>if (Sub.options.props) {<br>    initProps(Sub)<br>}<br>if (Sub.options.computed) {<br>    initComputed(Sub)<br>}<br></code></pre></td></tr></tbody></table></figure><p></p>
 <hr>
 <p>对于Vue来说，它并不是单纯地通过数据和dom节点的绑定来绑定数据，它在网页dom和accessor之间会有两层，一层是Wacher，一层是Directive。如下图所示</p>
-<p><img src="https://img-blog.csdn.net/20180327221231540?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzMzNjEyOTE4/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" srcset="/img/loading.gif" alt=""></p>
+<p><img src="/img/vue-1.png" srcset="/img/loading.gif" alt=""></p>
 <p>如果我们通过代码修改了<code>a.b</code>的值，那么<code>set</code>函数就会通知Watcher，再由Watcher通知Directive修改Dom里<code>a.b</code>的值</p>
 <h2 id="0x03-结语"><a href="#0x03-结语" class="headerlink" title="0x03 结语"></a>0x03 结语</h2><p>那么，如果我们要来实现Vue的功能，代码我们该怎么写呢？这里有一个小小的例子供你参考</p>
 <p>html页面：<br></p><figure class="highlight applescript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs applescript">&lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">id</span>=<span class="hljs-string">"app"</span>&gt;<br>	Hello World!<br>&lt;/<span class="hljs-keyword">div</span>&gt;<br></code></pre></td></tr></tbody></table></figure><br>主体部分<br><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//模仿Vue操作dom的语法</span><br><span class="hljs-comment">//我们自己创建一个Vue函数</span><br><span class="hljs-keyword">const</span> Vue = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">{el, data={message:<span class="hljs-string">''</span>}}</span>)</span>{<br>	<span class="hljs-comment">//绑定 get和set方法</span><br>	<span class="hljs-built_in">Object</span>.defineProperty(<span class="hljs-built_in">this</span>,<span class="hljs-string">'message'</span>,{<br>		get: <span class="hljs-function">() =&gt;</span> {<br>			<span class="hljs-keyword">return</span> <span class="hljs-built_in">document</span>.getElementById(el).innerHTML<br>		},<br>		set: <span class="hljs-function"><span class="hljs-params">val</span> =&gt;</span> {<br>			<span class="hljs-built_in">document</span>.getElementById(el).innerHTML = val<br>		}<br>	})<br>}<br><br><span class="hljs-keyword">const</span> v = <span class="hljs-keyword">new</span> Vue({<br>	el: <span class="hljs-string">'app'</span>,<br>	data: {<br>		message: <span class="hljs-string">'Wooooooooooo!'</span><br>	}<br>})<br>v.message					<span class="hljs-comment">//返回 Wooooooooooo! 字符串</span><br>v.message = <span class="hljs-string">'ohhhhhhhhhhh!'</span>	<span class="hljs-comment">//将div内的内容变为 ohhhhhhhhhhh!</span><br></code></pre></td></tr></tbody></table></figure><br>这样，就能进行数据交互了。<p></p>
@@ -235,7 +237,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                      <a class="hover-with-bg" href="/categories/JavaScript/">JavaScript</a>
                     
                   </div>
                 
@@ -279,6 +281,38 @@
               
             </div>
 
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    Fluid.utils.waitElementVisible('vcomments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "tczSpze7CzwpuBSXKSKOqWzd-gzGzoHsz",
+          app_key: "HNDDKbcPYSvhQmw5HcuBOjQx",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "https://tczspze7.lc-cn-n1-shared.com",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
             
           </article>
         </div>
@@ -422,17 +456,6 @@
 
 
 
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-      typing(title)
-      
-    })(window, document);
-  </script>
 
 
 
