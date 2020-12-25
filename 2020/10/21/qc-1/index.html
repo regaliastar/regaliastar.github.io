@@ -59,9 +59,9 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.2.0">
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Mumu" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Mumu" type="application/atom+xml">
 </head>
 
 
@@ -90,6 +90,18 @@
               <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
               </a>
             </li>
           
@@ -206,6 +218,12 @@
           <article class="post-content mx-auto">
             <!-- SEO header -->
             <h1 style="display: none">梳理|量子计算（1）：体系结构</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：December 25, 2020 am
+                
+              </p>
             
             <div class="markdown-body">
               <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>　　作为一个工程师，我习惯于对任何看起来神秘的事物刨根问底，量子计算同样如此。看到一辆玩具小车在横冲直撞，我会思考这是因为电池驱动的马达带动轴承做旋转运动；看到日升日落，我会思考这是由于万有引力的束缚，抑或是广义相对论的时空约束。<br>　　万物均有体系结构，就算是看起来最反常识的量子力学，也接受薛定谔方程的描述。因此，我把<code>体系结构</code>作为本系列的第一篇文章，作为对自己知识的梳理。<br>　　或许是我担任”计算机组成与体系结构”这门课程助教的原因:)，体系结构这个话题可以聊的就太多了。然而我毕竟不是搞的芯片，因此本文从工程的角度出发，对比经典与量子两种架构，对其进行一个全面的阐述。  </p>
