@@ -59,9 +59,9 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Mumu" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 5.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Mumu" type="application/atom+xml">
 </head>
 
 
@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.3k 字
+      1.6k 字
     </span>
   
 
@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      15
+      17
        分钟
     </span>
   
@@ -221,7 +221,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：December 25, 2020 pm
+                  本文最后更新于：December 30, 2020 pm
                 
               </p>
             
@@ -278,6 +278,10 @@
 </ul>
 <p>最常用的是组合继承，结合了两者的优点。</p>
 <figure class="highlight reasonml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-comment">// 原型继承</span><br><span class="hljs-keyword">function</span> extend<span class="hljs-constructor">_F()</span>{}<br>extend_F.prototype = <span class="hljs-keyword">new</span> <span class="hljs-constructor">F()</span>  <br><br><span class="hljs-comment">//盗用构造函数</span><br><span class="hljs-keyword">function</span> extend<span class="hljs-constructor">_F()</span>{<br>    <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">F</span>.</span></span>call(this)<br>}<br><br><span class="hljs-comment">//组合继承</span><br><span class="hljs-keyword">function</span> extend<span class="hljs-constructor">_F()</span>{<br>    <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">F</span>.</span></span>call(this)<br>}<br>extend_F.prototype = <span class="hljs-keyword">new</span> <span class="hljs-constructor">F()</span> <br></code></pre></td></tr></tbody></table></figure>
+<p>ES5的继承时通过<code>prototype</code>或构造函数机制来实现。ES5的继承实质上是先创建子类的实例对象，然后再将父类的方法添加到this上（Parent.call(this)）。</p>
+<p>ES6的继承机制完全不同，实质上是先创建父类的实例对象this（所以必须先调用父类的super()方法），然后再用子类的构造函数修改this。</p>
+<p>在有了<code>extends</code>关键词后，子类必须在constructor方法中调用super方法，否则新建实例报错。因为子类没有自己的this对象，而是继承了父类的this对象，然后对其进行加工。如果不调用super方法，子类得不到this对象。</p>
+<p>ps：super关键字指代父类的实例，即父类的this对象。在子类构造函数中，调用super后，才可使用this关键字，否则报错。</p>
 
             </div>
             <hr>
