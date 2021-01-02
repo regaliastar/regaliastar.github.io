@@ -6,7 +6,7 @@
   <link href="http://hahuillu.cn/atom.xml" rel="self"/>
   
   <link href="http://hahuillu.cn/"/>
-  <updated>2020-12-30T07:05:21.775Z</updated>
+  <updated>2021-01-02T08:21:11.247Z</updated>
   <id>http://hahuillu.cn/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>实现一个量子计算机</title>
+    <link href="http://hahuillu.cn/2021/01/02/2020-zong-jie/"/>
+    <id>http://hahuillu.cn/2021/01/02/2020-zong-jie/</id>
+    <published>2021-01-02T08:20:00.000Z</published>
+    <updated>2021-01-02T08:21:11.247Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;如题，对2020年的一个年度总结，在这里请恕我晒出新年收到的第一份惊喜，当当当当~&lt;span class=&quot;github-emoji&quot;&gt;&lt;span&gt;😉&lt;/span&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="随笔" scheme="http://hahuillu.cn/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="随笔" scheme="http://hahuillu.cn/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaScript|面向对象</title>
