@@ -6,7 +6,7 @@
   <link href="http://hahuillu.cn/atom.xml" rel="self"/>
   
   <link href="http://hahuillu.cn/"/>
-  <updated>2021-01-02T08:25:04.281Z</updated>
+  <updated>2021-03-29T06:51:33.107Z</updated>
   <id>http://hahuillu.cn/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>可计算理论</title>
+    <link href="http://hahuillu.cn/2021/03/29/ke-ji-suan-li-lun/"/>
+    <id>http://hahuillu.cn/2021/03/29/ke-ji-suan-li-lun/</id>
+    <published>2021-03-29T03:04:00.000Z</published>
+    <updated>2021-03-29T06:51:33.107Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;0x01-前言&quot;&gt;&lt;a href=&quot;#0x01-前言&quot; class=&quot;headerlink&quot; title=&quot;0x01 前言&quot;&gt;&lt;/a&gt;0x01</summary>
+        
+      
+    
+    
+    
+    <category term="原理" scheme="http://hahuillu.cn/categories/%E5%8E%9F%E7%90%86/"/>
+    
+    
+    <category term="原理" scheme="http://hahuillu.cn/tags/%E5%8E%9F%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>2020总结</title>
@@ -74,7 +99,7 @@
     <link href="http://hahuillu.cn/2020/12/16/leet-algo/"/>
     <id>http://hahuillu.cn/2020/12/16/leet-algo/</id>
     <published>2020-12-16T03:07:00.000Z</published>
-    <updated>2020-12-30T06:28:28.025Z</updated>
+    <updated>2021-01-07T02:29:18.296Z</updated>
     
     
       

@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="mumu">
   <meta name="keywords" content="">
-  <title>原理|Vue：MVVM实现 - Mumu</title>
+  <title>可计算理论 - Mumu</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -153,9 +153,9 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="原理|Vue：MVVM实现">
+            <span class="h2" id="subtitle" title="可计算理论">
               
-                原理|Vue：MVVM实现
+                可计算理论
               
             </span>
 
@@ -165,8 +165,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-10-25 17:42" pubdate>
-        October 25, 2020 pm
+      <time datetime="2021-03-29 11:04" pubdate>
+        March 29, 2021 am
       </time>
     </span>
   
@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      912 字
+      384 字
     </span>
   
 
@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      11
+      4
        分钟
     </span>
   
@@ -217,35 +217,30 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">原理|Vue：MVVM实现</h1>
+            <h1 style="display: none">可计算理论</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：December 25, 2020 pm
+                  本文最后更新于：March 29, 2021 pm
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="0x01-前言"><a href="#0x01-前言" class="headerlink" title="0x01 前言"></a>0x01 前言</h2><p>最近Vue.js特别火，对于它的mvvm的特性，我感到特别好奇，于是通过尤大的话了解到，Vue使用了JavaScript的 <code>Object.defineProperty</code>函数来实现数据的双向绑定。</p>
-<p>这里，我将记录该方法的学习成果，也算是一个总结吧 ￣へ￣ </p>
-<h2 id="0x02-过程"><a href="#0x02-过程" class="headerlink" title="0x02 过程"></a>0x02 过程</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>首先看 <code>MDN</code> 上对该方法的描述：<br></p><figure class="highlight reasonml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Object</span>.</span></span>define<span class="hljs-constructor">Property(<span class="hljs-params">obj</span>, <span class="hljs-params">prop</span>, <span class="hljs-params">descriptor</span>)</span><br><br>	obj<br>		要在其上定义属性的对象。<br>	prop<br>		要定义或修改的属性的名称。<br>	descriptor<br>		将被定义或修改的属性描述符。 <br>	<br>	返回值<br>		被传递给函数的对象。<br></code></pre></td></tr></tbody></table></figure><p></p>
-<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><ol>
-<li>创建属性</li>
-</ol>
-<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> person = {}<br><br><span class="hljs-comment">// 在对象中添加一个属性与数据描述符的示例</span><br><span class="hljs-built_in">Object</span>.defineProperty(person,<span class="hljs-string">'age'</span>,{<br>    configurable:<span class="hljs-literal">false</span>,<span class="hljs-comment">//configurable特性表示对象的属性是否可以被删除，以及除writable特性外的其他特性是否可以被修改。</span><br>    enumerable:<span class="hljs-literal">false</span>,<span class="hljs-comment">//对象属性是否可通过for-in循环，false为不可循环，默认值为true</span><br>    writable:<span class="hljs-literal">false</span>,<span class="hljs-comment">//对象属性是否可修改,false为不可修改，默认值为true</span><br>    value:<span class="hljs-string">'17'</span> <span class="hljs-comment">//对象属性的默认值，默认值为undefined</span><br>});<br><br><span class="hljs-comment">//writable</span><br>person.age=<span class="hljs-string">"71"</span>;<br><span class="hljs-built_in">console</span>.log(person);<span class="hljs-comment">//17，不可修改value，而且在严格模式下会抛出错误</span><br><br><span class="hljs-comment">//enumerable</span><br>person.name = <span class="hljs-string">"Allen"</span>; 如果使用直接赋值的方式创建对象的属性，则这个属性的enumerable为<span class="hljs-literal">true</span><br><span class="hljs-function"><span class="hljs-title">for</span>(<span class="hljs-params"><span class="hljs-keyword">var</span> i <span class="hljs-keyword">in</span> person</span>)</span>{<br>    <span class="hljs-built_in">console</span>.log(person[i]) <span class="hljs-comment">//无结果，不可循环</span><br>}<br><br><span class="hljs-comment">//configurable</span><br><span class="hljs-keyword">delete</span> person.age<br><span class="hljs-built_in">console</span>.log(person.age)<span class="hljs-comment">//17，不可删除</span><br><br><span class="hljs-built_in">Object</span>.defineProperty(person,<span class="hljs-string">'age'</span>,{<br>    configurable:<span class="hljs-literal">true</span> <span class="hljs-comment">//不可修改，将抛出错误</span><br>});<br></code></pre></td></tr></tbody></table></figure>
-<p>2.一般的 Setters 和 Getters</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Factory</span>(<span class="hljs-params"></span>)</span>{<br>	<span class="hljs-keyword">var</span> value = <span class="hljs-literal">null</span>;<br>	<span class="hljs-keyword">var</span> factory = [];<br><br>	<span class="hljs-built_in">Object</span>.defineProperty(<span class="hljs-built_in">this</span>, <span class="hljs-string">'temperature'</span>,{<br>		get: <span class="hljs-function">() =&gt;</span> {<br>			<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'get!'</span>);<br>		},<br>		set: <span class="hljs-function"><span class="hljs-params">val</span> =&gt;</span> {<br>			value = val;<br>			factory.push(val);<br>		}<br>	});<br><br>	<span class="hljs-built_in">this</span>.getFactory = <span class="hljs-function">() =&gt;</span> factory;<br>}<br><br><span class="hljs-keyword">var</span> f = <span class="hljs-keyword">new</span> Factory();<br>f.temperature;					<span class="hljs-comment">//打印 get!</span><br>f.temperature = <span class="hljs-number">22</span>;<br>f.temperature = <span class="hljs-number">33</span>;<br><span class="hljs-built_in">console</span>.log(f.getFactory());	<span class="hljs-comment">//打印 [22,33]</span><br></code></pre></td></tr></tbody></table></figure>
-<p>可以看到，当数据获取或者改变时，会调用函数的<code>get</code>或<code>set</code>方法，如此，再辅以视图层的操作，便实现了数据的双向绑定</p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>进一步，我们还没有满足：那<code>Vue</code>是如何使用这个方法做到的呢？</p>
-<p>为了解决这个疑问，我们不得不翻开<code>Vue.js</code>的源代码一览究竟</p>
-<p>翻开Vue源代码，可以看到里面普遍使用了<code>Object.defineProperty</code>方法，但是里面拓展了Property来避开<code>Object.defineProperty</code>，其实原理是一样的。如下面<code>Vue</code>的源码片段所示<br></p><figure class="highlight smali"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs smali">// For props<span class="hljs-built_in"> and </span>computed properties, we define the proxy getters on<br>// the Vue instances at extension time, on the extended prototype. This<br>// avoids Object.defineProperty calls for each<span class="hljs-built_in"> instance </span>created.<br>if (Sub.options.props) {<br>    initProps(Sub)<br>}<br>if (Sub.options.computed) {<br>    initComputed(Sub)<br>}<br></code></pre></td></tr></tbody></table></figure><p></p>
-<hr>
-<p>对于Vue来说，它并不是单纯地通过数据和dom节点的绑定来绑定数据，它在网页dom和accessor之间会有两层，一层是Wacher，一层是Directive。如下图所示</p>
-<p><img src="/img/vue-1.png" srcset="/img/loading.gif" alt=""></p>
-<p>如果我们通过代码修改了<code>a.b</code>的值，那么<code>set</code>函数就会通知Watcher，再由Watcher通知Directive修改Dom里<code>a.b</code>的值</p>
-<h2 id="0x03-结语"><a href="#0x03-结语" class="headerlink" title="0x03 结语"></a>0x03 结语</h2><p>那么，如果我们要来实现Vue的功能，代码我们该怎么写呢？这里有一个小小的例子供你参考</p>
-<p>html页面：<br></p><figure class="highlight applescript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs applescript">&lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">id</span>=<span class="hljs-string">"app"</span>&gt;<br>	Hello World!<br>&lt;/<span class="hljs-keyword">div</span>&gt;<br></code></pre></td></tr></tbody></table></figure><br>主体部分<br><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//模仿Vue操作dom的语法</span><br><span class="hljs-comment">//我们自己创建一个Vue函数</span><br><span class="hljs-keyword">const</span> Vue = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">{el, data={message:<span class="hljs-string">''</span>}}</span>)</span>{<br>	<span class="hljs-comment">//绑定 get和set方法</span><br>	<span class="hljs-built_in">Object</span>.defineProperty(<span class="hljs-built_in">this</span>,<span class="hljs-string">'message'</span>,{<br>		get: <span class="hljs-function">() =&gt;</span> {<br>			<span class="hljs-keyword">return</span> <span class="hljs-built_in">document</span>.getElementById(el).innerHTML<br>		},<br>		set: <span class="hljs-function"><span class="hljs-params">val</span> =&gt;</span> {<br>			<span class="hljs-built_in">document</span>.getElementById(el).innerHTML = val<br>		}<br>	})<br>}<br><br><span class="hljs-keyword">const</span> v = <span class="hljs-keyword">new</span> Vue({<br>	el: <span class="hljs-string">'app'</span>,<br>	data: {<br>		message: <span class="hljs-string">'Wooooooooooo!'</span><br>	}<br>})<br>v.message					<span class="hljs-comment">//返回 Wooooooooooo! 字符串</span><br>v.message = <span class="hljs-string">'ohhhhhhhhhhh!'</span>	<span class="hljs-comment">//将div内的内容变为 ohhhhhhhhhhh!</span><br></code></pre></td></tr></tbody></table></figure><br>这样，就能进行数据交互了。<p></p>
-<p>可以看到，所谓各种库和框架，它们并没有在底层层面上创造新的东西，而只是把原有的概念进行了封装与重组。</p>
+              <h2 id="0x01-前言"><a href="#0x01-前言" class="headerlink" title="0x01 前言"></a>0x01 前言</h2><p>本文旨在讨论可计算理论的来源、定义以及应用。</p>
+<p>先贴一段wiki的原文：</p>
+<blockquote>
+<p>Computability theory, also known as recursion theory, is a branch of mathematical logic, computer science, and the theory of computation that originated in the 1930s with the study of computable functions and Turing degrees. The field has since expanded to include the study of generalized computability and definability. In these areas, recursion theory overlaps with proof theory and effective descriptive set theory</p>
+</blockquote>
+<p>可计算理论又称递归理论，在计算机科学中，可计算理论是计算理论的一个分支，研究不同的计算模型下算法问题如何被有效解决。与之相对应的，计算复杂性理论讨论一个问题怎样被有效的解决。</p>
+<h2 id="0x01-来源"><a href="#0x01-来源" class="headerlink" title="0x01 来源"></a>0x01 来源</h2><p>计算机科学总是关注计算机能够做什么，而可计算理论关注计算机的局限性，以及计算机不能做什么。</p>
+<p>可计算性最初的定义由图灵（Turing）和丘奇（Church）给出，</p>
+<p><em>定义1（图灵论点）：可计算的函数和可用图灵机计算的函数等同</em></p>
+<p>图灵机由读写头、一根无限长的纸带、一套控制规则、一个状态寄存器构成。图灵机的状态是有限的，并且有一个特殊的停机状态，由此引申出了停机问题。</p>
+<p><em>定义2（丘奇论点）：可计算的函数和<script type="math/tex">\lambda</script>可定义的函数相同</em></p>
+<p>丘奇的观点是借助一个语法极其简单但功能强大的<script type="math/tex">\lambda</script>函数</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Computability_theory">https://en.wikipedia.org/wiki/Computability_theory</a></p>
+</blockquote>
 
             </div>
             <hr>
@@ -255,7 +250,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/JavaScript/">JavaScript</a>
+                      <a class="hover-with-bg" href="/categories/%E5%8E%9F%E7%90%86/">原理</a>
                     
                   </div>
                 
@@ -263,9 +258,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Vue/">Vue</a>
-                    
-                      <a class="hover-with-bg" href="/tags/JavaScript/">JavaScript</a>
+                      <a class="hover-with-bg" href="/tags/%E5%8E%9F%E7%90%86/">原理</a>
                     
                   </div>
                 
@@ -278,18 +271,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/11/09/guitar-1/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Guitar|曲谱</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/10/24/qc-3/">
-                        <span class="hidden-mobile">梳理|量子计算（3）：线性代数基础</span>
+                      <a href="/2021/01/02/2020-zong-jie/">
+                        <span class="hidden-mobile">2020总结</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
