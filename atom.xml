@@ -6,7 +6,7 @@
   <link href="http://hahuillu.cn/atom.xml" rel="self"/>
   
   <link href="http://hahuillu.cn/"/>
-  <updated>2021-03-29T09:28:21.010Z</updated>
+  <updated>2021-05-06T07:35:10.207Z</updated>
   <id>http://hahuillu.cn/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>2021暑期实习面经</title>
+    <link href="http://hahuillu.cn/2021/04/23/shi-xi-mian-jing/"/>
+    <id>http://hahuillu.cn/2021/04/23/shi-xi-mian-jing/</id>
+    <published>2021-04-23T07:04:30.000Z</published>
+    <updated>2021-05-06T07:35:10.207Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;几天前淘系的mentor让我写一份面经，帮他搞招生宣传用，于是就草草写了这篇文章，特此记录。&lt;/p&gt;
+&lt;h2 id=&quot;正文&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="学习笔记" scheme="http://hahuillu.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="面经" scheme="http://hahuillu.cn/tags/%E9%9D%A2%E7%BB%8F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>可计算理论与计算复杂性</title>
     <link href="http://hahuillu.cn/2021/03/29/ke-ji-suan-li-lun/"/>
     <id>http://hahuillu.cn/2021/03/29/ke-ji-suan-li-lun/</id>
     <published>2021-03-29T03:04:30.000Z</published>
-    <updated>2021-03-29T09:28:21.010Z</updated>
+    <updated>2021-05-06T06:24:52.804Z</updated>
     
     
       
@@ -34,10 +60,10 @@
     
     
     
-    <category term="原理" scheme="http://hahuillu.cn/categories/%E5%8E%9F%E7%90%86/"/>
+    <category term="学习笔记" scheme="http://hahuillu.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="原理" scheme="http://hahuillu.cn/tags/%E5%8E%9F%E7%90%86/"/>
+    <category term="可计算性" scheme="http://hahuillu.cn/tags/%E5%8F%AF%E8%AE%A1%E7%AE%97%E6%80%A7/"/>
     
   </entry>
   
@@ -46,14 +72,14 @@
     <link href="http://hahuillu.cn/2021/01/02/2020-zong-jie/"/>
     <id>http://hahuillu.cn/2021/01/02/2020-zong-jie/</id>
     <published>2021-01-02T08:20:00.000Z</published>
-    <updated>2021-01-02T08:25:04.281Z</updated>
+    <updated>2021-05-06T07:33:43.686Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;如题，对2020年的一个年度总结，在这里请恕我晒出新年收到的第一份惊喜，当当当当~&lt;span class=&quot;github-emoji&quot;&gt;&lt;span&gt;😉&lt;/span&gt;&lt;img</summary>
+    <summary type="html">&lt;h3 id=&quot;去年都发生了些啥？&quot;&gt;&lt;a href=&quot;#去年都发生了些啥？&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -154,7 +180,7 @@
     <link href="http://hahuillu.cn/2020/11/13/phy-history/"/>
     <id>http://hahuillu.cn/2020/11/13/phy-history/</id>
     <published>2020-11-13T01:38:30.000Z</published>
-    <updated>2020-12-25T06:33:58.488Z</updated>
+    <updated>2021-05-06T06:36:19.864Z</updated>
     
     
       
@@ -209,14 +235,14 @@
     <link href="http://hahuillu.cn/2020/11/10/light-1/"/>
     <id>http://hahuillu.cn/2020/11/10/light-1/</id>
     <published>2020-11-10T13:14:30.000Z</published>
-    <updated>2020-12-25T06:22:41.195Z</updated>
+    <updated>2021-05-06T06:48:25.755Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;0x00-前言&quot;&gt;&lt;a href=&quot;#0x00-前言&quot; class=&quot;headerlink&quot; title=&quot;0x00 前言&quot;&gt;&lt;/a&gt;0x00 前言&lt;/h2&gt;&lt;p&gt;该系列对Light语言进行一个总结性质的记录，emm勉强算官方文档吧&lt;span</summary>
+    <summary type="html">&lt;h2 id=&quot;0x00-前言&quot;&gt;&lt;a href=&quot;#0x00-前言&quot; class=&quot;headerlink&quot; title=&quot;0x00 前言&quot;&gt;&lt;/a&gt;0x00</summary>
         
       
     
@@ -261,7 +287,7 @@
     <link href="http://hahuillu.cn/2020/10/25/vue-1/"/>
     <id>http://hahuillu.cn/2020/10/25/vue-1/</id>
     <published>2020-10-25T09:42:30.000Z</published>
-    <updated>2020-12-25T06:36:47.004Z</updated>
+    <updated>2021-05-06T06:30:42.066Z</updated>
     
     
       
