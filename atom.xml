@@ -3,11 +3,11 @@
   <title>Mumu</title>
   
   <subtitle>Mumu</subtitle>
-  <link href="http://hahuillu.cn/atom.xml" rel="self"/>
+  <link href="http://leahmumu.love/atom.xml" rel="self"/>
   
-  <link href="http://hahuillu.cn/"/>
+  <link href="http://leahmumu.love/"/>
   <updated>2021-06-11T06:48:12.762Z</updated>
-  <id>http://hahuillu.cn/</id>
+  <id>http://leahmumu.love/</id>
   
   <author>
     <name>Mumu</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>运筹学|OR-Tools小记</title>
-    <link href="http://hahuillu.cn/2021/06/11/or-tools/"/>
-    <id>http://hahuillu.cn/2021/06/11/or-tools/</id>
+    <link href="http://leahmumu.love/2021/06/11/or-tools/"/>
+    <id>http://leahmumu.love/2021/06/11/or-tools/</id>
     <published>2021-06-11T03:22:30.000Z</published>
     <updated>2021-06-11T06:48:12.762Z</updated>
     
@@ -34,17 +34,17 @@
     
     
     
-    <category term="学习笔记" scheme="http://hahuillu.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <category term="学习笔记" scheme="http://leahmumu.love/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="笔记" scheme="http://hahuillu.cn/tags/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="http://leahmumu.love/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>2021暑期实习面经</title>
-    <link href="http://hahuillu.cn/2021/04/23/shi-xi-mian-jing/"/>
-    <id>http://hahuillu.cn/2021/04/23/shi-xi-mian-jing/</id>
+    <link href="http://leahmumu.love/2021/04/23/shi-xi-mian-jing/"/>
+    <id>http://leahmumu.love/2021/04/23/shi-xi-mian-jing/</id>
     <published>2021-04-23T07:04:30.000Z</published>
     <updated>2021-05-06T07:35:10.207Z</updated>
     
@@ -60,19 +60,19 @@
     
     
     
-    <category term="学习笔记" scheme="http://hahuillu.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <category term="学习笔记" scheme="http://leahmumu.love/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="面经" scheme="http://hahuillu.cn/tags/%E9%9D%A2%E7%BB%8F/"/>
+    <category term="面经" scheme="http://leahmumu.love/tags/%E9%9D%A2%E7%BB%8F/"/>
     
   </entry>
   
   <entry>
     <title>可计算理论与计算复杂性</title>
-    <link href="http://hahuillu.cn/2021/03/29/ke-ji-suan-li-lun/"/>
-    <id>http://hahuillu.cn/2021/03/29/ke-ji-suan-li-lun/</id>
+    <link href="http://leahmumu.love/2021/03/29/ke-ji-suan-li-lun/"/>
+    <id>http://leahmumu.love/2021/03/29/ke-ji-suan-li-lun/</id>
     <published>2021-03-29T03:04:30.000Z</published>
-    <updated>2021-05-06T06:24:52.804Z</updated>
+    <updated>2021-06-11T07:25:13.384Z</updated>
     
     
       
@@ -85,17 +85,17 @@
     
     
     
-    <category term="学习笔记" scheme="http://hahuillu.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <category term="学习笔记" scheme="http://leahmumu.love/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="可计算性" scheme="http://hahuillu.cn/tags/%E5%8F%AF%E8%AE%A1%E7%AE%97%E6%80%A7/"/>
+    <category term="可计算性" scheme="http://leahmumu.love/tags/%E5%8F%AF%E8%AE%A1%E7%AE%97%E6%80%A7/"/>
     
   </entry>
   
   <entry>
     <title>2020总结</title>
-    <link href="http://hahuillu.cn/2021/01/02/2020-zong-jie/"/>
-    <id>http://hahuillu.cn/2021/01/02/2020-zong-jie/</id>
+    <link href="http://leahmumu.love/2021/01/02/2020-zong-jie/"/>
+    <id>http://leahmumu.love/2021/01/02/2020-zong-jie/</id>
     <published>2021-01-02T08:20:00.000Z</published>
     <updated>2021-05-06T07:33:43.686Z</updated>
     
@@ -110,17 +110,17 @@
     
     
     
-    <category term="随笔" scheme="http://hahuillu.cn/categories/%E9%9A%8F%E7%AC%94/"/>
+    <category term="随笔" scheme="http://leahmumu.love/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-    <category term="随笔" scheme="http://hahuillu.cn/tags/%E9%9A%8F%E7%AC%94/"/>
+    <category term="随笔" scheme="http://leahmumu.love/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
   <entry>
     <title>JavaScript|面向对象</title>
-    <link href="http://hahuillu.cn/2020/12/24/js-oo/"/>
-    <id>http://hahuillu.cn/2020/12/24/js-oo/</id>
+    <link href="http://leahmumu.love/2020/12/24/js-oo/"/>
+    <id>http://leahmumu.love/2020/12/24/js-oo/</id>
     <published>2020-12-24T03:07:00.000Z</published>
     <updated>2021-06-11T06:54:43.011Z</updated>
     
@@ -136,19 +136,19 @@
     
     
     
-    <category term="cs" scheme="http://hahuillu.cn/categories/cs/"/>
+    <category term="cs" scheme="http://leahmumu.love/categories/cs/"/>
     
     
-    <category term="JavaScript" scheme="http://hahuillu.cn/tags/JavaScript/"/>
+    <category term="JavaScript" scheme="http://leahmumu.love/tags/JavaScript/"/>
     
-    <category term="原型" scheme="http://hahuillu.cn/tags/%E5%8E%9F%E5%9E%8B/"/>
+    <category term="原型" scheme="http://leahmumu.love/tags/%E5%8E%9F%E5%9E%8B/"/>
     
   </entry>
   
   <entry>
     <title>总结|常用算法</title>
-    <link href="http://hahuillu.cn/2020/12/16/leet-algo/"/>
-    <id>http://hahuillu.cn/2020/12/16/leet-algo/</id>
+    <link href="http://leahmumu.love/2020/12/16/leet-algo/"/>
+    <id>http://leahmumu.love/2020/12/16/leet-algo/</id>
     <published>2020-12-16T03:07:00.000Z</published>
     <updated>2021-06-11T03:24:24.288Z</updated>
     
@@ -164,19 +164,19 @@
     
     
     
-    <category term="学习笔记" scheme="http://hahuillu.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <category term="学习笔记" scheme="http://leahmumu.love/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="JavaScript" scheme="http://hahuillu.cn/tags/JavaScript/"/>
+    <category term="JavaScript" scheme="http://leahmumu.love/tags/JavaScript/"/>
     
-    <category term="算法" scheme="http://hahuillu.cn/tags/%E7%AE%97%E6%B3%95/"/>
+    <category term="算法" scheme="http://leahmumu.love/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>实现一个量子计算机</title>
-    <link href="http://hahuillu.cn/2020/12/14/qsim/"/>
-    <id>http://hahuillu.cn/2020/12/14/qsim/</id>
+    <link href="http://leahmumu.love/2020/12/14/qsim/"/>
+    <id>http://leahmumu.love/2020/12/14/qsim/</id>
     <published>2020-12-14T03:07:00.000Z</published>
     <updated>2021-06-11T06:53:00.062Z</updated>
     
@@ -191,19 +191,19 @@
     
     
     
-    <category term="学术" scheme="http://hahuillu.cn/categories/%E5%AD%A6%E6%9C%AF/"/>
+    <category term="学术" scheme="http://leahmumu.love/categories/%E5%AD%A6%E6%9C%AF/"/>
     
     
-    <category term="python" scheme="http://hahuillu.cn/tags/python/"/>
+    <category term="python" scheme="http://leahmumu.love/tags/python/"/>
     
-    <category term="量子计算" scheme="http://hahuillu.cn/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/"/>
+    <category term="量子计算" scheme="http://leahmumu.love/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/"/>
     
   </entry>
   
   <entry>
     <title>从奥术神座到数理学史</title>
-    <link href="http://hahuillu.cn/2020/11/13/phy-history/"/>
-    <id>http://hahuillu.cn/2020/11/13/phy-history/</id>
+    <link href="http://leahmumu.love/2020/11/13/phy-history/"/>
+    <id>http://leahmumu.love/2020/11/13/phy-history/</id>
     <published>2020-11-13T01:38:30.000Z</published>
     <updated>2021-05-06T06:36:19.864Z</updated>
     
@@ -219,19 +219,19 @@
     
     
     
-    <category term="随笔" scheme="http://hahuillu.cn/categories/%E9%9A%8F%E7%AC%94/"/>
+    <category term="随笔" scheme="http://leahmumu.love/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-    <category term="随笔" scheme="http://hahuillu.cn/tags/%E9%9A%8F%E7%AC%94/"/>
+    <category term="随笔" scheme="http://leahmumu.love/tags/%E9%9A%8F%E7%AC%94/"/>
     
-    <category term="小说" scheme="http://hahuillu.cn/tags/%E5%B0%8F%E8%AF%B4/"/>
+    <category term="小说" scheme="http://leahmumu.love/tags/%E5%B0%8F%E8%AF%B4/"/>
     
   </entry>
   
   <entry>
     <title>Light|来设计一款编程语言吧(2)：语法分析</title>
-    <link href="http://hahuillu.cn/2020/11/11/light-2/"/>
-    <id>http://hahuillu.cn/2020/11/11/light-2/</id>
+    <link href="http://leahmumu.love/2020/11/11/light-2/"/>
+    <id>http://leahmumu.love/2020/11/11/light-2/</id>
     <published>2020-11-11T02:14:30.000Z</published>
     <updated>2021-06-11T06:55:04.710Z</updated>
     
@@ -246,19 +246,19 @@
     
     
     
-    <category term="cs" scheme="http://hahuillu.cn/categories/cs/"/>
+    <category term="cs" scheme="http://leahmumu.love/categories/cs/"/>
     
     
-    <category term="python" scheme="http://hahuillu.cn/tags/python/"/>
+    <category term="python" scheme="http://leahmumu.love/tags/python/"/>
     
-    <category term="编译原理" scheme="http://hahuillu.cn/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
+    <category term="编译原理" scheme="http://leahmumu.love/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>Light|来设计一款编程语言吧(1)：词法分析</title>
-    <link href="http://hahuillu.cn/2020/11/10/light-1/"/>
-    <id>http://hahuillu.cn/2020/11/10/light-1/</id>
+    <link href="http://leahmumu.love/2020/11/10/light-1/"/>
+    <id>http://leahmumu.love/2020/11/10/light-1/</id>
     <published>2020-11-10T13:14:30.000Z</published>
     <updated>2021-06-11T06:55:17.332Z</updated>
     
@@ -273,19 +273,19 @@
     
     
     
-    <category term="cs" scheme="http://hahuillu.cn/categories/cs/"/>
+    <category term="cs" scheme="http://leahmumu.love/categories/cs/"/>
     
     
-    <category term="python" scheme="http://hahuillu.cn/tags/python/"/>
+    <category term="python" scheme="http://leahmumu.love/tags/python/"/>
     
-    <category term="编译原理" scheme="http://hahuillu.cn/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
+    <category term="编译原理" scheme="http://leahmumu.love/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>Guitar|曲谱</title>
-    <link href="http://hahuillu.cn/2020/11/09/guitar-1/"/>
-    <id>http://hahuillu.cn/2020/11/09/guitar-1/</id>
+    <link href="http://leahmumu.love/2020/11/09/guitar-1/"/>
+    <id>http://leahmumu.love/2020/11/09/guitar-1/</id>
     <published>2020-11-09T02:08:30.000Z</published>
     <updated>2021-06-11T06:52:09.230Z</updated>
     
@@ -300,17 +300,17 @@
     
     
     
-    <category term="生活" scheme="http://hahuillu.cn/categories/%E7%94%9F%E6%B4%BB/"/>
+    <category term="生活" scheme="http://leahmumu.love/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
-    <category term="Guitar" scheme="http://hahuillu.cn/tags/Guitar/"/>
+    <category term="Guitar" scheme="http://leahmumu.love/tags/Guitar/"/>
     
   </entry>
   
   <entry>
     <title>原理|Vue：MVVM实现</title>
-    <link href="http://hahuillu.cn/2020/10/25/vue-1/"/>
-    <id>http://hahuillu.cn/2020/10/25/vue-1/</id>
+    <link href="http://leahmumu.love/2020/10/25/vue-1/"/>
+    <id>http://leahmumu.love/2020/10/25/vue-1/</id>
     <published>2020-10-25T09:42:30.000Z</published>
     <updated>2021-06-11T06:54:51.577Z</updated>
     
@@ -325,19 +325,19 @@
     
     
     
-    <category term="cs" scheme="http://hahuillu.cn/categories/cs/"/>
+    <category term="cs" scheme="http://leahmumu.love/categories/cs/"/>
     
     
-    <category term="Vue" scheme="http://hahuillu.cn/tags/Vue/"/>
+    <category term="Vue" scheme="http://leahmumu.love/tags/Vue/"/>
     
-    <category term="JavaScript" scheme="http://hahuillu.cn/tags/JavaScript/"/>
+    <category term="JavaScript" scheme="http://leahmumu.love/tags/JavaScript/"/>
     
   </entry>
   
   <entry>
     <title>梳理|量子计算（3）：线性代数基础</title>
-    <link href="http://hahuillu.cn/2020/10/24/qc-3/"/>
-    <id>http://hahuillu.cn/2020/10/24/qc-3/</id>
+    <link href="http://leahmumu.love/2020/10/24/qc-3/"/>
+    <id>http://leahmumu.love/2020/10/24/qc-3/</id>
     <published>2020-10-24T13:38:00.000Z</published>
     <updated>2021-06-11T06:52:50.822Z</updated>
     
@@ -352,19 +352,19 @@
     
     
     
-    <category term="学术" scheme="http://hahuillu.cn/categories/%E5%AD%A6%E6%9C%AF/"/>
+    <category term="学术" scheme="http://leahmumu.love/categories/%E5%AD%A6%E6%9C%AF/"/>
     
     
-    <category term="量子计算" scheme="http://hahuillu.cn/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/"/>
+    <category term="量子计算" scheme="http://leahmumu.love/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/"/>
     
-    <category term="梳理" scheme="http://hahuillu.cn/tags/%E6%A2%B3%E7%90%86/"/>
+    <category term="梳理" scheme="http://leahmumu.love/tags/%E6%A2%B3%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>梳理|量子计算（2）：量子力学基础</title>
-    <link href="http://hahuillu.cn/2020/10/23/qc-2/"/>
-    <id>http://hahuillu.cn/2020/10/23/qc-2/</id>
+    <link href="http://leahmumu.love/2020/10/23/qc-2/"/>
+    <id>http://leahmumu.love/2020/10/23/qc-2/</id>
     <published>2020-10-23T06:26:30.000Z</published>
     <updated>2021-06-11T06:52:46.080Z</updated>
     
@@ -379,19 +379,19 @@
     
     
     
-    <category term="学术" scheme="http://hahuillu.cn/categories/%E5%AD%A6%E6%9C%AF/"/>
+    <category term="学术" scheme="http://leahmumu.love/categories/%E5%AD%A6%E6%9C%AF/"/>
     
     
-    <category term="量子计算" scheme="http://hahuillu.cn/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/"/>
+    <category term="量子计算" scheme="http://leahmumu.love/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/"/>
     
-    <category term="梳理" scheme="http://hahuillu.cn/tags/%E6%A2%B3%E7%90%86/"/>
+    <category term="梳理" scheme="http://leahmumu.love/tags/%E6%A2%B3%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>梳理|量子计算（1）：体系结构</title>
-    <link href="http://hahuillu.cn/2020/10/21/qc-1/"/>
-    <id>http://hahuillu.cn/2020/10/21/qc-1/</id>
+    <link href="http://leahmumu.love/2020/10/21/qc-1/"/>
+    <id>http://leahmumu.love/2020/10/21/qc-1/</id>
     <published>2020-10-21T13:52:37.000Z</published>
     <updated>2021-06-11T06:52:38.310Z</updated>
     
@@ -406,19 +406,19 @@
     
     
     
-    <category term="学术" scheme="http://hahuillu.cn/categories/%E5%AD%A6%E6%9C%AF/"/>
+    <category term="学术" scheme="http://leahmumu.love/categories/%E5%AD%A6%E6%9C%AF/"/>
     
     
-    <category term="量子计算" scheme="http://hahuillu.cn/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/"/>
+    <category term="量子计算" scheme="http://leahmumu.love/tags/%E9%87%8F%E5%AD%90%E8%AE%A1%E7%AE%97/"/>
     
-    <category term="梳理" scheme="http://hahuillu.cn/tags/%E6%A2%B3%E7%90%86/"/>
+    <category term="梳理" scheme="http://leahmumu.love/tags/%E6%A2%B3%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>我常用的一些学术资源</title>
-    <link href="http://hahuillu.cn/2020/10/21/xue-zhu-zi-yuan/"/>
-    <id>http://hahuillu.cn/2020/10/21/xue-zhu-zi-yuan/</id>
+    <link href="http://leahmumu.love/2020/10/21/xue-zhu-zi-yuan/"/>
+    <id>http://leahmumu.love/2020/10/21/xue-zhu-zi-yuan/</id>
     <published>2020-10-21T13:52:37.000Z</published>
     <updated>2021-06-11T03:24:44.992Z</updated>
     
@@ -433,12 +433,12 @@
     
     
     
-    <category term="学术" scheme="http://hahuillu.cn/categories/%E5%AD%A6%E6%9C%AF/"/>
+    <category term="学术" scheme="http://leahmumu.love/categories/%E5%AD%A6%E6%9C%AF/"/>
     
     
-    <category term="笔记" scheme="http://hahuillu.cn/tags/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="http://leahmumu.love/tags/%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="实用工具" scheme="http://hahuillu.cn/tags/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/"/>
+    <category term="实用工具" scheme="http://leahmumu.love/tags/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
