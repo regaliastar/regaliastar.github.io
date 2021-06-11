@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>运筹学|OR-Tools小记</title>
+    <link href="/2021/06/11/or-tools/"/>
+    <url>/2021/06/11/or-tools/</url>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>OR-Tools是Google开源的一款运筹学处理工具，可用于解决组合优化问题。这里贴一下官方的解释：</p><blockquote><p>The suite contains:<br>A constraint programming solver;<br>A linear programming solver;<br>Wrappers around commercial and other open source solvers, including mixed integer solvers;<br>Bin packing and knapsack algorithms;<br>Algorithms for the Traveling Salesman Problem and Vehicle Routing Problem;<br>Graph algorithms (shortest paths, min cost flow, max flow, linear sum assignment).<br>We wrote OR-Tools in C++, but also provide wrappers in Python, C# and Java.</p></blockquote><p>开源的求解器市面上有很多，而or-tools文档全面，再加上背靠Google这颗大树，在github上有7k多个star。or-tools支持python、c#、java调用，于是我最终选择了它作为算法的求解工具。</p><h2 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h2><h3 id="混合整数规划（mixed-integer-programming-MIP）"><a href="#混合整数规划（mixed-integer-programming-MIP）" class="headerlink" title="混合整数规划（mixed-integer programming, MIP）"></a>混合整数规划（mixed-integer programming, MIP）</h3><p>对于下面这种问题：</p><p><em>Maximize x + 10y subject to the following constraints:</em><br><em>x + 7 y    ≤    17.5</em><br><em>x    ≤    3.5</em><br><em>x    ≥    0</em><br><em>y    ≥    0</em><br><em>x, y integers</em>  </p><p>这是一种常见的整数线性规划问题，or-tools是这么解决的：</p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> ortools.linear_solver <span class="hljs-keyword">import</span> pywraplp<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span>():</span><br>    <span class="hljs-comment"># Create the mip solver with the SCIP backend.</span><br>    solver = pywraplp.Solver.CreateSolver(<span class="hljs-string">'SCIP'</span>)<br><br>    infinity = solver.infinity()<br>    <span class="hljs-comment"># x and y are integer non-negative variables.</span><br>    x = solver.IntVar(<span class="hljs-number">0.0</span>, infinity, <span class="hljs-string">'x'</span>)<br>    y = solver.IntVar(<span class="hljs-number">0.0</span>, infinity, <span class="hljs-string">'y'</span>)<br><br>    print(<span class="hljs-string">'Number of variables ='</span>, solver.NumVariables())<br><br>    <span class="hljs-comment"># x + 7 * y &lt;= 17.5.</span><br>    solver.Add(x + <span class="hljs-number">7</span> * y &lt;= <span class="hljs-number">17.5</span>)<br><br>    <span class="hljs-comment"># x &lt;= 3.5.</span><br>    solver.Add(x &lt;= <span class="hljs-number">3.5</span>)<br><br>    print(<span class="hljs-string">'Number of constraints ='</span>, solver.NumConstraints())<br><br>    <span class="hljs-comment"># Maximize x + 10 * y.</span><br>    solver.Maximize(x + <span class="hljs-number">10</span> * y)<br><br>    status = solver.Solve()<br><br>    <span class="hljs-keyword">if</span> status == pywraplp.Solver.OPTIMAL:<br>        print(<span class="hljs-string">'Solution:'</span>)<br>        print(<span class="hljs-string">'Objective value ='</span>, solver.Objective().Value())<br>        print(<span class="hljs-string">'x ='</span>, x.solution_value())<br>        print(<span class="hljs-string">'y ='</span>, y.solution_value())<br>    <span class="hljs-keyword">else</span>:<br>        print(<span class="hljs-string">'The problem does not have an optimal solution.'</span>)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:<br>    main()<br></code></pre></td></tr></tbody></table></figure><p>类似的，诸如<code>0-1规划</code>、<code>背包问题</code>等等都可以用这个模板解决。</p><h3 id="约束规划（constraint-programming-CP）"><a href="#约束规划（constraint-programming-CP）" class="headerlink" title="约束规划（constraint programming, CP）"></a>约束规划（constraint programming, CP）</h3><p>约束规划是指从一个非常大的候选集合中找出可行的解决方案，其中问题可以根据任意的约束来建模。<code>CP</code>的基础是可行性(寻找问题的可行解)，侧重于约束和变量，而不是目标函数。事实上，<code>CP</code>问题可能甚至没有目标函数——目标可能只是通过向问题添加约束，将各种可能的解决方案缩小到更易于管理的子集。</p><p>一个非常适合<code>CP</code>的问题的例子是员工调度。当持续经营的公司（如工厂）需要为员工制定每周的时间表时，问题就出现了。这里有一个非常简单的例子：一家公司每天运行三个8小时的轮班制，每天将四名员工中的三名分配到不同的班次，而第四名员工则休息一天。即使在这样一个小的情况下，可能的时间表的数量也是巨大的：每天有4！=4·3·2·1=24个可能的员工分配，因此可能的周计划数为<script type="math/tex">24^7</script>，超过45亿。通常会有其他限制因素减少可行解决方案的数量——例如，每个员工每周至少工作几天。当添加新约束时，<code>CP</code>方法跟踪哪些解决方案仍然可行，这使它成为解决大型实际调度问题的强大工具。</p><p>对于许多类型的问题，<code>CP</code>可以比<code>MIP</code>求解器更快地找到最优解。</p><p>同时为了解决SAT问题，or-tools提供了<code>CP-SAT solver</code>，为诸如<code>N-queens Problem</code>、<code>TSP</code>问题提供解法。</p><p>一个简单的示例：</p><p><em>Three variables, x, y, and z, each of which can take on the values: 0, 1, or 2.</em><br><em>One constraint: x ≠ y</em>  </p><p>我们要寻找 <em>x, y</em> 的全部可行解，这是一个约束规划的问题</p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> ortools.sat.python <span class="hljs-keyword">import</span> cp_model<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">VarArraySolutionPrinter</span>(<span class="hljs-params">cp_model.CpSolverSolutionCallback</span>):</span><br>    <span class="hljs-string">"""Print intermediate solutions."""</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, variables</span>):</span><br>        cp_model.CpSolverSolutionCallback.__init__(self)<br>        self.__variables = variables<br>        self.__solution_count = <span class="hljs-number">0</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">on_solution_callback</span>(<span class="hljs-params">self</span>):</span><br>        self.__solution_count += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> self.__variables:<br>            print(<span class="hljs-string">'%s=%i'</span> % (v, self.Value(v)), end=<span class="hljs-string">' '</span>)<br>        print()<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">solution_count</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-keyword">return</span> self.__solution_count<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">SearchForAllSolutionsSampleSat</span>():</span><br>    <span class="hljs-string">"""Showcases calling the solver to search for all solutions."""</span><br>    <span class="hljs-comment"># Creates the model.</span><br>    model = cp_model.CpModel()<br><br>    <span class="hljs-comment"># Creates the variables.</span><br>    num_vals = <span class="hljs-number">3</span><br>    x = model.NewIntVar(<span class="hljs-number">0</span>, num_vals - <span class="hljs-number">1</span>, <span class="hljs-string">'x'</span>)<br>    y = model.NewIntVar(<span class="hljs-number">0</span>, num_vals - <span class="hljs-number">1</span>, <span class="hljs-string">'y'</span>)<br>    z = model.NewIntVar(<span class="hljs-number">0</span>, num_vals - <span class="hljs-number">1</span>, <span class="hljs-string">'z'</span>)<br><br>    <span class="hljs-comment"># Create the constraints.</span><br>    model.Add(x != y)<br><br>    <span class="hljs-comment"># Create a solver and solve.</span><br>    solver = cp_model.CpSolver()<br>    solution_printer = VarArraySolutionPrinter([x, y, z])<br>    status = solver.SearchForAllSolutions(model, solution_printer)<br><br>    print(<span class="hljs-string">'Status = %s'</span> % solver.StatusName(status))<br>    print(<span class="hljs-string">'Number of solutions found: %i'</span> % solution_printer.solution_count())<br><br>SearchForAllSolutionsSampleSat()<br></code></pre></td></tr></tbody></table></figure><blockquote><p>Reference<br>[1] <a href="https://github.com/google/or-tools">https://github.com/google/or-tools</a></p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>笔记</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>2021暑期实习面经</title>
     <link href="/2021/04/23/shi-xi-mian-jing/"/>
     <url>/2021/04/23/shi-xi-mian-jing/</url>
@@ -88,7 +113,7 @@
     
     <categories>
       
-      <category>JavaScript</category>
+      <category>cs</category>
       
     </categories>
     
@@ -115,7 +140,7 @@
     
     <categories>
       
-      <category>算法</category>
+      <category>学习笔记</category>
       
     </categories>
     
@@ -142,7 +167,7 @@
     
     <categories>
       
-      <category>量子计算</category>
+      <category>学术</category>
       
     </categories>
     
@@ -196,7 +221,7 @@
     
     <categories>
       
-      <category>编译原理</category>
+      <category>cs</category>
       
     </categories>
     
@@ -223,7 +248,7 @@
     
     <categories>
       
-      <category>编译原理</category>
+      <category>cs</category>
       
     </categories>
     
@@ -250,7 +275,7 @@
     
     <categories>
       
-      <category>吉他</category>
+      <category>生活</category>
       
     </categories>
     
@@ -275,7 +300,7 @@
     
     <categories>
       
-      <category>JavaScript</category>
+      <category>cs</category>
       
     </categories>
     
@@ -302,7 +327,7 @@
     
     <categories>
       
-      <category>量子计算</category>
+      <category>学术</category>
       
     </categories>
     
@@ -329,7 +354,7 @@
     
     <categories>
       
-      <category>量子计算</category>
+      <category>学术</category>
       
     </categories>
     
@@ -356,7 +381,7 @@
     
     <categories>
       
-      <category>量子计算</category>
+      <category>学术</category>
       
     </categories>
     
@@ -383,7 +408,7 @@
     
     <categories>
       
-      <category>学术笔记</category>
+      <category>学术</category>
       
     </categories>
     
